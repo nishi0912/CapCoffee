@@ -1,0 +1,199 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+}
+/* NOTE:Usage of CSS variables to store and reuse it */
+:root{
+--primaryColor:white;
+}
+.login-outerpage{
+    background:linear-gradient(rgba(0,0,0,0.5) , rgba(0,0,0,1)) ,url("/CSS/login.jpg")  center/cover no-repeat;
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+.login-innerpage{
+    width:50vw;
+    height:70vh;
+    border:2px solid var(--primaryColor);
+    transform: translate(400px,100px);
+    letter-spacing: 2px;
+    color:var(--primaryColor);
+    padding:25px 50px;
+    background: url("/CSS/login.jpg") center/cover no-repeat;
+    border-radius:20px;
+    position: relative;
+}
+
+/* font awesome icons */
+.circle{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    width:100px;
+    height:100px;
+    margin:10px auto;
+    border-radius: 50%;
+    position:relative;
+}
+
+.fa-user
+{
+    color:var(--primaryColor);
+    font-size: 3rem;
+}
+/* --------------------------------------------- */
+.container
+{
+    font-size:1rem;
+    letter-spacing: 2px;
+    text-align: center;
+    margin:0px auto;
+}
+
+.userCredentials
+{
+    margin:1% 25%;
+    padding:10px 50px 10px;
+    cursor: pointer;
+    border-radius:20px;
+    letter-spacing: 2px;
+    transition:all 1.5s linear;
+}
+
+.userCredentials:hover{
+    background-color:green;
+    opacity: 0.5;
+}
+
+.userInterface{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn,.forgot{
+    margin:1% auto;
+    background-color:green;
+    color:var(--primaryColor);
+    padding:10px 70px;
+    letter-spacing:1px;
+    font-size: 1rem;
+    text-align: center;
+    animation:move 2s 1 forwards;
+}
+
+@keyframes move{
+    0%{
+        transform: translate(0px);
+    }
+    50%
+    {
+        transform:translateY(40px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+::placeholder
+{
+    color:var(--primaryColor);
+    letter-spacing: 3px; 
+}
+
+input [type="text"]:focus{
+    background-color: #00ff00;
+    color:white;
+}
+
+#fa-key,.fa-pen{
+color:var(--primaryColor);
+}
+
+.remember{
+   position: absolute;
+   left:10px;
+   bottom:10px;
+}
+
+input[type="checkbox"]{
+    padding:20px;
+}
+
+@media (min-width:320px) and (max-width:768px){
+    .login-outerpage{
+        width:100%;
+        height:100vh;
+    }
+    .login-innerpage{
+        width:50%;
+        height:50vh;
+        transform: translate(30px,50px);
+        padding:20px 10px;
+
+    }
+    .circle{
+        width:50px;
+        height:50px;
+        margin:5px auto;
+    }
+.fa-user
+{
+    color:var(--primaryColor);
+    font-size: 1.5rem;
+}
+
+.container
+{
+    font-size:0.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.userCredentials
+{
+    margin:3% auto;
+    padding:5px 50px;
+    font-size: 0.2rem;
+    cursor: pointer;
+    border-radius:20px;
+    letter-spacing: 1px;
+    transition:all 1.5s linear;
+}
+
+.userCredentials:hover{
+    background-color:green;
+    opacity: 0.5;
+}
+
+.userInterface{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn,.forgot{
+    margin:5% auto;
+    background-color:green;
+    color:var(--primaryColor);
+    padding:5px 35px;
+    letter-spacing:1px;
+    font-size: 0.5rem;
+    text-align: center;
+    animation:none;
+}
+.remember{
+    font-size: 0.5rem;
+    margin : 0 10px;
+}
+
+.labels{
+    font-size: 0.4rem;
+}
+}
