@@ -305,8 +305,11 @@ margin:0 auto;
 /* ---------------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------menus----------------------------------- */
 .coffeeItems{
-    margin:50px 50px;
-    text-align: center;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-evenly;
+text-align: center;
 }
 
 .dropmenu,.image{
@@ -407,6 +410,7 @@ em{
     font-size:1.5rem;
     box-shadow:0px 10px 5px grey;
 }
+
 .order{
     background-color: var(--primaryColor);
     width:50%;
@@ -416,8 +420,13 @@ em{
     border: none;
     box-shadow:0px 10px 5px grey;
 }
+
+.userItem{
+padding:10px 30px;
+}
+
 .order:hover{
-    transform:scale(1.3);
+    transform:scale(1.2);
     transition:transform 0.5s linear;
 }
 
@@ -493,7 +502,6 @@ em{
         }
 
     .dropmenu{
-        margin:25px 10px;
         width:400px;
         height:650px;
         letter-spacing:1px;
@@ -516,7 +524,7 @@ em{
     }
     .cost,.order{
         background-color: var(--secondaryColor);
-        width:75%;
+        width:50%;
         padding:4px 0px;
         margin:0 auto;
         font-size:1rem;
@@ -524,10 +532,14 @@ em{
     }
     .order{
         background-color: var(--primaryColor);
-        width:50%;
+        width:30%;
         font-size: 0.55rem;
         border: none;
     }
+    .userItem{
+        padding:5px 15px;
+        }
+
     .vertical-line{
         font-size: 0.7rem;
         font-weight: 600;

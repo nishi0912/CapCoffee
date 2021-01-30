@@ -12,6 +12,8 @@ let email = " ";
 let username = " ";
 let password = " ";
 
+let cartItem="";
+let cartItems = ['empty'];
 
 let User = "";
 let userPassword = "";
@@ -44,7 +46,7 @@ app.post("/finalCoffeeproject" , function(req , res){
     console.log(firstname +" , "+ lastname  +" , "+ username  +" , "+ email  +" , "+ password);
     if(username === User && password === userPassword){
         res.render("finalCoffeeproject");
-           }
+        }
     else{
     res.render("Failure");
     console.log("Incorrect credentials.")
@@ -57,6 +59,13 @@ app.post("/Failure",function(req , res){
 
 app.post("/logout",function(req , res){
 res.render("login");
+});
+
+app.post("/cart",function(req ,res){
+cartItem = req.body.items;
+cartItems.push(cartItem);
+res.render("cart" , { yourcart : cartItems});
+console.log(cartItems);
 });
 
 app.listen(process.env.PORT || 3000 , function(){

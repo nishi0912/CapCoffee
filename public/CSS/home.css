@@ -9,7 +9,7 @@
     background:linear-gradient(rgba(255 , 255 ,255, 0.7) , rgba(255 ,255 ,255 , 0.3));
 }
 
-.container-1{
+.container-1,.container{
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -19,6 +19,13 @@
     background:linear-gradient(to right bottom , #00ff00 ,white);
     /* clip-path: circle(30%); */
     position: relative;
+}
+
+.container{
+    color:white;
+    flex-direction: column;  
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
 }
 
 .title{

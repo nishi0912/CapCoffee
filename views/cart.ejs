@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart-Item</title>
+    <link rel="stylesheet" href="CSS/cart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>CART-ITEMS</h1>
+    <div class="container">
+        <% for(var i=0;i<yourcart.length;i++){ %>
+            <div class="item">
+                <%  if( yourcart[i] === "FRAPPUCCINO"){ %>
+                    <h2><%= yourcart[i] %></h2>
+                    <img class="coffeeImages" src="CSS/flavor2.jpg" alt="FRAPPUCCINO">
+                    <button class="btn" type="submit">Buy Now</button>
+                    <% }else if(yourcart[i] === "ESPRESSO"){ %>
+                    <h2><%= yourcart[i] %></h2>
+                    <img class="coffeeImages" src="CSS/Images/flavor10.jpg" alt="FRAPPUCCINO">
+                    <button class="btn" type="submit">Buy Now</button>
+                <%   }else if(yourcart[i] === "AMERICANO"){ %>
+                    <h2><%= yourcart[i] %></h2>
+                    <img class="coffeeImages" src="CSS/Images/flavor14.jpg" alt="FRAPPUCCINO">
+                    <button class="btn" type="submit">Buy Now</button>
+                <%  } else{ %>
+                    <h2><%= yourcart[i] %></h2> 
+                    <button class="btn" type="submit">Buy Now</button>
+                <%  } %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
