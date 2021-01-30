@@ -68,11 +68,11 @@
     padding:10px 50px;
     cursor: pointer;
     border-radius:20px;
-    transition:all 1.5s linear;
     position: relative;
 }
 
 .userCredentials:hover{
+    transition:2s linear;
     background-color:green;
     opacity: 0.5;
 }
@@ -139,11 +139,12 @@ input[type="checkbox"]{
 
 @media (min-width:320px) and (max-width:768px){
     .login-outerpage{
-        width:100%;
-        height:100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .login-innerpage{
-        width:50%;
+        width:70%;
         height:50vh;
         transform: translate(30px,50px);
         padding:20px 10px;
@@ -156,7 +157,6 @@ input[type="checkbox"]{
     }
 .fa-user
 {
-    color:var(--primaryColor);
     font-size: 1.5rem;
 }
 
@@ -164,7 +164,6 @@ input[type="checkbox"]{
 {
     font-size:0.5rem;
     letter-spacing: 2px;
-    text-align: center;
 }
 
 .userCredentials
@@ -172,15 +171,7 @@ input[type="checkbox"]{
     margin:3% auto;
     padding:5px 50px;
     font-size: 0.2rem;
-    cursor: pointer;
-    border-radius:20px;
     letter-spacing: 1px;
-    transition:all 1.5s linear;
-}
-
-.userCredentials:hover{
-    background-color:green;
-    opacity: 0.5;
 }
 
 .userInterface{
@@ -192,8 +183,6 @@ input[type="checkbox"]{
 
 .btn,.forgot{
     margin:5% auto;
-    background-color:green;
-    color:var(--primaryColor);
     padding:5px 35px;
     letter-spacing:1px;
     font-size: 0.5rem;
