@@ -8,12 +8,14 @@
 :root{
 --primaryColor:white;
 }
+
 .login-outerpage{
-    background:linear-gradient(rgba(0,0,0,0.5) , rgba(0,0,0,1)) ,url("/CSS/login.jpg")  center/cover no-repeat;
+    background:linear-gradient(rgba(255 , 0 , 0 ,0.05) , rgba(255 , 0 , 0 ,0.1)) ,url("/CSS/login.jpg")  center/cover no-repeat;
     width:100%;
     height:100vh;
     position:relative;
 }
+
 .login-innerpage{
     width:50vw;
     height:70vh;
@@ -35,7 +37,7 @@
     background-color: green;
     width:100px;
     height:100px;
-    margin:10px auto;
+    margin:5px auto;
     border-radius: 50%;
     position:relative;
 }
@@ -46,22 +48,28 @@
     font-size: 3rem;
 }
 /* --------------------------------------------- */
+.container, .remember{
+    font-size:0.8rem;
+}
+
+.labels ,.btn,.forgot{
+    font-size: 0.9rem;
+}
+
 .container
 {
-    font-size:1rem;
-    letter-spacing: 2px;
     text-align: center;
-    margin:0px auto;
+    margin:0% auto;
 }
 
 .userCredentials
 {
     margin:1% 25%;
-    padding:10px 50px 10px;
+    padding:10px 50px;
     cursor: pointer;
     border-radius:20px;
-    letter-spacing: 2px;
     transition:all 1.5s linear;
+    position: relative;
 }
 
 .userCredentials:hover{
@@ -81,11 +89,12 @@
     background-color:green;
     color:var(--primaryColor);
     padding:10px 70px;
-    letter-spacing:1px;
-    font-size: 1rem;
+    font-weight: 700;;
     text-align: center;
     animation:move 2s 1 forwards;
+    border:none;
 }
+
 
 @keyframes move{
     0%{
@@ -108,7 +117,7 @@
 
 input [type="text"]:focus{
     background-color: #00ff00;
-    color:white;
+    color:var(--primaryColor);
 }
 
 #fa-key,.fa-pen{
@@ -116,14 +125,17 @@ color:var(--primaryColor);
 }
 
 .remember{
-   position: absolute;
-   left:10px;
-   bottom:10px;
+position: absolute;
+left:10px;
+bottom:10px;
 }
+
+
 
 input[type="checkbox"]{
     padding:20px;
 }
+
 
 @media (min-width:320px) and (max-width:768px){
     .login-outerpage{

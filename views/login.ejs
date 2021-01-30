@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💛Login page</title>
     <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
 </head>
 <body>
-    <form action="/finalCoffeeproject" method="post"> 
+   
             <div class="login-outerpage">
                 <div class="login-innerpage">
                     <div class="circle"><i class="fas fa-user"></i></div>
                         <div class="container"> 
+                            <form action="/finalCoffeeproject" method="post"> 
                                 <label for="user" class="fas fa-pen labels">Username or Email:</label>
                                 <input class="userCredentials" type="text" id="user" name="User" placeholder="Enter Username" required autocomplete="off">
                                 <label for="pass" class="fas fa-key labels">Password:</label>
                                 <input class="userCredentials" type="text" id="pass" name="userPassword" placeholder="Enter Password" required autocomplete="off">
                         </div>
-                    <div class="userInterface">
-                        <button class="btn"   id="bq">Login</button>
-                        <button class="forgot">Forgot💚?</button>
-                    </div>
-                    <div  class="remember">
-                        <input type="checkbox">Remember me
-                    </div>
+                        <div class="userInterface">
+                            <button class="btn"   id="bq">Login</button>
+                            </form>
+                            <form action="/forgot" method="post">
+                                <button class="forgot">Forgot?</button>
+                            </form>
+                        </div>
+                        <div  class="remember">
+                            <input class="checkBox" type="checkbox">Remember me
+                        </div>
                 </div>
             </div>
-    </form>
 </body>
 </html>

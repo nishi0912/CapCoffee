@@ -55,6 +55,10 @@ app.post("/Failure",function(req , res){
     res.render("login");
 });
 
+app.post("/logout",function(req , res){
+res.render("login");
+});
+
 app.listen(process.env.PORT || 3000 , function(){
 console.log("Server has started at port 3000");
 });

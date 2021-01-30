@@ -6,9 +6,11 @@
     font-family:'Poppins', sans-serif;
     box-sizing: border-box;
 }
+
 body{
     background-color: mediumspringgreen;
 }
+
 :root{
     --primaryColor:white;
     --secondaryColor:mediumspringgreen;
@@ -44,6 +46,17 @@ text-align: center;
     animation: slideTo 3s infinite forwards;
     transition:transform 1s linear;
 }
+
+.btn{
+    padding:10px 50px;
+    position:absolute;
+    bottom:700px;
+    right:50px;
+    font-size: 1rem;
+    z-index: -3;
+    background-color: var(--primaryColor);
+}
+
 .slide:hover{
     transform:scale(1.1);
 }
