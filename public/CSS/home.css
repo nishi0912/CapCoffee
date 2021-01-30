@@ -5,7 +5,14 @@
     font-family: 'Poppins',sans-serif;
 }
 
+body{
+    background-color:black;
+    position: relative;
+    z-index:-1;
+}
+
 .title,.btn{
+    color:gray;
     background:linear-gradient(rgba(255 , 255 ,255, 0.7) , rgba(255 ,255 ,255 , 0.3));
 }
 
@@ -17,7 +24,6 @@
     width:100vw;
     height:100vh;
     background:linear-gradient(to right bottom , #00ff00 ,white);
-    /* clip-path: circle(30%); */
     position: relative;
 }
 
@@ -31,13 +37,13 @@
 .title{
     font-size: 2rem;
     position: absolute;
+    z-index:2;
     top:0;
-    padding: 10px 100px;;
+    padding: 10px 100px;
 }
 
 .btn{
     padding:10px 50px;
-    color:gray;
     font-size: 1rem;
     font-weight: 700;
     border:2px solid white;
@@ -49,19 +55,17 @@
         width:100vw;
         height:100vh;
         background:linear-gradient(to right bottom , #00ff00 ,white);
-        position: relative;
+        clip-path: circle(50%);
     }
 
     .title{
         font-size: 1rem;
-        position: absolute;
-        top:0;
+        top:100px;
         padding: 10px 50px;;
     }
 
     .btn{
         padding:5px 30px;
-        color:gray;
         font-size: 0.5rem;
         font-weight: 700;
         border:2px solid white;

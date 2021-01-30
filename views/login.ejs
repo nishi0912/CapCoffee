@@ -19,18 +19,19 @@
                                 <input class="userCredentials" type="text" id="user" name="User" placeholder="Enter Username" required autocomplete="off">
                                 <label for="pass" class="fas fa-key labels">Password:</label>
                                 <input class="userCredentials" type="text" id="pass" name="userPassword" placeholder="Enter Password" required autocomplete="off">
-                        </div>
-                        <div class="userInterface">
-                            <button class="btn"   id="bq">Login</button>
+                            </div>
+                            <div class="userInterface">
+                                 <button class="btn"  id="bq">Login</button>
                             </form>
-                            <form action="/forgot" method="post">
-                                <button class="forgot">Forgot?</button>
-                            </form>
-                        </div>
-                        <div  class="remember">
-                            <input class="checkBox" type="checkbox">Remember me
-                        </div>
+                                <form action="/forgot" method="post">
+                                    <button class="forgot">Forgot?</button>
+                                </form>
+                            </div>
+                            <div  class="remember">
+                                <input class="checkBox" type="checkbox">Remember me
+                            </div>
                 </div>
-            </div>
+                <%- include("footer") %>
+             </div>
 </body>
 </html>
