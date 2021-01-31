@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const ejsLint  = require("ejs-lint");
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
@@ -28,6 +29,7 @@ app.get("/signup" , function(req , res){
 res.sendFile(__dirname + "/signup.html");
 });
 
+ejsLint("cart"); 
 
 app.post("/login" , function(req , res){
 firstname =  req.body.firstname;
@@ -63,10 +65,10 @@ res.render("login");
 });
 
 app.post("/cart",function(req ,res){
-cartItem = req.body.items;
+cartItem = req.body.itemordered;
 cartItems.push(cartItem);
 res.render("cart" , { yourcart : cartItems});
-console.log(cartItems);
+// console.log(cartItems);
 });
 
 
