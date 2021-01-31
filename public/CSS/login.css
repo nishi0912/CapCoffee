@@ -47,6 +47,7 @@
     color:var(--primaryColor);
     font-size: 3rem;
 }
+    
 /* --------------------------------------------- */
 .container, .remember{
     font-size:0.8rem;
@@ -65,10 +66,11 @@
 .userCredentials
 {
     margin:1% 25%;
-    padding:10px 50px;
+    padding:10px 40px;
     cursor: pointer;
     border-radius:20px;
     position: relative;
+    font-size: 0.9rem;
 }
 
 .userCredentials:hover{
@@ -117,10 +119,6 @@
 input [type="text"]:focus{
     background-color: #00ff00;
     color:var(--primaryColor);
-}
-
-#fa-key,.fa-pen{
-color:var(--primaryColor);
 }
 
 .remember{
@@ -181,7 +179,7 @@ input[type="checkbox"]{
 .userCredentials
 {
     margin:5% auto;
-    padding:10px 40px;
+    padding:10px 30px;
     font-size: 0.4rem;
     letter-spacing: 2px;
 }
@@ -207,7 +205,7 @@ input[type="checkbox"]{
 }
 
 .labels{
-    font-size: 0.7rem;
+    font-size: 0.5rem;
 }
 .footer-section{
     font-size: 0.7rem;
