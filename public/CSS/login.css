@@ -156,7 +156,7 @@ input[type="checkbox"]{
     }
     .login-innerpage{
         width:70%;
-        height:50vh;
+        height:60vh;
         transform: translate(0px,30px);
         padding:20px 10px;
 }
@@ -181,7 +181,7 @@ input[type="checkbox"]{
 .userCredentials
 {
     margin:5% auto;
-    padding:10px 50px;
+    padding:10px 40px;
     font-size: 0.4rem;
     letter-spacing: 2px;
 }
@@ -207,7 +207,7 @@ input[type="checkbox"]{
 }
 
 .labels{
-    font-size: 0.4rem;
+    font-size: 0.7rem;
 }
 .footer-section{
     font-size: 0.7rem;
