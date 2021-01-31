@@ -31,11 +31,15 @@ transform:rotate(20deg);
 cursor: pointer;
 }
 
-.container-1{
+.container-1,.container{
     display:flex;
+    align-items: center;
+    position: relative;
+    font-family: 'Poppins',sans-serif;
+}
+.container-1{
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
     width:30vw;
     height:80vh;
     background-color: white;
@@ -43,9 +47,17 @@ cursor: pointer;
     /* clip-path: inset(10px 20px 30px 40px); */
     /* clip-path: circle(50% at 35px 35px); */
     /* clip-path: circle(30% at 500px 300px); */
-    position: relative;
     z-index: 1;
 }
+
+.container{
+    flex-direction: column;  
+    justify-content: center;
+    color:gray;
+    width:100vw;
+    height:100vh;
+}
+
 
 .container-1::after{
     content: "";
@@ -57,18 +69,6 @@ cursor: pointer;
     right:0;
     clip-path: circle(40% at 0px 500px);
     background-color: aqua;
-}
-
-.container{
-    display:flex;
-    color:white;
-    width:100vw;
-    height:100vh;
-    background:linear-gradient(to right bottom , rgb(0, 67, 250) ,white);
-    flex-direction: column;  
-    justify-content: center;
-    font-family: 'Poppins',sans-serif;
-    position: relative;
 }
 
 .title{
@@ -93,6 +93,9 @@ cursor: pointer;
     .container-1{
         width:90vw;
         height:70vh;
+    }
+    .container{
+     font-size: 0.7rem;
     }
     
     .container-1::after{

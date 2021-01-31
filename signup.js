@@ -59,7 +59,6 @@ app.post("/Failure",function(req , res){
 });
 
 app.get("/logout",function(req , res){
-
 res.render("login");
 });
 
