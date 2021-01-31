@@ -104,22 +104,10 @@ cursor: pointer;
 color: white;
 }
 
-.star1,.star2{
-    position: absolute;
-}
-.star1{
-    top:100px;
-    left:100px;
-}
-.star2{
-    bottom:100px;
-    right:100px; 
-}
-
 .footer-section{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     position: absolute;
-    bottom:10px;
+    bottom:50px;
     color:white;
     text-align: center;
     }

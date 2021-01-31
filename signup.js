@@ -24,7 +24,7 @@ app.get("/",function(req , res){
 res.sendFile(__dirname+"/Home.html");
 });
 
-app.post("/signup" , function(req , res){
+app.get("/signup" , function(req , res){
 res.sendFile(__dirname + "/signup.html");
 });
 
@@ -49,15 +49,17 @@ app.post("/finalCoffeeproject" , function(req , res){
         }
     else{
     res.render("Failure");
-    console.log("Incorrect credentials.")
+    console.log("Incorrect credentials.");
         }
 });
 
 app.post("/Failure",function(req , res){
+    console.log(req.body.result);
     res.render("login");
 });
 
-app.post("/logout",function(req , res){
+app.get("/logout",function(req , res){
+
 res.render("login");
 });
 
@@ -66,6 +68,11 @@ cartItem = req.body.items;
 cartItems.push(cartItem);
 res.render("cart" , { yourcart : cartItems});
 console.log(cartItems);
+});
+
+
+app.get("/cafecoffeeintro" , function(req , res){
+res.render("cafecoffeeintro");
 });
 
 app.listen(process.env.PORT || 3000 , function(){

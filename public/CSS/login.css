@@ -95,19 +95,6 @@
     border:none;
 }
 
-.footer-section{
-    font-size: 0.7rem;
-    position: absolute;
-    left:700px;
-    bottom:10px;
-    color:white;
-    text-align: center;
-    }
-
-    .media-icons{
-        margin:0 2%;
-    }
-
 @keyframes move{
     0%{
         transform: translate(0px);
@@ -148,6 +135,18 @@ input[type="checkbox"]{
     padding:20px;
 }
 
+.footer-section{
+    font-size: 0.8rem;
+    position: absolute;
+    left:700px;
+    bottom:50px;
+    color:white;
+    text-align: center;
+    }
+
+    .media-icons{
+        margin:0 2%;
+    }
 
 @media (min-width:320px) and (max-width:768px){
     .login-outerpage{
@@ -182,9 +181,9 @@ input[type="checkbox"]{
 .userCredentials
 {
     margin:5% auto;
-    padding:5px 50px;
-    font-size: 0.2rem;
-    letter-spacing: 1px;
+    padding:10px 50px;
+    font-size: 0.4rem;
+    letter-spacing: 2px;
 }
 
 .userInterface{
@@ -211,9 +210,9 @@ input[type="checkbox"]{
     font-size: 0.4rem;
 }
 .footer-section{
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     left:200px;
-    bottom:10px;
+    bottom:50px;
     }
 
 }
