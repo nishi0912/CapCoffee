@@ -786,28 +786,28 @@ letter-spacing: 4px;
             animation: none;
         }
         .left1{
-            left:10px;
-            top:100px;
+            left:5px;
+            top:50px;
             }
            .right1{
-                right:10px;
-                top:100px;
+                right:5px;
+                top:50px;
             }
             .left2{
-                left:10px;
-                top:410px;
+                left:5px;
+                top:370px;
             }
            .right2{
-                right:10px;
-                top:410px;
+                right:5px;
+                top:370px;
             }
             .left3{
-                left:10px;
-                top:720px;
+                left:5px;
+                top:690px;
             }
           .right3{
-                right:10px;
-                top:720px;
+                right:5px;
+                top:690px;
             } 
 
             .Rotational-animation{

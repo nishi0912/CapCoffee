@@ -123,20 +123,20 @@ cursor: pointer;
     }
     
     .container-1::after,.container-2::after{
-    bottom:-60%;
+    bottom:-59%;
     border-radius: 100%;
     }
     
     .title{
-        font-size: 0.9rem;
+        font-size: 1rem;
         position: absolute;
         top:20px;
         padding: 10px 50px;
     }
     
     .btn{
-        padding:10px 30px;
-        font-size: 0.5rem;
+        padding:10px 40px;
+        font-size: 0.6rem;
         font-weight: 700;
         border-radius: 10px;
     }
