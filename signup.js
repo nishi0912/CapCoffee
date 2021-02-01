@@ -19,6 +19,8 @@ let cartItems = ['empty'];
 let User = "";
 let userPassword = "";
 
+let resetEmail = "";
+
 app.use(express.static("public"));
 
 app.get("/",function(req , res){
@@ -69,6 +71,17 @@ cartItem = req.body.itemordered;
 cartItems.push(cartItem);
 res.render("cart" , { yourcart : cartItems});
 // console.log(cartItems);
+});
+
+app.get("/forgot",function(req , res){
+res.render("forgot");
+});
+
+app.post("/re-enter", function(req , res){
+resetEmail = req.body.resetEmail;
+if(email === resetEmail){
+    res.render("re-enter");
+}
 });
 
 

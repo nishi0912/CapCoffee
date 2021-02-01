@@ -13,7 +13,7 @@
 
 .homepage{
     width:100vw;
-    height:100vh; 
+    min-height:100vh; 
     /* background:linear-gradient(to right bottom , rgb(0, 67, 250) ,white); */
     display:flex;
     flex-direction: row;
@@ -31,13 +31,13 @@ transform:rotate(20deg);
 cursor: pointer;
 }
 
-.container-1,.container{
+.container-1,.container-2,.container{
     display:flex;
     align-items: center;
     position: relative;
     font-family: 'Poppins',sans-serif;
 }
-.container-1{
+.container-1,.container-2{
     flex-direction: row;
     justify-content: space-evenly;
     width:30vw;
@@ -48,41 +48,64 @@ cursor: pointer;
     /* clip-path: circle(50% at 35px 35px); */
     /* clip-path: circle(30% at 500px 300px); */
     z-index: 1;
+    overflow: hidden;
 }
 
-.container{
-    flex-direction: column;  
-    justify-content: center;
-    color:gray;
-    width:100vw;
-    height:100vh;
-}
-
-
-.container-1::after{
+.container-1::after,.container-2::after{
     content: "";
+    width:450px;
+    height:450px;
     position:absolute;
     z-index: -1;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    clip-path: circle(40% at 0px 500px);
-    background-color: aqua;
+    bottom:-70%;
+    border-radius: 20%;
+    /* clip-path: circle(70% at 150px 670px); */
+    background-color: gray;
+    animation: moveworld 2s 1 linear;
+}
+.footer-section{
+    font-size: 0.8rem;
+    position: absolute;
+    bottom:50px;
+    color:white;
+    text-align: center;
+    }
+
+@keyframes moveworld{
+    0%{
+        transform: translateY(150px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 
 .title{
     font-size: 1.5rem;
     position: absolute;
     top:10px;
-    padding: 10px 80px;
+    padding: 10px 70px;
 }
 
 .btn{
     padding:10px 50px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     border-radius: 10px;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background:gray;
+    color:white;
+    transform: translateY(-10px);
+    transition:transform 0.5s linear;
+}
+
+.userdetails{
+    font-size: 0.7rem;
+    width:70%;
+    height:40px;
 }
 
 
@@ -90,16 +113,18 @@ cursor: pointer;
     .arrow-icon{
         font-size: 1rem;
     }
-    .container-1{
+    .container-1,.container-2{
         width:90vw;
         height:70vh;
     }
+
     .container{
      font-size: 0.7rem;
     }
     
-    .container-1::after{
-        clip-path: circle(50% at 80px 550px);
+    .container-1::after,.container-2::after{
+    bottom:-60%;
+    border-radius: 100%;
     }
     
     .title{
@@ -111,8 +136,40 @@ cursor: pointer;
     
     .btn{
         padding:10px 30px;
-        font-size: 0.7rem;
+        font-size: 0.5rem;
         font-weight: 700;
         border-radius: 10px;
     }
+
+    .userdetails{
+        font-size: 0.5rem;
+        width:70%;
+        height:30px;
+    }
+}
+
+/* -------------------------Failure ejs template styling--------------- */
+.container{
+    flex-direction: column;  
+    justify-content: center;
+    color:gray;
+    width:100vw;
+    height:100vh;
+}
+
+
+/* -------------------------Forgot ejs template styling---------------- */
+.container-2{
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.userdetails{
+    font-size: 0.6rem;
+    margin:3% auto;
+    padding:10px 60px;
+    border-radius: 10px;
+    text-align: center;
+    letter-spacing: 3px;
+    border:2px solid gray;
 }

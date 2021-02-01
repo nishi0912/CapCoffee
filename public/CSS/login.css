@@ -2,7 +2,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: "Poppins",sans-serif;
+    font-family: 'Poppins',sans-serif;
 }
 /* NOTE:Usage of CSS variables to store and reuse it */
 :root{
@@ -66,11 +66,13 @@
 .userCredentials
 {
     margin:1% 25%;
-    padding:10px 40px;
+    width:50%;
+    height:40px;
     cursor: pointer;
-    border-radius:20px;
+    border-radius:10px;
     position: relative;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    text-align: center;
 }
 
 .userCredentials:hover{
@@ -94,6 +96,7 @@
     font-weight: 700;;
     text-align: center;
     animation:move 2s 1 forwards;
+    border-radius: 10px;
     border:none;
 }
 
@@ -137,7 +140,7 @@ input[type="checkbox"]{
     font-size: 0.8rem;
     position: absolute;
     left:700px;
-    bottom:50px;
+    bottom:30px;
     color:white;
     text-align: center;
     }
@@ -178,9 +181,10 @@ input[type="checkbox"]{
 
 .userCredentials
 {
-    margin:5% auto;
-    padding:10px 30px;
-    font-size: 0.4rem;
+    margin:3% auto;
+    width:70%;
+    height:30px;
+    font-size: 0.5rem;
     letter-spacing: 2px;
 }
 

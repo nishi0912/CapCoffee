@@ -9,7 +9,6 @@
     
 </head>
 <body>
-   
             <div class="login-outerpage">
                 <div class="login-innerpage">
                     <div class="circle"><i class="fas fa-user"></i></div>
@@ -19,17 +18,18 @@
                                 <input class="userCredentials  labels" type="text" id="pass" name="userPassword" placeholder="Password" required autocomplete="off">
                             </div>
                             <div class="userInterface">
-                                 <button class="btn"  id="bq">Login</button>
+                                <button class="btn"  id="bq">Login</button>
                             </form>
-                                <form action="/forgot" method="post">
-                                    <button class="forgot">Forgot?</button>
-                                </form>
+                            <form action="/forgot" method="get">
+                                <button class="forgot">Forgot?</button>
+                            </form>
                             </div>
                             <div  class="remember">
                                 <input class="checkBox" type="checkbox">Remember me
                             </div>
                 </div>
-                <%- include("footer") %>
-             </div>
+                
+            </div>
+            <%- include("footer") %>
 </body>
 </html>
