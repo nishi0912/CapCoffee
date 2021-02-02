@@ -73,6 +73,8 @@
     position: relative;
     font-size: 0.7rem;
     text-align: center;
+    border: none;
+    outline: none;
 }
 
 .userCredentials:hover{
