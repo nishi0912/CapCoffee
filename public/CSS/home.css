@@ -409,3 +409,13 @@ top:0px;
             transform:translateY(200px);
         }
 }
+
+/* ---------------More ejs template---------------- */
+.cafeIntoduction{
+    font-size: 0.75rem;
+    font-family: 'Poppins',sans-serif;
+}
+
+strong{
+    color:green;
+}

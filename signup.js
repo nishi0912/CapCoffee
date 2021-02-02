@@ -77,6 +77,10 @@ app.get("/forgot",function(req , res){
 res.render("forgot");
 });
 
+app.get("/more",function(req , res){
+    res.render("more");
+});
+
 app.post("/re-enter", function(req , res){
 resetEmail = req.body.resetEmail;
 if(email === resetEmail){
