@@ -24,7 +24,7 @@ h1,.btn,.cost{
     padding:3% 10%;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: #00ff00;
+    background-color: gray;
     position: relative;
 }
 
@@ -54,6 +54,7 @@ h1,.btn,.cost{
         margin:0 auto;
         border: none;
         border-radius: 10px;
+        outline: none;
 }
 
 .cost{

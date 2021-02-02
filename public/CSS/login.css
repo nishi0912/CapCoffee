@@ -98,6 +98,7 @@
     animation:move 2s 1 forwards;
     border-radius: 10px;
     border:none;
+    outline: none;
 }
 
 @keyframes move{
