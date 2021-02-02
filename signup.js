@@ -89,7 +89,7 @@ if(email === resetEmail){
 });
 
 
-app.get("/cafecoffeeintro" , function(req , res){
+app.post("/cafecoffeeintro" , function(req , res){
 res.render("cafecoffeeintro");
 });
 
