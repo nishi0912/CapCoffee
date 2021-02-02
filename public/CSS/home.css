@@ -148,6 +148,39 @@ cursor: pointer;
     }
 }
 
+/* ---------------------Ipad view port ----------------------- */
+@media (min-width:768px) and (max-width:1200px){
+
+    .container-1,.container-2{
+        width:80vw;
+        height:70vh;
+    }
+    .container-1::after,.container-2::after{
+    bottom:-70%;
+    border-radius: 100%;
+    }
+    
+    .title{
+        font-size: 1rem;
+        position: absolute;
+        top:20px;
+        padding: 10px 50px;
+    }
+    
+    .btn{
+        padding:10px 40px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        border-radius: 10px;
+    }
+
+    .userdetails{
+        font-size: 0.5rem;
+        width:70%;
+        height:30px;
+    }
+}
+
 /* -------------------------Failure ejs template styling--------------- */
 .container{
     flex-direction: column;  
@@ -172,4 +205,207 @@ cursor: pointer;
     text-align: center;
     letter-spacing: 3px;
     border:2px solid gray;
+}
+
+/* ----------------------- - Neon lights with animations - ------------------------------ */
+.neon-light,.neon-light2{
+    color:gray;
+    margin:5% auto;
+    width:200px;
+    height:50px;
+    background-color: white;
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px gray;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+.neon-light
+{
+   /* padding:10px; */
+    position: relative;
+}
+.neon-light2{
+    bottom:0px;
+    z-index: 1;
+    overflow: hidden;
+}
+.neon-light:hover,.neon-light2:hover{
+    box-shadow: 0px 0px 10px white,
+    0px 0px 20px white;
+}
+.neon-light:hover span:nth-child(1),
+.neon-light:hover span:nth-child(2),
+.neon-light:hover span:nth-child(3),
+.neon-light:hover span:nth-child(4){
+    display: block;
+    position:absolute;
+    background-color:gray;
+}
+
+.neon-light:hover span:nth-child(1),
+.neon-light:hover span:nth-child(2){
+    top:0px;
+    left:0px;
+}
+
+.neon-light:hover span:nth-child(2),
+.neon-light:hover span:nth-child(4){
+    width:inherit;
+    height:3px;
+}
+
+.neon-light:hover span:nth-child(1),
+.neon-light:hover span:nth-child(3){
+    width:3px;
+    height:inherit;
+}
+
+.neon-light:hover span:nth-child(2){
+    animation:upper 2s 1 forwards;
+}
+
+.neon-light:hover span:nth-child(1){
+    animation:lefts 2s 1 forwards;
+}
+
+.neon-light:hover span:nth-child(3){
+    top:0px;
+    left:200px;
+    animation:rights 2s 1 forwards;
+}
+
+.neon-light:hover span:nth-child(4){
+    top:50px;
+    left:0px;
+    animation:lower 2s 1 forwards;
+}
+
+@-webkit-keyframes upper{
+    0%{
+        transform:translateX(600px);
+        background-color: white; 
+    }
+    50%{
+        transform:translateX(0px); 
+    }
+    100%{
+        transform:translateX(0px); 
+    }
+}
+@-webkit-keyframes lefts{
+    0%{
+        transform:translateY(-200px);
+        background-color: white;
+    }
+    50%{
+        transform:translateX(0px); 
+    }
+    100%{
+        transform:translateY(0px); 
+    }
+}
+@-webkit-keyframes rights{
+    0%{
+        transform:translateY(200px);
+        background-color: white; 
+    }
+    50%{
+        transform:translateX(0px); 
+    }
+    100%{
+        transform:translateY(0px); 
+    }
+}
+@-webkit-keyframes lower{
+    0%{
+        transform:translateX(-400px);
+        background-color: white;
+    }
+    50%{
+        transform:translateX(0px); 
+    }
+    100%{
+        transform:translateX(0px);
+    }
+}
+
+/* ---------------Neon-light effect--------------- */
+
+.lines-top,.lines-right,.lines-bottom,.lines-left{
+position:absolute;
+display: block;
+z-index:2;
+width:200px;
+height:3px;
+background-color:gray;
+display:none;
+}
+
+.lines-left,.lines-right{
+    width:3px;
+    height:50px;
+}
+.lines-top{
+top:0px;
+}
+.neon-light2:hover .lines-top {
+    display:block;
+    animation: top-line 0.5s 1 linear 0s forwards;
+}
+.lines-left{
+    top:0px;
+    right:0px;
+}
+.neon-light2:hover .lines-left{
+    display:block;
+    animation: left-line 0.5s 1 linear 0.5s forwards; 
+}
+.lines-bottom{
+    top:47px;
+}
+.neon-light2:hover .lines-bottom{
+    display:block;
+    animation: bottom-line 0.5s 1 linear 0.75s forwards;
+}
+.lines-right{
+    top:0px;
+    left:0;
+}
+.neon-light2:hover .lines-right{
+    display:block;
+    animation: right-line 0.5s 1 linear 1.3s forwards;
+}
+
+@keyframes top-line{
+    0%{
+    }
+        100%{
+            transform:translateX(200px);
+        }
+}
+@keyframes right-line{
+    0%{
+    }
+        100%{
+            transform:translateY(-200px);
+        }
+}
+@keyframes bottom-line{
+    0%{
+    }
+        100%{
+            transform:translateX(-200px);
+        }
+}
+@keyframes left-line{
+    0%{
+    }
+        100%{
+            transform:translateY(200px);
+        }
 }
