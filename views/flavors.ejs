@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors</title>
+    <link rel="stylesheet" href="CSS/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+        <div class="homepage">
+            <div class="container-2">
+                <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
+                <% if(getInfo == "FRAPPUCCINO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
+                    <p class="receipe"> 
+                        A milkshake with ice cream, and cappuccino, an espresso coffee with frothed milk.
+                        The original<em>Frappuccino</em> beverage was developed, named, trademarked and sold by<em> George Howell's Eastern Massachusetts</em> coffee shop chain, The Coffee Connection</p>
+                <% }else if(getInfo == "CARAMEL MACCHIATO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor2.jpg" alt="CARAMEL MACCHIATO">
+                    <p class="receipe">
+                        <em>Caramel Macchiato</em> is made with vanilla syrup, steamed milk, espresso and caramel sauce. The espresso in poured on top of the milk leaving
+                        a dark mark on top of the milk foam. Caramel sauce is poured on top of the foam.an espresso coffee with frothed milk.
+                    </p>
+                <% }else if(getInfo == "CAFE MOCHA"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor3.jpg" alt="CAFÉMOCHA">
+                    <p class="receipe"></p>  
+                <% }else if(getInfo == "AMERICANO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor4.jpg" alt="AMERICANO">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "TURKISH COFFEE"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor5.jpg" alt="TURKISH COFFEE">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "CAFE CUBANO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor6.jpg" alt="CAFECUBANO">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "CAFE LATTE"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor7.jpg" alt="CAFELATTE">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "IRISH COFFEE"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor8.jpg" alt="IRISH COFFEE">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "ESPRESSO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor9.jpg" alt="ESPRESSO">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "CORTADO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor10.jpg" alt="CORTADO">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "AFFOGATO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor11.jpg" alt="AFFOGATO">
+                    <p class="receipe"></p>  
+                <% }else if(getInfo == "CAPPUCCINO"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor12.jpg" alt="CAPPUCCINO">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "PLAIN COFFEE"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor13.jpg" alt="PLAIN COFFEE">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "ICED COFFEE"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor14.jpg" alt="ICED COFFEE">
+                    <p class="receipe"></p>
+                <% }else if(getInfo == "CAFE AU LAIT"){ %>
+                    <img class="coffeeImages" src="CSS/Images/flavor15.jpg" alt="CAFE AU LAIT">
+                    <p class="receipe"></p>
+                <% }else{ %>
+    
+                <%  } %> 
+            <%- include("footer") %>
+            </div>
+        </div>
+</body>
+</html>
+
+
+
+

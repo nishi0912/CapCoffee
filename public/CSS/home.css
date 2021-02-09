@@ -112,6 +112,22 @@ cursor: pointer;
     outline: none;
 }
 
+/* Flavors */
+.receipe{
+    font-size: 0.7rem;
+}
+
+.coffeeImages{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+}
+
+em{
+    color:gray;
+}
+/* --------- */
+
 
 @media (min-width:320px) and (max-width:768px){
     .arrow-icon{

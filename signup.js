@@ -79,6 +79,12 @@ res.render("forgot");
 
 app.get("/more",function(req , res){
     res.render("more");
+    });
+    
+
+app.post("/flavors",function(req , res){
+    const flavoursInfo = req.body.flavourInfo;
+    res.render("flavors" ,{ getInfo : flavoursInfo });
 });
 
 app.post("/re-enter", function(req , res){
