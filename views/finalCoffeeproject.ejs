@@ -23,26 +23,43 @@
                         <form action="/logout" method="get">
                                 <button class="btn" name="logout" value="/logout" type="submit">Log-Out</button>
                         </form>
-                        
-                        <div class="Coffee-image"></div>
+
+                        <div class="basic">
+                                <div class="Coffee-image"></div>
+                                <div class="weatherDetails">
+                                        <% if(Temperature ==""){ %>
+                                                <div class="nodescription">"Sign up for getting weather forecast"</div>
+                                        <% }else{ %>
+                                                <div><%= Temperature %> °c in <%= Place%></div>
+                                                <div class="description"><%= Description %></div>
+                                        <% } %>
+                                </div>
+                        </div>
                         <div class="cafecoffee-intro text-color"><em><strong>CapCoffee</strong></em>  was started by a person who taught that by taking 10 beans of coffee , he can make coffee powder and become an "Entrepreneur"(Caution:Don't take it seriously).
                                 Wow, its was a good joke.But jokes apart.We are proffesionals...
                         <form action="/more" method="get">
                                 <a href="/more">Read-more</a></div>
                         </form>
                 </div>
+                <br>
                         <div class="Horizontal-menus">
-                                <a class="company decorate text-color" href="#cafecoffee">Company</a>
-                                <a class="menus decorate text-color" href="#menus">Menus</a>
-                                <a class="branches decorate text-color" href="#branches">Branches</a>
-                                <a class="about decorate text-color" href="#footer">About</a> 
-                                <a class="company decorate text-color" href="#img8">Trendings</a>
-                                <a class="menus decorate text-color" href="#img2">Offers</a>
-                                <a class="branches decorate text-color" href="#">Trips</a>
-                                <a class="about decorate text-color" href="#">Photos</a>  
+                                <div class="myTitle">Caffete</div>
+                                <div class="hamburger">
+                                        <div class="lines l1"></div>
+                                        <div class="lines l2"></div>
+                                        <div class="lines l3"></div>  
+                                </div>
+                                <span class="hamlists">
+                                        <a class="company decorate text-color" href="#cafecoffee">Company</a>
+                                        <a class="menus decorate text-color" href="#menus">Menus</a>
+                                        <a class="branches decorate text-color" href="#branches">Branches</a>
+                                        <a class="about decorate text-color" href="#footer">About</a> 
+                                        <a class="company decorate text-color" href="#img8">Trendings</a>
+                                        <a class="menus decorate text-color" href="#img2">Offers</a>
+                                        <a class="branches decorate text-color" href="#">Trips</a>
+                                        <a class="about decorate text-color" href="#">Photos</a>  
+                                </span>
                         </div>
-                        
-                        <div class="box"><span class="box1"></span><span class="box2"></span></div>
                         <div class="Infrastructures">
                                 <span class="Interhead text-color">International Headquarters</span>
                                 <div class="domains">
@@ -95,7 +112,7 @@
                         </form>
                 </span>
                 
-                <span id="drop1" class="dropmenu" >CARAMEL MACCHIATO
+                <span id="drop1" class="dropmenu" >C-MACHIATO
                         <div id="img2" class="image"><div class="vertical-line">10% Off</div></div>
                         <form action="/flavors" method="post">
                                 <button class="order1" name ="flavourInfo" value="CARAMEL MACCHIATO" type="submit">MORE</button>
@@ -278,6 +295,6 @@
                 <i class="fas fa-envelope media-icons envelop"></i>
                 <p class="copyright">Copyright&copy;CafeCoffee 2021</p>
         </section>
-        <script src="C:\Users\NISHITH SHETTY R\Desktop\HTML Project\CoffeeProject\JAVASCRIPT\FinalCoffeeProject.js"></script>
+        <script src="JAVASCRIPT/finalCoffeeproject.js" type="text/javascript"></script>
 </body>
 </html>

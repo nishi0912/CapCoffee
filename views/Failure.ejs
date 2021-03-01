@@ -8,11 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form action="/Failure" method="post">
-        <div class="container">
-            <h1>Incorrect Credentials.</h1>
-            <button type="submit" name="result" value="/Failure" class="btn">Try-again</button>
-        </div>
-    </form>
+        <% if(Message === "More"){ %>
+            <div class="container">
+                <h1 class="incorrect">"Atleast 7 character."</h1>
+                <form action="/Failure" method="post">
+                    <button type="submit" name="result" value="reenter" class="btn">Try-again</button>
+                </form>
+            </div>
+        <% }else if(Message === "Less"){ %>
+            <div class="container">
+                <h1 class="incorrect">"Atmost 12 characters."</h1>
+                <form action="/Failure" method="post">
+                    <button type="submit" name="result" value="reenter" class="btn">Try-again</button>
+                </form>
+            </div>
+        <% }else{ %>
+            <form action="/Failure" method="get">
+                <div class="container">
+                    <h1 class="incorrect">Incorrect Credentials.</h1>
+                    <button type="submit" name="result" value="login" class="btn">Try-again</button>
+                </div>
+            </form>
+        <% } %>
 </body>
 </html>

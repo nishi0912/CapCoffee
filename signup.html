@@ -1,55 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up</title>
-    <link rel="stylesheet" href="CSS/signup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign-up</title>
+<link rel="stylesheet" href="CSS/signup.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    <form action="/login" method="post">
-    <section class="container">
-            <div class="row">
-                <div class="signUpBox">
-                            <div class="signuplogo"><strong>Sign Up</strong></div>
-                            <div class="outerbox">
-                            
-                                    <input type="text" name="firstname" class="userdetails" placeholder="FirstName" required autofocus autocomplete="off">
-                                    <input type="text" name="lastname" class="userdetails" placeholder="LastName"  required autocomplete="off">
-                                    <input type="text" name="username" class="userdetails"  placeholder="Your Username" required autocomplete="off">
-                                    <input type="text" name="email" class="userdetails" required placeholder="Email address" autocomplete="off">
-                                    <input type="password" name="password" class="userdetails" placeholder="Your Password" required autocomplete="off">
-                            </div>
-                            <button type="submit" class="btn">SUBMIT</button>
-                    </div>
-            </div>
-            <div class="row">
-                        <div class="imageInfo">
-                            <div class="c text-anime">C</div>
-                            <div class="a text-anime">A</div>
-                            <div class="f text-anime">F</div>
-                            <div class="e text-anime">E</div>
-                            <div class="- text-anime">-</div>
-                            <div class="c text-anime">C</div>
-                            <div class="o text-anime">O</div>
-                            <div class="f text-anime">F</div>
-                            <div class="f text-anime">F</div>
-                            <div class="e text-anime">E</div>
-                            <div class="e text-anime">E</div>
-                            <div id="footer" class="footer-section">
+        <form action="/login" method="post">
+        <section class="container">
+                <div class="row">
+                        <div class="signUpBox">
+                                <div class="others">
+                                        <div class="other"></div>
+                                        <div class="thirdParty">
+                                                <a href="/auth/google" class="google  social" role="button"><i class="fab fa-google fa-1x icons go"></i>Google</a>
+                                                <a href="/auth/facebook" class="facebook social" role="button"><i class="fab fa-facebook fa-1x icons face"></i>Facebook</a>
+                                        </div>
+                                </div>
+                                <div class="signuplogo"><strong>Sign Up</strong></div>
+                                <div class="outerbox">
+                                        <input type="text" name="firstname" class="userdetails" placeholder="FirstName" required autofocus autocomplete="off">
+                                        <input type="text" name="lastname" class="userdetails" placeholder="LastName"  required autocomplete="off">
+                                        <input type="text" name="username" class="userdetails"  placeholder="Your Username" required autocomplete="off">
+                                        <input type="text" name="email" class="userdetails" placeholder="Email address" autocomplete="off" required >
+                                        <input type="password" name="password" class="userdetails" placeholder="Your Password" required autocomplete="off">
+                                        <input type="text" name="city" class="userdetails"  placeholder="Your location" autocomplete="off" required>
+                        </div>
+                        <button type="submit" class="btn">SUBMIT</button>
+                        <hr>
+                        </div>
+                </div>
+        </form>
+        <div class="row">
+                <div class="imageInfo">
+                        <div class="letterTransition">
+                                <div class="c text-anime">C</div>
+                                <div class="a text-anime">A</div>
+                                <div class="f text-anime">F</div>
+                                <div class="e text-anime">E</div>
+                                <div class="- text-anime">-</div>
+                                <div class="c text-anime">C</div>
+                                <div class="o text-anime">O</div>
+                                <div class="f text-anime">F</div>
+                                <div class="f text-anime">F</div>
+                                <div class="e text-anime">E</div>
+                                <div class="e text-anime">E</div>
+                        </div>
+                        <a href="/auth/google" class="google  social" role="button"><i class="fab fa-google fa-2x icons go"></i>Sign up with google</a>
+                        <a href="/auth/facebook" class="facebook social" role="button"><i class="fab fa-facebook fa-2x icons face"></i>Sign up with facebook</a>
+                        <div id="footer" class="footer-section">
                                 <i class="fab fa-facebook media-icons fb"></i>
                                 <i class="fab fa-instagram media-icons insta"></i>
                                 <i class="fab fa-twitter media-icons twitter"></i>
                                 <i class="fas fa-envelope media-icons envelop"></i>
                                 <p class="copyright">Copyright&copy; 2021</p>
-                            </div>
                         </div>
-                        
-            </div>
-            
+                </div>
+        </div>
 </section>
-</form>
+<script src="JAVASCRIPT/sign.js"></script>
 </body>
 </html>

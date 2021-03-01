@@ -5,6 +5,7 @@
     padding:0;
     font-family:'Poppins', sans-serif;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body{
@@ -121,54 +122,83 @@ cursor: pointer;
     height:200px;
     position:relative;
     top:20px;
+    left:-10%;
     border-radius: 50%;
     box-shadow: 0px 10px 5px var(--TernaryColor);
     transition:transform 2s linear;
 }
 .Coffee-image:hover
 {
-transform: scale(1.5);
+transform: scale(1.2);
 }
 
-.box{
-    width:450px;
-    height:500px;
-    position:relative;
-    margin-left:440px;
-}
-.box1,.box2{
-    background-color: rgba(255, 255, 255, .15);
-    width:450px;
-    height:500px;
-    position:absolute;
-    left:0;
-    right:0;
-    z-index:0;
-    transition: all 3s linear;
-    box-shadow:0px 10px 5px grey;
-}
-.box2{
-    left:0;
-    right:0;
-}
-.box:hover .box1
-{
-    left:-450px;
-    right:-450px;
+.basic{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.box:hover .box2
-{
-    left:450px;
-    right:450px;
+.weatherDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height:150px;
+    color:gray;
+    background-color: white;
+    box-shadow: 0px 0px 10px var(--TernaryColor),
+                0px 0px 20px var(--TernaryColor);
+    position: relative;
+    font-size: 1.3rem;
+    border-radius: 20px;
 }
-/* Boxes */
+
+.description{
+    font-size: 1rem;
+}
+
+.nodescription{
+text-align: center;
+font-size: 0.7;
+}
+
+
 .Horizontal-menus{
+    width:100%;
+    height:100px;
+    background-color: white;
+    box-shadow: 0px 5px 3px grey;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:5%;
+    margin:5% auto;
+}
+
+.myTitle{
+display:none;    
+}
+
+.hamlists{
+    position: absolute;
+    right:100px;
+}
+
+.hamlists a{
+color:gray;
+text-decoration: none;
+padding:0 15px;
+}
+
+a:hover{
+    background-color: gray;
+    color:white;
+    border-radius:10px;
+    box-shadow: 0px 0p 10px gray ,
+                0px 0px 15px gray;
+    transition: 0.5s linear;
 }
 
 .decorate{
@@ -176,11 +206,11 @@ color:var(--TernaryColor);
 background-color:var(--primaryColor);
 box-shadow: 0px 5px 3px grey;
 border-radius: 5px;
-margin:10px 15px;
+margin:12px;
 text-align: center;
 width:250px;
 height:50px;
-padding: 5px;
+padding: 15px;
 text-decoration: none;
 font-size:1rem;
 }
@@ -192,6 +222,7 @@ font-size:1rem;
     color:var(--primaryColor);
     text-decoration: none;
 }
+
 /* ----------------- */
 .cafecoffee-intro{
     position: relative;
@@ -251,6 +282,10 @@ width:150px;
 height:100px;
 border-radius: 20px;
 margin:0 auto;
+}
+
+.domain:hover{
+    cursor: pointer;
 }
 
 .domain:hover .brief{
@@ -595,10 +630,10 @@ color:var(--secondaryColor);
 letter-spacing: 3px;
 }
 
-/* --------------------------Mobile - Viewport-------------------------------------------- */
-@media (min-width:320px) and (max-width:768px){
 
-    
+/* --------------------------Mobile - Viewport-------------------------------------------- */
+@media (min-width:320px) and (max-width:768px)
+{
     .coffee{
         padding:15px;
         font-size: 1.2rem;
@@ -642,8 +677,8 @@ letter-spacing: 3px;
         cursor: pointer;
         }
         .Coffee-image{
-            width:150px;
-            height:150px;
+            width:120px;
+            height:120px;
             top:10px;
             left:0;
         }
@@ -651,9 +686,19 @@ letter-spacing: 3px;
         .Coffee-image:hover{
             transform: scale(1.1);
             }
+
+            .weatherDetails{
+                width:180px;
+                height:90px;
+                font-size: 1rem;
+            }
+            
+            .description{
+                font-size: 0.8rem;
+            }
     
         .transitions{
-            width:100%;
+            width:110%;
             height:600px;
             margin:200px auto 0;
             position:relative;
@@ -698,43 +743,56 @@ letter-spacing: 3px;
             display: none;
         }
     
-        .dropmenu{
-            width:250px;
-            height:400px;
-            letter-spacing:1px;
-            padding:10px 10px 0px;
-        } 
-        .dropmenu .receipe{
-            font-size: 0.8rem;
-            text-align: left;
-            padding-left: 5%;
+        .coffeeItems{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: unset;
+            align-items: unset;
+            text-align: center;
             }
+
+        .dropmenu{
+            margin:20px 7px;
+            width:120px;
+            height:210px;
+            letter-spacing:1px;
+            padding:5px 5px 0px;
+            font-size: 0.5rem;
+        } 
 
         .image{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width:200px;
-            height:150px;
+            width:90px;
+            height:70px;
             margin:3.5% auto;
             padding:10px 15px;
         }
         .cost,.order{
-            width:60%;
-            padding:5px 0px;
-            font-size:0.6rem;
+            padding:3px 0px;
+            font-size:0.5rem;
         }
-        .order{
-            width:90%;
-            font-size: 0.9rem;
+        .cost{
+            width:70%;
+            padding:2px 0px;
+        }
+        .order,.order1{
+            width:70%;
+            font-size: 0.4rem;
+            margin:5px auto;
+        }
+
+        .order1{
+            font-size: 0.4rem;
         }
     
         .vertical-line{
-            font-size: 0.6rem;
-            font-weight: 500;
-            padding:5px 10px;
-            top:-50px;
-            left:-75px;
+            font-size: 0.3rem;
+            font-weight: 300;
+            padding:3px 15px;
+            top:-15px;
+            left:-25px;
         }
     
         .trending .vertical-line{
@@ -773,16 +831,16 @@ letter-spacing: 3px;
         }
         
 
-            .Rotational-animation{
-                background: none;
-                padding:1% 0%;
-            }
-     .Rotational-box1 , .Rotational-box2 , .Rotational-box3{
+.Rotational-animation{
+background: none;
+padding:1% 0%;
+}
+    .Rotational-box1 , .Rotational-box2 , .Rotational-box3{
         width:200px;
         height:300px;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         animation: none;
-     }
+    }
     .Rotational-box1{
         left:10px;
     }
@@ -800,7 +858,8 @@ letter-spacing: 3px;
         margin:3% auto;
     }
     .head-branch{
-        font-size: 0.6rem;
+        font-size: 0.5rem;
+        word-wrap: break-word;
     }
     .footer-section{
         color:var(--primaryColor);
@@ -810,5 +869,143 @@ letter-spacing: 3px;
     .media-icons{
         margin:10px;
     }
+
+    /*-------------------- hamburger ----------------------------*/
+    .myTitle{
+        display: block;
+        color:gray;
+        position: absolute;
+        font-size: 2rem;
+        left:50px;
     }
+
+    .Horizontal-menus{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+    }
+    .hamburger{
+        width:50px;
+        height:50px;
+        background-color: gray;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius:5px;
+        box-sizing: border-box;
+    }
+    
+    .hamburger:hover{
+        cursor: pointer;
+    }
+    
+    .lines{
+        margin-top: 5px;
+        width:40px;
+        height: 5px;
+        background-color: whitesmoke;
+        opacity: 1;
+        transition: all 0.2s linear;
+    }
+    
+    .line1,.line2,.line3{
+    transition: 0.2s linear;
+    }
+    
+    .line1{
+        position: absolute;
+        top:20px;
+        transform: rotate(45deg);
+    }
+    .line2{
+        /* display: none; */
+        opacity: 0;
+    }
+    .line3{
+        position: absolute;
+        bottom:20px;
+        transform: rotate(-45deg);
+    }
+    
+    .hamlists,.menu{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    width:300px;
+    height:100px;
+    position: absolute;
+    z-index: 2;
+    top:80px;
+    right: 0px;
+    transition: all 0.2s linear;
+    }
+    
+    .hamlists{ 
+        animation: moveup 0.5s 1 linear forwards;
+    }
+    
+    .hamlists a{
+        opacity: 0.5;
+        text-decoration: none;
+        color:gray;
+    }
+    
+    .menu{
+        animation: movedown 0.5s 1 linear forwards;
+    }
+    
+    .menu a{
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width:300px;
+        height:100px;
+        color:gray;
+        border-bottom:3px solid white;
+        transition: all 0.5s linear;
+    }
+    
+    .menu a:hover{
+        letter-spacing: 3px;
+        width:300px;
+        height:100px;
+        color:white;
+        background-color: black;
+        text-decoration: none;
+        transition: all 0.5s linear;
+    }
+    
+    @keyframes movedown{
+        from{
+            width:300px;
+            height:100px;
+        }
+        to{
+            width:300px;
+            height:400px;
+        }
+    }
+    
+    @keyframes moveup{
+        from{
+            opacity: 1;
+            width:300px;
+            height:400px;
+        }
+        to{
+            opacity: 0;
+            width:300px;
+            height:0px; 
+        }
+    }
+}
+
+
+
     

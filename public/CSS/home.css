@@ -3,6 +3,11 @@
     padding:0;
     box-sizing:border-box;
     font-family: 'Poppins',sans-serif;
+    user-select: none;
+}
+
+body{
+    background-color: gray;
 }
 
 .title,.btn{
@@ -14,7 +19,6 @@
 .homepage{
     width:100vw;
     min-height:100vh; 
-    /* background:linear-gradient(to right bottom , rgb(0, 67, 250) ,white); */
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -35,15 +39,14 @@ cursor: pointer;
     display:flex;
     align-items: center;
     position: relative;
-    font-family: 'Poppins',sans-serif;
 }
 .container-1,.container-2{
     flex-direction: row;
     justify-content: space-evenly;
-    width:30vw;
+    width:40vw;
     height:80vh;
     background-color: white;
-    box-shadow:5px 5px 10px gray;
+    box-shadow:5px 5px 10px white;
     /* clip-path: inset(10px 20px 30px 40px); */
     /* clip-path: circle(50% at 35px 35px); */
     /* clip-path: circle(30% at 500px 300px); */
@@ -51,17 +54,22 @@ cursor: pointer;
     overflow: hidden;
 }
 
+
 .container-1::after,.container-2::after{
     content: "";
-    width:450px;
-    height:450px;
+    width:650px;
+    height:650px;
     position:absolute;
     z-index: -1;
-    bottom:-70%;
-    border-radius: 20%;
+    bottom:-100%;
+    border-radius: 50%;
     /* clip-path: circle(70% at 150px 670px); */
     background-color: gray;
     animation: moveworld 2s 1 linear;
+}
+
+.container-2::after{
+    bottom:-105%;
 }
 .footer-section{
     font-size: 0.8rem;
@@ -87,13 +95,20 @@ cursor: pointer;
     padding: 10px 70px;
 }
 
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+
 .btn{
     padding:10px 50px;
     font-size: 0.9rem;
     font-weight: 700;
     border-radius: 10px;
-    border:none;
+    border:2px solid gray;
     outline: none;
+    margin: 7px;
 }
 
 .btn:hover{
@@ -104,14 +119,27 @@ cursor: pointer;
     transition:transform 0.5s linear;
 }
 
-.userdetails{
-    font-size: 0.7rem;
+.userdetails,.loginDetails{
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
     width:70%;
     height:40px;
     border:none;
     outline: none;
+    text-align: center;
 }
 
+.loginDetails{
+    margin:10px auto;
+    border:2px solid gray;
+    border-radius: 10px;
+}
+
+.incorrect{
+    color:white;
+    font-size: 3rem;
+}
 /* Flavors */
 .receipe{
     font-size: 0.7rem;
@@ -125,6 +153,14 @@ cursor: pointer;
 
 em{
     color:gray;
+}
+
+.remember{
+    position: absolute;
+    left: 10px;
+    bottom:120px;
+    font-size:0.9rem;
+    color: gray;
 }
 /* --------- */
 
@@ -141,9 +177,14 @@ em{
     .container{
      font-size: 0.7rem;
     }
+    .container-1{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     
     .container-1::after,.container-2::after{
-    bottom:-59%;
+    bottom:-105%;
     border-radius: 100%;
     }
     
@@ -155,17 +196,28 @@ em{
     }
     
     .btn{
-        padding:10px 40px;
+        padding:10px 30px;
         font-size: 0.6rem;
         font-weight: 700;
         border-radius: 10px;
     }
 
-    .userdetails{
-        font-size: 0.5rem;
+    .userdetails,.loginDetails{
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 2px;
         width:70%;
-        height:30px;
+        height:40px;
+        outline: none;
+        text-align: center;
     }
+
+    
+.remember{
+    left: 10px;
+    bottom:140px;
+    font-size:0.7rem;
+}
 }
 
 /* ---------------------Ipad view port ----------------------- */
@@ -175,6 +227,7 @@ em{
         width:80vw;
         height:70vh;
     }
+
     .container-1::after,.container-2::after{
     bottom:-70%;
     border-radius: 100%;
@@ -249,7 +302,6 @@ em{
 }
 .neon-light
 {
-   /* padding:10px; */
     position: relative;
 }
 .neon-light2{
@@ -259,7 +311,7 @@ em{
 }
 .neon-light:hover,.neon-light2:hover{
     box-shadow: 0px 0px 10px white,
-    0px 0px 20px white;
+                0px 0px 20px white;
 }
 .neon-light:hover span:nth-child(1),
 .neon-light:hover span:nth-child(2),
@@ -308,7 +360,7 @@ em{
     animation:lower 2s 1 forwards;
 }
 
-@-webkit-keyframes upper{
+@keyframes upper{
     0%{
         transform:translateX(600px);
         background-color: white; 
@@ -320,7 +372,7 @@ em{
         transform:translateX(0px); 
     }
 }
-@-webkit-keyframes lefts{
+@keyframes lefts{
     0%{
         transform:translateY(-200px);
         background-color: white;
@@ -332,9 +384,9 @@ em{
         transform:translateY(0px); 
     }
 }
-@-webkit-keyframes rights{
+@keyframes rights{
     0%{
-        transform:translateY(200px);
+        transform:translateY(150px);
         background-color: white; 
     }
     50%{
@@ -344,7 +396,7 @@ em{
         transform:translateY(0px); 
     }
 }
-@-webkit-keyframes lower{
+@keyframes lower{
     0%{
         transform:translateX(-400px);
         background-color: white;
