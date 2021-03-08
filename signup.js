@@ -50,6 +50,15 @@ userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User" , userSchema);
 // -------------------------------------------------------
+// --------------------Cart-items-------------------------
+const cartSchema =new mongoose.Schema({
+orderId : String,
+itemname : String,
+price:Number
+});
+
+const Cart = mongoose.model("Cart" , cartSchema);
+// -------------------------------------------------------
 
 passport.use(User.createStrategy());
 
@@ -64,13 +73,17 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-let cartItem="";
-let cartItems = ['empty'];
+let cartItem = "";
+let itemId = "";
+let cartItems = [{
+Item:"Empty",
+Id : "0"
+}];
 
-let temperature="";
-let tempInCelsius="";
-let description="";
-let place="";
+let temperature = "";
+let tempInCelsius = "";
+let description = "";
+let place = "";
 
 let resetEmail = "";
 
@@ -220,10 +233,38 @@ app.get("/logout",function(req , res){
 res.render("login");
 });
 
+app.get("/cart",function(req ,res){
+res.render("cart",{yourcart : cartItems});
+});
+
 app.post("/cart",function(req ,res){
-cartItem = req.body.itemordered;
-cartItems.push(cartItem);
-res.render("cart" , { yourcart : cartItems});
+const Name = req.body.remove;
+if(Name === "delete"){
+console.log("Go on and delete");
+
+const deletedItem = req.body.delete;
+
+console.log(Name);
+console.log(deletedItem);
+
+let itemDeleted = _.remove(cartItems , (items)=>{
+return items.Item == deletedItem;
+});
+console.log(itemDeleted);
+
+res.redirect("/cart");
+}else{
+    console.log("Go on an add");
+    cartItem = req.body.itemordered;
+    itemId = req.body.Itemid;
+    // console.log(itemId);
+    cartItems.push({Item : cartItem , Id : itemId});
+    res.render("cart" , { yourcart : cartItems});
+}
+});
+
+app.post("/cart/remove" , (req , res)=>{
+
 });
 
 app.get("/forgot",function(req , res){

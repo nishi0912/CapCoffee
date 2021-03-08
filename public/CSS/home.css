@@ -6,10 +6,6 @@
     user-select: none;
 }
 
-body{
-    background-color: gray;
-}
-
 .title,.btn{
     color:gray;
     background:linear-gradient(rgba(255 , 255 ,255, 0.7) , rgba(255 ,255 ,255 , 0.3));
@@ -17,13 +13,16 @@ body{
 }
 
 .homepage{
-    width:100vw;
+    width:100%;
     min-height:100vh; 
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
+    z-index: 1;
+    background-color: gray;
+    overflow: hidden;
 }
 
 .arrow-icon{
@@ -40,6 +39,73 @@ cursor: pointer;
     align-items: center;
     position: relative;
 }
+
+.refresher::after{
+    content: "";
+    position: absolute;
+    width:100%;
+    height: 100vh;
+    background-color: white;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.round{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    margin: 5px;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid gray;
+    /* box-shadow: 0px 0px 10px gray; */
+    z-index: 3; 
+}
+
+.c1 , .c2 ,.c3 ,.c4{
+    transform: translateY(200px);
+    animation: movecircle 5s 1s infinite linear;
+}
+
+.c1{
+animation-delay: 1s;
+}
+
+.c2{
+    animation-delay: 0.75s;
+    }
+    .c3{
+        animation-delay: 0.5s;
+        }
+        .c4{
+            animation-delay: 0.25s;
+            }
+
+@keyframes movecircle{
+    0%{
+        transform: translateY(200px);
+    }
+    50%{
+        background-color: green;
+        transform: translateY(200px);
+    }
+    75%{
+        transform: scale(1);
+    }
+    100%{
+        animation-delay: 5s;
+    }
+}
+    
 .container-1,.container-2{
     flex-direction: row;
     justify-content: space-evenly;
@@ -48,8 +114,6 @@ cursor: pointer;
     background-color: white;
     box-shadow:5px 5px 10px white;
     /* clip-path: inset(10px 20px 30px 40px); */
-    /* clip-path: circle(50% at 35px 35px); */
-    /* clip-path: circle(30% at 500px 300px); */
     z-index: 1;
     overflow: hidden;
 }

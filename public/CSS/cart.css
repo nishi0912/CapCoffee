@@ -7,42 +7,52 @@
 
 h1{
     text-align: center;
+    padding:10px 40px;
+    background-color: white;
 }
 
 h1,.btn,.cost{
     color:gray;
 }
 
-.container,.item{
+.container,.item,.sub-container{
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: center;
 }
+
 .container{
     min-width:100vw;
     min-height:100vh;
-    padding:3% 10%;
+    align-items: unset;
+    justify-content: unset;
+    flex-direction: column;
+    background-color: mediumspringgreen;
+    position: relative;
+}
+.sub-container{
+    padding:3% 5%;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: gray;
-    position: relative;
+    justify-content: left;
 }
 
 .item{
-    margin:2%;
+    margin:1%;
     flex-direction: column;
     text-align: center;
     font-size: 0.8rem;
     font-weight:900;
     width:20%;
-    color: white;
-    height:50vh;
-    background: linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.3));
-    border:2px solid white;
+    color: gray;
+    height:60vh;
+    background-color:white ;
+    border:2px solid gray;
     border-radius: 10px;
 }
 
 .btn,.cost{
+    margin-top: 15px;
     background-color: white;
     font-size: 0.8rem;
     box-shadow:0px 5px 5px grey;
@@ -51,10 +61,17 @@ h1,.btn,.cost{
 .btn{
         font-weight: 700;
         padding:10px 40px;
-        margin:0 auto;
+        margin:10px auto;
         border: none;
         border-radius: 10px;
         outline: none;
+}
+
+.removeItem{
+    color:gray;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
 }
 
 .cost{
@@ -63,23 +80,52 @@ h1,.btn,.cost{
 }
 
 .coffeeImages{
-    width:200px;
-    height:150px;
+    width:180px;
+    height:120px;
 }
 
+@media (min-width:768px) and (max-width:1024px){
+    .sub-container{
+        padding:3% 1%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .item{
+        font-size: 1.1rem;
+        width:30%;
+        height:40vh;
+    }
+    .coffeeImages{
+        width:150px;
+        height:100px;
+    }
+
+}
 
 @media (min-width:320px) and (max-width:768px){
+    h1{
+        text-align: center;
+        padding:10px 40px;
+        font-size: 1rem;
+        background-color: white;
+    }
     .container{
-        padding:3% 10%;
+        padding:3% 2%;
         flex-wrap: nowrap;
         justify-content: center;
         flex-direction: column;
     } 
+    .sub-container{
+        padding:3% 1%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 
     .item{
-        font-size: 0.6rem;
-        width:50%;
-        height:30vh;
+        font-size: 0.8rem;
+        width:45%;
+        height:40vh;
     }
 
     .btn,.cost{
@@ -93,7 +139,7 @@ h1,.btn,.cost{
 }
 
 .coffeeImages{
-    width:100px;
-    height:75px;
+    width:90px;
+    height:70px;
 }
 }

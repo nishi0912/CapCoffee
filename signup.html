@@ -26,7 +26,11 @@
                                         <input type="text" name="lastname" class="userdetails" placeholder="LastName"  required autocomplete="off">
                                         <input type="text" name="username" class="userdetails"  placeholder="Your Username" required autocomplete="off">
                                         <input type="text" name="email" class="userdetails" placeholder="Email address" autocomplete="off" required >
-                                        <input type="password" name="password" class="userdetails" placeholder="Your Password" required autocomplete="off">
+                                        <span class="checking">
+                                                <input id="pass"   onkeyup="change()" type="password" name="password" class="userdetails password" placeholder="Your Password" required autocomplete="off">
+                                                <span class="tick"></span>
+                                        </span>
+                                        
                                         <input type="text" name="city" class="userdetails"  placeholder="Your location" autocomplete="off" required>
                         </div>
                         <button type="submit" class="btn">SUBMIT</button>

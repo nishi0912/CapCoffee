@@ -11,11 +11,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body class="container-fluid">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <!-- Main CafeCoffe section -->
-        <section id="cafecoffee" >
+
+<% let eItems = [{itemid : "1",itemname : "FRAPPUCCINO" , itemimg : "img1" , itemprice:"$20"}, 
+                {itemid : "2",itemname : "C-MACHIATO" , itemimg : "img2" , itemprice:"$32.5"}, 
+                {itemid : "3",itemname : "CAFE MOCHA" , itemimg : "img3" , itemprice:"$27"}, 
+                {itemid : "4",itemname : "AMERICANO" , itemimg : "img4" , itemprice:"$23.2"}, 
+                {itemid : "5",itemname : "TURKISH COFFEE" , itemimg : "img5" , itemprice:"$24"}, 
+                {itemid : "6",itemname : "CAFE CUBANO" , itemimg : "img6" , itemprice:"$29"}, 
+                {itemid : "7",itemname : "CAFE LATTE" , itemimg : "img7" , itemprice:"$35"}, 
+                {itemid : "8",itemname : "IRISH COFFEE" , itemimg : "img8" , itemprice:"$40"}, 
+                {itemid : "9",itemname : "ESPRESSO" , itemimg : "img9" , itemprice:"$19"}, 
+                {itemid : "10",itemname : "CORTADO" , itemimg : "img10" , itemprice:"$32"}, 
+                {itemid : "11",itemname : "AFFOGATO" , itemimg : "img11" , itemprice:"$34"}, 
+                {itemid : "12",itemname : "CAPPUCCINO" , itemimg : "img12" , itemprice:"$41"}, 
+                {itemid : "13",itemname : "PLAIN COFFEE" , itemimg : "img13" , itemprice:"$15"}, 
+                {itemid : "14",itemname : "ICED COFFEE" , itemimg : "img14" , itemprice:"$37.25"}, 
+                {itemid : "15",itemname : "CAFE AU LAIT" , itemimg : "img15" , itemprice:"$40.5"}]; %>
+
+<% let headquarters = [{headname : "Gladoff" , headimage : "image1" ,
+                        headbrief : "Gladoff, famous for the roasted coffees."},
+                        {headname : "Coffete" , headimage : "image2" ,
+                        headbrief : "Coffete, Love icecream coffees!!. Perfect place."},
+                        {headname : "Javane" , headimage : "image3" ,
+                        headbrief : "Javane, Lava coffees."},
+                        {headname : "Capprico" , headimage : "image4" ,
+                        headbrief : "Capprico, mouthwatering aroma."},
+                        {headname : "Ficole" , headimage : "image5" ,
+                        headbrief : "Ficole, Intense darkness of coffee flavour."},
+                        {headname : "Vendior" , headimage : "image6" ,
+                        headbrief : "Vendor, Most unique cold beverage."}]; %>
+                
+<% let cities = [{cityid:"1",cityname :"London", cityimage:"image1",
+                citydescription:"Most famous branch known for its own way of preparing the coffee. Western style of making the most strong coffee with delicious beans on the top."},
+                {cityid:"2",cityname :"Amsterdam", cityimage:"image2",
+                citydescription:"Most attractive headquaters is located at Amsterdam,which is owned by one of the relatives of the company. <em>Roasted cappuccino"},
+                {cityid:"3",cityname :"Mangolia", cityimage:"image3",
+                citydescription:"Main headquarters of <em>Cappuccino</em> is Mangolia,Which was started at 1999 by *****. They have many branches all over the world with variety of coffee blenders."}]; %>
+
+
+        <section id="cafecoffee">
                 <div class="transitions">
                         <div class="slide text-color"><i class="fas fa-arrow-alt-circle-down down arrow-icon"></i>Touch</div>
                         <div class="coffee text-color"><i class="fas fa-coffee mug arrow-icon"></i>CapCoffee</div>
@@ -28,22 +62,55 @@
                                 <div class="Coffee-image"></div>
                                 <div class="weatherDetails">
                                         <% if(Temperature ==""){ %>
-                                                <div class="nodescription">"Sign up for getting weather forecast"</div>
+                                                <div class="nodescription"></div>
                                         <% }else{ %>
                                                 <div><%= Temperature %> °c in <%= Place%></div>
                                                 <div class="description"><%= Description %></div>
                                         <% } %>
                                 </div>
                         </div>
-                        <div class="cafecoffee-intro text-color"><em><strong>CapCoffee</strong></em>  was started by a person who taught that by taking 10 beans of coffee , he can make coffee powder and become an "Entrepreneur"(Caution:Don't take it seriously).
-                                Wow, its was a good joke.But jokes apart.We are proffesionals...
+                        <div class="cafecoffee-intro text-color"><em><strong>CapCoffee</strong></em>  was started as a small branch at the beginning and was well developed for buissness . In 2021 , We had good response
+                                from our customers....
                         <form action="/more" method="get">
                                 <a href="/more">Read-more</a></div>
                         </form>
                 </div>
                 <br>
+        </section>
+        <section id="services">
+                <div class="basic services">
+
+                        <div class="sub-services">
+                                <i class="fab fa-sourcetree service-icon"></i>
+                                <span class="service-title">Environment
+                                        <div class="serviceLists serviceName0">
+                                                Our infrastructure is mostly filled with greeneries and have a freshly 
+                                                grown bean
+                                        </div>
+                                </span>
+                        </div>
+                        <div class="sub-services">
+                                <i class="fas fa-coffee service-icon"></i>
+                                <span class="service-title">Our-Product
+                                        <div class="serviceLists serviceName1">
+                                                CapCoffee is a product which is available all over the world for its rich aroma.
+                                        </div>
+                                </span>
+                        </div>
+                        <div class="sub-services">
+                                <i class="fab fa-servicestack service-icon"></i>
+                                <span class="service-title">Delivery-Services
+                                        <div class="serviceLists serviceName2">
+                                                Our services are available 24hours all over the countries for our customers.
+                                        </div>
+                                </span>
+                        </div>
+                
+                </div>
+        </section>
+        <section id="menu">
                         <div class="Horizontal-menus">
-                                <div class="myTitle">Caffete</div>
+                                <div class="myTitle">CapCoffee</div>
                                 <div class="hamburger">
                                         <div class="lines l1"></div>
                                         <div class="lines l2"></div>
@@ -53,7 +120,7 @@
                                         <a class="company decorate text-color" href="#cafecoffee">Company</a>
                                         <a class="menus decorate text-color" href="#menus">Menus</a>
                                         <a class="branches decorate text-color" href="#branches">Branches</a>
-                                        <a class="about decorate text-color" href="#footer">About</a> 
+                                        <a class="about decorate text-color" href="#services">About</a> 
                                         <a class="company decorate text-color" href="#img8">Trendings</a>
                                         <a class="menus decorate text-color" href="#img2">Offers</a>
                                         <a class="branches decorate text-color" href="#">Trips</a>
@@ -61,240 +128,60 @@
                                 </span>
                         </div>
                         <div class="Infrastructures">
-                                <span class="Interhead text-color">International Headquarters</span>
+                                <div class="Interhead text-color">International Headquarters
+                                        <button class="swipe" type="submit"><i class="fas fa-chevron-down"></i></button>
+                                </div>
                                 <div class="domains">
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Gladoff</span>
-                                                <div class="brief img image1"></div>
-                                                <div class="brief briefing">Gladoff, famous for the roasted coffees.</div>
-                                        </div>
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Coffete</span>
-                                                <div class="brief img image2"></div>
-                                                <div class="brief briefing">Coffete, Love icecream coffees!!. Perfect place.</div>
-                                        </div>
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Javane</span>
-                                                <div class="brief img image3"></div>
-                                                <div class="brief briefing">Javane, Lava coffees.</div>
-                                        </div>
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Capprico</span>
-                                                <div class="brief img image4"></div>
-                                                <div class="brief briefing">Capprico, famous for the roasted coffees.</div>
-                                        </div>
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Ficole</span>
-                                                <div class="brief img image5"></div>
-                                                <div class="brief briefing">Ficole, famous for the roasted coffees.</div>
-                                        </div>
-                                        <div class="domain">
-                                                <span class="brief head-color text-color">Vendior</span>
-                                                <div class="brief img image6"></div>
-                                                <div class="brief briefing">Vendor, famous for the roasted coffees. </div>
-                                        </div>
-        
+
+                                        <% headquarters.map(head =>{ %>
+                                                <div class="domain">
+                                                        <span class="brief head-color text-color"><%= head.headname %></span>
+                                                        <div class="brief img <%= head.headimage %>"></div>
+                                                        <div class="brief briefing"><%= head.headbrief %></div>
+                                                </div>
+                                        <% }); %>
+
                                 </div>
                         </div>
         </section>
-        <!-- Cofee menus section -->
+        <!-- Coffee menus section -->
         <section id="menus">
 
-        <div class="coffeeItems">
-                <span class="dropmenu" >FRAPPUCCINO
-                        <div id="img1" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="FRAPPUCCINO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$20</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="FRAPPUCCINO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                <span id="drop1" class="dropmenu" >C-MACHIATO
-                        <div id="img2" class="image"><div class="vertical-line">10% Off</div></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CARAMEL MACCHIATO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$32.5</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CARAMEL MACCHIATO" class="order">Purchase</button> 
-                        </form>    
-                </span>
+                <div class="coffeeItems">
+
+                        <% eItems.map((item)=>{ %>
+                                <span class="dropmenu" ><%= item.itemname %>
+                                        <div id="<%=item.itemimg %>" class="image"></div>
+                                        <form action="/flavors" method="post">
+                                                <button class="order1" name ="flavourInfo" value="<%=item.itemname %>" type="submit">MORE</button>
+                                        </form>
+                                        <p class="cost"><%=item.itemprice %></p>
+                                        <form action="/cart" method="post">
+                                                <input type="hidden" name="Itemid" value="<%= item.itemid %>">
+                                                <button type="submit" name="itemordered" value="<%=item.itemname %>" class="order">Purchase</button> 
+                                        </form>
+                                </span>   
+                <%  }); %>
 
 
-                <span class="dropmenu" >CAFE MOCHA
-                        <div id="img3" class="image"><div class="vertical-line">$2 Off</div></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CAFE MOCHA" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$27</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CAFE MOCHA" class="order">Purchase</button>  
-                        </form>
-                </span>
-                
-                <span id="drop2" class="dropmenu" >AMERICANO
-                        <div id="img4" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="AMERICANO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$23.2</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="AMERICANO" class="order">Purchase</button> 
-                        </form>
-                </span>
-
-
-                <span class="dropmenu" >TURKISH COFFEE
-                        <div id="img5" class="image"></div>
-                       <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="TURKISH COFFEE" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$24</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="TURKISH COFFEE" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span id="drop3" class="dropmenu" >CAFE CUBANO
-                        <div  id="img6" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CAFE CUBANO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$29</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" data-value="$29" value="CAFE CUBANO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span class="dropmenu" >CAFE LATTE
-                        <div id="img7" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CAFE LATTE" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$35</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CAFE LATTE" class="order">Purchase</button> 
-                        </form>                
-                </span>
-                
-                
-                <span id="drop4" class="dropmenu" >IRISH COFFEE
-                        <div id="img8" class="image trending"><div class="vertical-line">Trending</div></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="IRISH COFFEE" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$40</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="IRISH COFFEE" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span class="dropmenu" >ESPRESSO
-                        <div id="img9" class="image"><div class="vertical-line">7.5% Off</div></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="ESPRESSO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$19</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="ESPRESSO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span id="drop5" class="dropmenu" >CORTADO
-                        <div id="img10" class="image"></div>
-                       <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CORTADO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$32</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CORTADO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span class="dropmenu" >AFFOGATO
-                        <div id="img11" class="image"><div class="vertical-line">5$ Off</div></div>
-                       <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="AFFOGATO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$34</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="AFFOGATO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span id="drop6" class="dropmenu" >CAPPUCCINO
-                        <div id="img12" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CAPPUCCINO" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$41</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CAPPUCCINO" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span class="dropmenu" >PLAIN COFFEE
-                        <div id="img13" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="PLAIN COFFEE" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$15</p>
-                        <form action="/cart" method="post">
                         
-                        </form>
-                                <button type="submit" name="itemordered" value="PLAIN COFFEE" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span id="drop7" class="dropmenu" >ICED COFFEE
-                        <div id="img14" class="image"><div class="vertical-line">Trending</div></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="ICED COFFEE" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$37.25</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="ICED COFFEE" class="order">Purchase</button> 
-                        </form>
-                </span>
-                
-                
-                <span class="dropmenu" >CAFE AU LAIT
-                        <div id="img15" class="image"></div>
-                        <form action="/flavors" method="post">
-                                <button class="order1" name ="flavourInfo" value="CAFE AU LAIT" type="submit">MORE</button>
-                        </form>
-                        <p class="cost">$40.5</p>
-                        <form action="/cart" method="post">
-                                <button type="submit" name="itemordered" value="CAFE AU LAIT" class="order">Purchase</button> 
-                        </form> 
-                </span>
-                
-        </div>
+                </div>
         </section>
         <!-- Company branches section -->
         <section id="branches" class="Rotational-animation">
-                <div class="Rotational-box1">London<div class="Rotational-image image1"></div><p class="head-branch">Most famous branch known for its own way of preparing the coffee. Western style of making the most strong coffee with delicious beans on the top.</p></div>
-                <div class="Rotational-box2">Amsterdam<div class="Rotational-image image2"></div><p class="head-branch">Most attractive headquaters is located at Amsterdam,which is owned by one of the relatives of the company. <em>Roasted cappuccino</em>.</p></div>
-                <div class="Rotational-box3">Mangolia<div class="Rotational-image image3"></div><p class="head-branch">Main headquarters of <em>Cappuccino</em> is Mangolia,Which was started at 1999 by *****. They have many branches all over the world with variety of coffee blenders.</p></div> 
+                <% cities.map((city) =>{ %>
+                        <div class="Rotational-box<%=city.cityid %>"><%= city.cityname %><div class="Rotational-image <%=city.cityimage %>"></div><p class="head-branch"><%= city.citydescription %></p></div>
+                <%  }); %>
         </section>
+
         <section id="footer" class="footer-section text-color">
                 <i class="fab fa-facebook media-icons fb"></i>
                 <i class="fab fa-instagram media-icons insta"></i>
                 <i class="fab fa-twitter media-icons twitter"></i>
                 <i class="fas fa-envelope media-icons envelop"></i>
-                <p class="copyright">Copyright&copy;CafeCoffee 2021</p>
+                <p class="copyright">Copyright&copy;CapCoffee 2021</p>
         </section>
+
         <script src="JAVASCRIPT/finalCoffeeproject.js" type="text/javascript"></script>
 </body>
 </html>

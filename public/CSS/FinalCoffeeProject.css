@@ -17,14 +17,17 @@ body{
     --secondaryColor:mediumspringgreen;
     --TernaryColor:gray;
 }
+
 .text-color{
 color:var(--TernaryColor);
 text-align: center;
 }
+
 .coffee,.slide,.arrow-icon,.transitions,.footer,.box,.Interhead,.head-color{
     background-color: var(--primaryColor);
     font-size: 2.5rem;
 }
+
 .head-color,.receipe{
     font-size: 0.85rem;
 }
@@ -147,7 +150,7 @@ transform: scale(1.2);
     width:300px;
     height:150px;
     color:gray;
-    background-color: white;
+    background-color: var(--primaryColor);
     box-shadow: 0px 0px 10px var(--TernaryColor),
                 0px 0px 20px var(--TernaryColor);
     position: relative;
@@ -164,17 +167,73 @@ text-align: center;
 font-size: 0.7;
 }
 
+/*--------------------------- Serives section -------------------------------- */
+.services{
+width:100%;
+height: 25vh;
+background-color: var(--primaryColor);
+}
 
+.sub-services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.serviceLists{
+    visibility: hidden;
+    position: absolute;
+}
+
+.service-icon{
+    font-size: 1.5rem;
+    padding: 10px;
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
+    border-radius: 50%;
+    position: relative;
+    transition:all 0.5s linear;
+}
+
+.service-icon:hover{
+    transform: scale(1.2);
+}
+
+.vouchers{
+    display: grid;
+    place-items: center;
+    visibility: visible;
+    width:400px;
+    height: 200px;
+    border-bottom: 10px solid var(--secondaryColor);
+    border-top: 10px solid var(--secondaryColor);
+    position: absolute;
+    z-index: 100;
+    left:-150px;
+    background-color:white;
+    box-shadow: 0px 0px 10px var(--TernaryColor);
+    transition: all 0.5s linear;
+}
+
+.vouchers:hover{
+    cursor: pointer;
+}
+
+
+/* --------------------------------------------------------------------------- */
 .Horizontal-menus{
     width:100%;
     height:100px;
-    background-color: white;
+    background-color: var(--primaryColor);
     box-shadow: 0px 5px 3px grey;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin:5% auto;
+    margin:10px 0px;
 }
 
 .myTitle{
@@ -187,17 +246,17 @@ display:none;
 }
 
 .hamlists a{
-color:gray;
+color:var(--TernaryColor);
 text-decoration: none;
 padding:0 15px;
 }
 
 a:hover{
-    background-color: gray;
-    color:white;
+    background-color: var(--TernaryColor);
+    color:var(--primaryColor);
     border-radius:10px;
-    box-shadow: 0px 0p 10px gray ,
-                0px 0px 15px gray;
+    box-shadow: 0px 0p 10px var(--TernaryColor) ,
+                0px 0px 15px var(--TernaryColor);
     transition: 0.5s linear;
 }
 
@@ -213,6 +272,7 @@ height:50px;
 padding: 15px;
 text-decoration: none;
 font-size:1rem;
+transition: all 0.5s linear;
 }
 
 
@@ -229,7 +289,7 @@ font-size:1rem;
     top:70px;
     font-size: 1.2rem;
     line-height: 2;
-    background-color:white;
+    background-color:var(--primaryColor);
     width:100%;
     height:300px;
     box-shadow:0px 10px 5px grey;
@@ -237,25 +297,46 @@ font-size:1rem;
 /* --------------Infrastructure------------------------ */
 .Infrastructures{
     width:inherit;
-    min-height:100vh;
+    min-height: 20vh;
     position:relative;
 }
+
+
 .Interhead{
     display: block;
     margin-top: 7px;
     padding: 2px 20px;
 }
 
+.swipe{
+    padding: 3px 10px;
+    color:var(--primaryColor);
+    font-size: 1.5rem;
+    border:none;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+}
+
 .domains{
+    visibility: hidden;
+    position: absolute;
+    /* display: none; */
+}
+
+.companyDomains{
 display: flex;
+visibility: visible;
 flex-direction: row;
 flex-wrap: wrap;
 justify-content: space-between;
 align-items: center;
-margin:10px auto;
+position: relative;
+transition: all 20s linear;
 }
 
 .domain{
+    margin-top: 10px;
     display: grid;
     place-items: center;
     text-align: center;
@@ -274,7 +355,7 @@ margin:10px auto;
 .head-color{
     transform: translateY(150px);
     padding:5px 50px;
-    background-color: mediumspringgreen;
+    background-color: var(--secondaryColor);
 }
 
 .img{
@@ -352,7 +433,7 @@ text-align: center;
 }
 
 .image:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition:transform 1s linear;
 }
 
@@ -744,6 +825,7 @@ letter-spacing: 3px;
         }
     
         .coffeeItems{
+            display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: unset;
@@ -752,7 +834,7 @@ letter-spacing: 3px;
             }
 
         .dropmenu{
-            margin:20px 7px;
+            
             width:120px;
             height:210px;
             letter-spacing:1px;
@@ -804,9 +886,17 @@ letter-spacing: 3px;
         }
 
         .Interhead{
-            font-size: 1.3rem;
+            font-size: 1rem;
             margin:10px auto;
             padding:5px 20px;
+        }
+
+        .swipe{
+            padding: 3px 5px ;
+            font-size: 1rem;
+            position: relative;
+            top:0px;
+            right:0px;
         }
 
         .domains{
@@ -814,6 +904,36 @@ letter-spacing: 3px;
             align-items: center;
             margin:10px auto;
             }
+
+            /*--------------------------- Serives section -------------------------------- */
+    .services{
+        min-height: 50vh;
+        flex-direction: column;
+    }
+    .sub-services{
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+    
+    .serviceLists{
+        visibility: hidden;
+    }
+    
+    .service-title{
+        margin-top: 5px;
+    }
+    
+    .vouchers{
+        visibility: visible;
+        width:200px;
+        height: 300px;
+        left:-50px;
+    }
+    
+    .vouchers:hover{
+        cursor: pointer;
+    }
+    /* -------------------------------------------------------- */
         .img,.briefing{
             transform: translateY(0px);
         }
@@ -827,7 +947,7 @@ letter-spacing: 3px;
             transition:none;
         }
         .domain{
-            margin-top:20px;
+            margin-top:30px;
         }
         
 
@@ -871,19 +991,22 @@ padding:1% 0%;
     }
 
     /*-------------------- hamburger ----------------------------*/
+    .Horizontal-menus{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 50px;
+        margin:10px 0px;
+    }
+
+
     .myTitle{
         display: block;
         color:gray;
         position: absolute;
-        font-size: 2rem;
-        left:50px;
+        font-size: 1.5rem;
+        left:10px;
     }
 
-    .Horizontal-menus{
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 20px;
-    }
     .hamburger{
         width:50px;
         height:50px;
