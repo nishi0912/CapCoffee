@@ -248,7 +248,7 @@ em{
     }
     
     .container-1::after,.container-2::after{
-    bottom:-105%;
+    bottom:-90%;
     border-radius: 100%;
     }
     

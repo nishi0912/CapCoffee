@@ -202,17 +202,29 @@ color: white;
         
         .container{
             color:gray;
-            width:100vw;
+            width:100vh;
             height:100vh;
             background-color: gray;
         }
+
+        .signUpBox{
+            width:300px;
+            height:400px;
+            background-color:white;
+        }
+    
+        .signUpBox::before,
+        .signUpBox::after{
+            display:none;
+        }
+
         .others{
             display: block;
         }
 
         .others1{
-            width:200px;
-            height:300px;
+            width:300px;
+            height:400px;
             background-color: white;
             position: absolute;
             z-index:3;
@@ -266,16 +278,6 @@ color: white;
     transform: none;
     transition: none;
 }
-    .signUpBox{
-        width:200px;
-        height:300px;
-        background-color:white;
-    }
-
-    .signUpBox::before,
-    .signUpBox::after{
-        display:none;
-    }
     .imageInfo{
         display:none;
     }
@@ -287,8 +289,8 @@ color: white;
     }
     
     .userdetails{
-        margin:1% auto;
-        padding:3px 15px;
+        margin:2% auto;
+        padding:7px 30px;
         border-radius: 5px;
         letter-spacing: 1px;
         border:2px solid gray;
