@@ -275,7 +275,11 @@ em{
         outline: none;
         text-align: center;
     }
-
+    .circle{
+        margin: 5px;
+        width: 10px;
+        height:10px;
+    }
     
 .remember{
     left: 10px;
@@ -319,6 +323,7 @@ em{
     .cafeIntoduction{
         font-size: 0.9rem;
     }
+    
 }
 
 /* -------------------------Failure ejs template styling--------------- */

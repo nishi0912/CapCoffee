@@ -33,8 +33,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // -------------------userDB------------------------------
-const url = "mongodb://localhost:27017/CoffeeDB";
+// const localUrl ="mongodb://localhost:27017/CoffeeDB";
+const url  = "mongodb+srv://admin-nishith:abcd1234@cluster0.dzffz.mongodb.net/CoffeeDB";
 mongoose.connect(url , {useNewUrlParser : true , useUnifiedTopology:true , useCreateIndex : true});
+
 
 const userSchema = new mongoose.Schema({
 username:String,
