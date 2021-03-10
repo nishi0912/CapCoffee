@@ -92,7 +92,7 @@ let resetEmail = "";
 passport.use(new GoogleStrategy({
     clientID : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL : process.env.CALLBACK_URI,
+    callbackURL : process.env.GOOGLE_CALLBACK_URI,
     userProfileURL : "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     function(accessToken , refreshToken , profile , cb){
@@ -105,7 +105,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID : process.env.FACEBOOK_CLIENT_ID,
     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL : "http://localhost:3000/auth/facebook/finalCoffeeproject"
+    callbackURL : process.env.FACEBOOK_CALLBACK_URI
     },
     function(accessToken , refreshToken , profile , cb){
         User.findOrCreate({facebookId : profile.id} , function(err , user){
