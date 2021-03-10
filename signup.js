@@ -92,7 +92,7 @@ let resetEmail = "";
 passport.use(new GoogleStrategy({
     clientID : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL : "https://dry-brushlands-61318.herokuapp.com/auth/google/finalCoffeeproject",
+    callbackURL : process.env.CALLBACK_URI,
     userProfileURL : "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     function(accessToken , refreshToken , profile , cb){
