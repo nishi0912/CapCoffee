@@ -71,18 +71,31 @@ h1,.btn,.cost{
     color:gray;
     outline: none;
     border: none;
-    padding: 5px 10px;
+    padding: 7px 15px;
+    transition: all 0.1s linear;
 }
 
+.movebutton{
+    padding: 3px 7px;
+    color: white;
+    background-color: red;
+}
+
+.message{
+    font-size: 1rem;
+    background-color: mediumspringgreen;
+    transition: all 1s linear;
+}
 .Deleted{
+    font-size: 1rem;
     width:200px;
     height: 40px;
-    background-color: black;
+    background-color: gray;
     color: white;
     text-align: center;
     position: absolute;
     top:20px;
-    transition: all 5s linear;
+    transition: all 3s linear;
 }
 
 .cost{

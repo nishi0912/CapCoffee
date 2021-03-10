@@ -152,14 +152,18 @@
                         <% eItems.map((item)=>{ %>
                                 <span class="dropmenu" ><%= item.itemname %>
                                         <div id="<%=item.itemimg %>" class="image"></div>
-                                        <form action="/flavors" method="post">
-                                                <button class="order1" name ="flavourInfo" value="<%=item.itemname %>" type="submit">MORE</button>
-                                        </form>
-                                        <p class="cost"><%=item.itemprice %></p>
-                                        <form action="/cart" method="post">
-                                                <input type="hidden" name="Itemid" value="<%= item.itemid %>">
-                                                <button type="submit" name="itemordered" value="<%=item.itemname %>" class="order">Purchase</button> 
-                                        </form>
+                                        <div class="moreItem">
+                                                <form action="/flavors" method="post">
+                                                        <button class="order1" name ="flavourInfo" value="<%=item.itemname %>" type="submit">MORE</button>
+                                                </form>
+                                                <p class="cost"><%=item.itemprice %></p>
+                                                <form action="/cart" method="post">
+                                                        <input type="hidden" name="Itemid" value="<%= item.itemid %>">
+                                                        <button type="submit" name="itemordered" value="<%=item.itemname %>" class="order">Purchase</button> 
+                                                </form>
+                
+                                        </div>  
+                                        <div class="arrow-down"></div>
                                 </span>   
                 <%  }); %>
 

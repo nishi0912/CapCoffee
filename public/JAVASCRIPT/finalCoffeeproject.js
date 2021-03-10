@@ -53,6 +53,22 @@ for(let i=0 ; i<service.length ; i++){
         });
 }
 
+// Items
+const yourItem = document.querySelectorAll(".dropmenu");
+const moreItems = document.querySelectorAll(".moreItem");
+console.log(yourItem.length , moreItems.length);
+const arrow = document.querySelector(".arrow-down");
+const ordered = document.querySelector(".order");
+arrow.textContent = "⬇";
+arrow.addEventListener("click" , function(){
+for(let i = 0;i<moreItems.length ; i++){
+    moreItems[i].classList.toggle("moreItems");
+    yourItem[i].classList.toggle("dropmenu2");
+    arrow.textContent = "⬆";
+    console.log(ordered.value);
+}
+});
+
 
 
 

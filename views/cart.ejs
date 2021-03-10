@@ -11,8 +11,8 @@
 <body>
 
     <div class="container">
-        <div class="message"></div>
         <h1><i class="fas fa-cart-arrow-down"></i> CART-ITEMS
+            <div class="message"></div>
         </h1>
         <div class="sub-container">
             <% console.log(yourcart); %>
@@ -27,7 +27,7 @@
 
                         <form id="delete" action="/cart" method="post">
                             <input type="hidden" name="remove" value="delete">
-                            <button  name="delete" value="<%=yourcart[i].Item%>" class="removeItem" type="submit">✖</button>
+                            <button  name="delete" value="<%=yourcart[i].Item%>" class="removeItem" type="submit">Remove</button>
                         </form>
 
                         <h3><%= yourcart[i].Item %></h3>
