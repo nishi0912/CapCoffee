@@ -246,22 +246,25 @@ console.log("Go on and delete");
 
 const deletedItem = req.body.delete;
 
-console.log(Name);
-console.log(deletedItem);
+// console.log(Name);
+// console.log(deletedItem);
 
 let itemDeleted = _.remove(cartItems , (items)=>{
 return items.Item == deletedItem;
 });
 console.log(itemDeleted);
+console.log("Deleting....");
+setTimeout(() => {
+    res.redirect("/cart");
+}, 2000);
 
-res.redirect("/cart");
 }else{
     console.log("Go on an add");
     cartItem = req.body.itemordered;
     itemId = req.body.Itemid;
-    // console.log(itemId);
+    console.log("Adding....");
     cartItems.push({Item : cartItem , Id : itemId});
-    res.render("cart" , { yourcart : cartItems});
+        res.render("cart" , { yourcart : cartItems}); 
 }
 });
 
