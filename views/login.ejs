@@ -10,8 +10,9 @@
 </head>
 <body>
     <form action="/finalCoffeeproject" method="post"> 
+<div class="loader-page">
+    <div class="flex homepage">
 
-    <div class="homepage">
         <div class="container-2">
                 <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
                         <input class="loginDetails" type="text" id="user" name="User" placeholder="Username or Email" required autofocus autocomplete="off">
@@ -30,6 +31,11 @@
                 <%- include("footer") %>
         </div>
     </div>
-    
+    <div class="flex loader">
+        <div class="loading-circle"></div>
+        Loading...
+    </div>
+</div>
+    <script src="JAVASCRIPT/Login.js"></script>
 </body>
 </html>

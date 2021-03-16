@@ -9,68 +9,107 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-        <div class="homepage">
-            <div class="container-2">
-                <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
-                <% if(getInfo == "FRAPPUCCINO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
-                    <p class="receipe"> 
-                        A milkshake with ice cream, and cappuccino, an espresso coffee with frothed milk.
-                        The original<em>Frappuccino</em> beverage was developed, named, trademarked and sold by<em> George Howell's Eastern Massachusetts</em> coffee shop chain, The Coffee Connection</p>
-                <% }else if(getInfo == "CARAMEL MACCHIATO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor2.jpg" alt="CARAMEL MACCHIATO">
-                    <p class="receipe">
-                        <em>Caramel Macchiato</em> is made with vanilla syrup, steamed milk, espresso and caramel sauce. The espresso in poured on top of the milk leaving
-                        a dark mark on top of the milk foam. Caramel sauce is poured on top of the foam.an espresso coffee with frothed milk.
-                    </p>
-                <% }else if(getInfo == "CAFE MOCHA"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor3.jpg" alt="CAFÉMOCHA">
-                    <p class="receipe"></p>  
-                <% }else if(getInfo == "AMERICANO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor4.jpg" alt="AMERICANO">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "TURKISH COFFEE"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor5.jpg" alt="TURKISH COFFEE">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "CAFE CUBANO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor6.jpg" alt="CAFECUBANO">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "CAFE LATTE"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor7.jpg" alt="CAFELATTE">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "IRISH COFFEE"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor8.jpg" alt="IRISH COFFEE">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "ESPRESSO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor9.jpg" alt="ESPRESSO">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "CORTADO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor10.jpg" alt="CORTADO">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "AFFOGATO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor11.jpg" alt="AFFOGATO">
-                    <p class="receipe"></p>  
-                <% }else if(getInfo == "CAPPUCCINO"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor12.jpg" alt="CAPPUCCINO">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "PLAIN COFFEE"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor13.jpg" alt="PLAIN COFFEE">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "ICED COFFEE"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor14.jpg" alt="ICED COFFEE">
-                    <p class="receipe"></p>
-                <% }else if(getInfo == "CAFE AU LAIT"){ %>
-                    <img class="coffeeImages" src="CSS/Images/flavor15.jpg" alt="CAFE AU LAIT">
-                    <p class="receipe"></p>
-                <% }else{ %>
-    
-                <%  } %> 
-            <%- include("footer") %>
+        <div class="flex homepage">
+            <div class="more-container">
+                <!-- <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div> -->
+                <button class="more" type="submit">+</button>
+                <div class="hover">Hoverme</div>
+
+                            <% if(getInfo == "FRAPPUCCINO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
+                                <p class="receipe"> 
+                                    <em>Frappuccino</em> is a milkshake with ice cream, and cappuccino, an espresso coffee with frothed milk.
+                                    The original<em>Frappuccino</em> beverage was developed, named, trademarked and sold by<em> George Howell's Eastern Massachusetts</em> coffee shop chain, The Coffee Connection
+                                </p>
+                            <% }else if(getInfo == "C-MACHIATO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor2.jpg" alt="CARAMEL MACCHIATO">
+                                <p class="receipe">
+                                    <em>Caramel Macchiato</em> is made with vanilla syrup, steamed milk, espresso and caramel sauce. The espresso in poured on top of the milk leaving
+                                    a dark mark on top of the milk foam. Caramel sauce is poured on top of the foam.an espresso coffee with frothed milk.
+                                </p>
+                            <% }else if(getInfo == "CAFE MOCHA"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor3.jpg" alt="CAFÉMOCHA">
+                                <p class="receipe">
+                                    <em>Cafe Mocha</em> is a high quality type of coffee made from a specific coffee bean. It's easily confused with the flavored drink also called a mocha, which combines coffee and chocolate. Mocha coffee beans are from the plant species called Coffee arabica, and it was originally only grown in Mocha, Yemen.
+                                </p>  
+                            <% }else if(getInfo == "AMERICANO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor4.jpg" alt="AMERICANO">
+                                <p class="receipe">
+                                    <em>Caffe Americano</em> is a type of coffee drink prepared by diluting an espresso with hot water, giving it a similar strength to, but different flavor from, traditionally brewed coffee.
+                                </p>
+                            <% }else if(getInfo == "TURKISH COFFEE"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor5.jpg" alt="TURKISH COFFEE">
+                                <p class="receipe">
+                                    <em>Turkish coffee</em> is very finely ground coffee brewed by boiling. Any coffee bean may be used; arabica varieties are considered best, but robusta or a blend is also used.
+                                </p>
+                            <% }else if(getInfo == "CAFE CUBANO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor6.jpg" alt="CAFECUBANO">
+                                <p class="receipe">
+                                    <em>Cafe Cubano</em> is a type of espresso that originated in Cuba. Specifically, it refers to an espresso shot which is sweetened.
+                                    Cuban espresso as their main ingredient, such as cafe con leche.
+                                </p>
+                            <% }else if(getInfo == "CAFE LATTE"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor7.jpg" alt="CAFELATTE">
+                                <p class="receipe">
+                                    <em>Cafe Latte</em> simply means milk in Italian. So latte is not actually a coffee drink. ... The caffe latte often has less foam than a cappuccino and is usually served in a taller cup or glass. A caffe latte is an espresso with milk.
+                                </p>
+                            <% }else if(getInfo == "IRISH COFFEE"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor8.jpg" alt="IRISH COFFEE">
+                                <p class="receipe">
+                                    <em>Irish coffee</em> is a cocktail consisting of hot coffee, Irish whiskey, and sugar, stirred, and topped with cream. The coffee is drunk through the cream.
+                                </p>
+                            <% }else if(getInfo == "ESPRESSO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor9.jpg" alt="ESPRESSO">
+                                <p class="receipe">
+                                    <em>Espresso</em> is a coffee-brewing method of Italian origin, in which a small amount of nearly boiling water is forced under 9–10 bars of atmospheric pressure through finely-ground coffee beans. Espresso coffee can be made with a wide variety of coffee beans and roast degrees.
+                                </p>
+                            <% }else if(getInfo == "CORTADO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor10.jpg" alt="CORTADO">
+                                <p class="receipe">
+                                    <em>Cortado</em> is a beverage consisting of espresso mixed with a roughly equal amount of warm milk to reduce the acidity. The milk in a cortado is steamed, but not frothy and "texturized" as in many Italian coffee drinks.
+                                </p>
+                            <% }else if(getInfo == "AFFOGATO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor11.jpg" alt="AFFOGATO">
+                                <p class="receipe">
+                                    <em>Affogato</em> or more traditionally known as "affogato al caffe" is an Italian coffee-based dessert. It usually takes the form of a scoop of fior di latte or vanilla gelato or ice cream topped or "drowned" with a shot of hot espresso.
+                                </p>  
+                            <% }else if(getInfo == "CAPPUCCINO"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor12.jpg" alt="CAPPUCCINO">
+                                <p class="receipe">
+                                    <em>Cappuccino</em> is an espresso-based coffee drink that originated in Italy, and is traditionally prepared with steamed milk foam. Variations of the drink involve the use of cream instead of milk, using non-dairy milks, and flavoring with cinnamon or chocolate powder.
+                                </p>
+                            <% }else if(getInfo == "PLAIN COFFEE"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor13.jpg" alt="PLAIN COFFEE">
+                                <p class="receipe">
+                                    <em>Plain(Black)</em> coffee is simply coffee that is normally brewed without the addition of additives such as sugar, milk, cream or added flavours. While it has a slightly bitter taste compared to when it is flavoured with additives, many people love a strong cup of black coffee.
+                                </p>
+                            <% }else if(getInfo == "ICED COFFEE"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor14.jpg" alt="ICED COFFEE">
+                                <p class="receipe">
+                                    <em>Iced coffee</em> is a type of coffee beverage served chilled, brewed variously with the fundamental division being cold brew – brewing the coffee cold, yielding a different flavor, and not requiring cooling – or brewing normally and then cooling, generally by simply pouring over ice or into ice cold milk.
+                                </p>
+                            <% }else if(getInfo == "CAFE AU LAIT"){ %>
+                                <img class="coffeeImages" src="CSS/Images/flavor15.jpg" alt="CAFE AU LAIT">
+                                <p class="receipe">
+                                    <em>Cafe au lait</em> is coffee with hot milk added. It differs from white coffee, which is coffee with cold milk or other whiteners added.
+                                </p>
+                            <% } %>
+
+                <form action="/order" method="POST">
+                    
+                    <div class="userPurchase">
+                        <label class="userLabel" for="userInput">Quantity </label>
+                        <input name="nItem" id="userInput" type="text" class="userInput" placeholder="">
+                        <button class="btn1" type="submit">Order</button>
+                    </div>
+
+                </form>
+
             </div>
         </div>
+        <script src="JAVASCRIPT/flavors.js"></script>
 </body>
 </html>
-
 
 
 

@@ -8,8 +8,8 @@
     user-select: none;
 }
 
-body{
-    background-color: mediumspringgreen;
+html{
+    scroll-behavior: smooth;
 }
 
 :root{
@@ -17,6 +17,80 @@ body{
     --secondaryColor:mediumspringgreen;
     --TernaryColor:gray;
 }
+
+.flex,.flex1{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.flex1{
+    align-items: unset;
+}
+
+body{
+    position: relative;
+    background-color: mediumspringgreen;
+}
+
+.container-fluid,.blur{
+    width: 100%;
+    height:100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.blur{
+    z-index: -10;
+    opacity: 0.1;
+}
+
+
+/* -------------------- loading animation --------------- */
+.loader{
+    visibility: hidden;
+}
+
+.loading-circle{
+    width:30px;
+    height: 30px;
+    border: 5px solid rgba(255, 255, 255, 1);
+    background-color: whitesmoke;
+    border-radius: 50%;
+    animation: colorCircle 10s linear forwards;
+    animation-delay: 1s;
+    padding-bottom: 5px;
+}
+
+@keyframes colorCircle{
+    0% { border: 5px solid rgba(255, 255, 255, 1); 
+    }
+    50% {border: 5px solid rgba(255, 255, 255, 0.4);
+    background-color: mediumspringgreen; }
+    100% {border: 5px solid rgba(255, 255, 255, 1);
+    background-color: unset}
+}
+
+.loading{
+    color: var(--secondaryColor);
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    min-height: 25vh;
+    box-shadow: 0px 0px 10px gray;
+    background-color: var(--primaryColor);
+    border-bottom:5px solid var(--secondaryColor);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    margin-top: 10px;
+    transition: all 0.2s linear;
+}
+
+/* ------------------------------------------------------ */
 
 .text-color{
 color:var(--TernaryColor);
@@ -51,13 +125,17 @@ text-align: center;
     transition:transform 1s linear;
 }
 
-.btn{
-    padding:10px 50px;
+.menuitems{
     position:absolute;
+    z-index: -3;
     bottom:700px;
     right:50px;
+}
+
+.btn{
+    margin: 0px 5px;
+    padding:10px 50px;
     font-size: 1rem;
-    z-index: -3;
     border: none;
     outline:none;
     background-color: var(--primaryColor);
@@ -251,7 +329,7 @@ text-decoration: none;
 padding:0 15px;
 }
 
-a:hover{
+.hamlists a:hover{
     background-color: var(--TernaryColor);
     color:var(--primaryColor);
     border-radius:10px;
@@ -294,6 +372,37 @@ transition: all 0.5s linear;
     height:300px;
     box-shadow:0px 10px 5px grey;
 }
+
+/* ----------------------- Special Items -------------- */
+.specialitems{
+    flex-direction: column;
+    width:100%;
+    min-height: 40vh;
+    background-color: white;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.specialtext{
+    padding: 10px 50px;
+    color:white;
+    background-color:mediumspringgreen ;
+    transition: all 1s linear;
+}
+
+.specials{
+flex-wrap: wrap;
+flex-direction: row;
+}
+
+.dropmenu3{
+    margin: 0 5px;
+    padding:0;
+}
+
+
+/* ---------------------------------------------------- */
 /* --------------Infrastructure------------------------ */
 .Infrastructures{
     width:inherit;
@@ -402,11 +511,11 @@ justify-content: space-evenly;
 text-align: center;
 }
 
-.dropmenu,.image{
+.dropmenu,.dropmenu3,.image{
     box-shadow: 0px 10px 5px grey;
 }
 
-.dropmenu{
+.dropmenu,.dropmenu3{
     display:inline-block;
     margin:50px 20px;
     width:250px;
@@ -510,6 +619,26 @@ background: url(./Images/flavor14.jpg) center/cover no-repeat;
     background: url(./Images/flavor15.jpg) center/cover no-repeat;
     }
 
+.itemrating{
+margin-top: 15px;
+width:50px;
+height: 20px;
+font-size: 0.6rem;
+color: white;
+position: relative;
+background-color: var(--secondaryColor);
+}
+
+.like{
+    color: whitesmoke;
+}
+.likes{
+color:var(--secondaryColor);
+}
+.staricon{
+    color: white;
+}
+
 em{
         color:green;
 }
@@ -525,7 +654,7 @@ em{
     box-shadow:0px 10px 5px grey;
 }
 
-.order,.order1{
+.order{
     background-color: var(--primaryColor);
     width:90%;
     padding:10px 0;
@@ -534,13 +663,6 @@ em{
     border: none;
     outline:none;
     box-shadow:0px 10px 5px grey;
-}
-
-.order1{
-    width:90%;
-    padding:5px 0;
-    font-size: 0.8rem;
-    margin:10px auto;
 }
 
 .order:hover{
@@ -699,9 +821,62 @@ em{
 }
 /* Footer-section */
 .footer-section{
+    position: relative;
     color:var(--primaryColor);
     padding:10px;
 }
+/* ----------------- Chat section ----------------- */
+.message{
+    left:30px;
+    border: none;
+    outline: none;
+}
+
+.texts{
+    visibility: hidden;
+}
+.text{
+flex-direction: row;
+visibility: visible;
+width: 300px;
+height: 200px;
+background-color:var(--secondaryColor);
+border: 2px solid var(--primaryColor); 
+position: absolute;
+z-index: 2;
+bottom:150px;
+transition: all 0.5s linear;
+}
+
+.redirect,.message{
+    position: absolute;
+    right:40px;
+    padding: 3px 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.usermessage,.message1{
+    position: absolute;
+    bottom: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.usermessage{
+    left:10px;
+}
+
+.userChatting{
+    flex-direction: column;
+}
+.message1{
+    padding: 2px 10px;
+    right: 5px;
+    border-radius: 50%;
+}
+/* ----------------------------------------- */
 .media-icons{
     margin:1%;
 }
@@ -742,6 +917,13 @@ letter-spacing: 3px;
 /* --------------------------Mobile - Viewport-------------------------------------------- */
 @media (min-width:320px) and (max-width:768px)
 {
+
+    /* loading */
+    .loading{ 
+        width: 35%;
+        min-height: 20vh;
+    }
+    /* -------- */
     .coffee{
         padding:15px;
         font-size: 1.2rem;
@@ -756,12 +938,16 @@ letter-spacing: 3px;
         left:0px;
     }
 
-    .btn{
-        padding:5px 20px;
-        bottom:650px;
+    .menuitems{
+        bottom:630px;
         right:10px;
-        font-size: 0.8rem;
         z-index: -3;
+    }
+
+    .btn{
+        margin: 0px 5px;
+        padding:5px 20px;
+        font-size: 0.8rem;
     }
         .cafecoffee-intro{
             width:100%;
@@ -831,7 +1017,18 @@ letter-spacing: 3px;
             top:0;
             bottom:0;
         }
-
+/* --------------- specials ---- */
+.specials{
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 0.7rem;
+    }
+    .dropmenu3{
+        width:150px;
+        height:20vh;
+        margin: 5px auto;
+    }
+/* ----------------------------- */
         .Horizontal-menus{
             display: flex;
             flex-wrap: wrap;
@@ -863,7 +1060,7 @@ letter-spacing: 3px;
             .dropmenu{
                 margin:15px 3px;
                 width:120px;
-                height:20vh;
+                height:15vh;
                 letter-spacing:1px;
                 padding:5px 5px 0px;
                 font-size: 0.5rem;
@@ -884,6 +1081,13 @@ letter-spacing: 3px;
             margin:3.5% auto;
             padding:10px 15px;
         }
+
+        .itemrating{
+            margin-top: 5px;
+            font-size: 0.5rem;
+            left:25%;
+            }
+            
         .cost,.order{
             padding:3px 0px;
             font-size:0.5rem;
@@ -892,14 +1096,10 @@ letter-spacing: 3px;
             width:70%;
             padding:2px 0px;
         }
-        .order,.order1{
+        .order{
             width:70%;
             font-size: 0.4rem;
             margin:5px auto;
-        }
-
-        .order1{
-            font-size: 0.4rem;
         }
     
         .vertical-line{
@@ -982,8 +1182,6 @@ letter-spacing: 3px;
         .domain{
             margin-top:30px;
         }
-        
-}
 
 .Rotational-animation{
 background: none;
@@ -1029,6 +1227,38 @@ height: 400px;
         font-size: 0.8rem;
         padding:7px;
     }
+
+    .text{
+        width: 300px;
+        height: 200px;
+        border: 5px solid var(--primaryColor); 
+        top:70px;
+        left: 30px;
+        overflow: hidden;
+        }
+
+        .text::after{
+            content: "";
+            width:50px;
+            height: 50px;
+            background-image:linear-gradient(to right bottom , white , white,var(--secondaryColor));
+            position: absolute;
+            z-index: -1;
+            top:-25px;
+            left:20px;
+            transform: rotate(45deg);
+        }
+
+        .usermessage{
+            left:50px;
+        }
+        
+        .message1{
+            padding: 2px 10px;
+            right: 10px;
+            border-radius: 50%;
+        }
+        
     .media-icons{
         margin:10px;
     }

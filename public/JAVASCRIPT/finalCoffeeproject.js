@@ -1,3 +1,26 @@
+// Refresh page
+let button = document.querySelectorAll(".btn");
+
+const loader = document.querySelector(".loader");
+const blurs = document.querySelector(".container-fluid");
+const loaderPage = document.querySelector(".loader-page");
+
+for(let i=0 ; i< button.length ; i++){
+    button[i].addEventListener("click" , function(){ 
+        loader.classList.add("loading");
+        blurs.classList.add("blur");
+        loaderPage.classList.toggle("flex1");
+    });
+}
+
+// Scroll
+window.addEventListener("scroll" , function(){
+if(window.scrollY > 800){
+    let specialText = document.querySelector(".specialtexts");
+    specialText.classList.add("specialtext");
+    specialText.textContent = "Today's Special Flavors";
+}
+});
 
 // Hamburger function
 document.querySelector(".hamburger").addEventListener("click",function(){
@@ -32,8 +55,8 @@ let subService = document.querySelectorAll(".sub-services");
 console.log(service.length);
 for(let i=0 ; i<service.length ; i++){
     service[i].addEventListener("click" , ()=>{
-       let serviceName = document.querySelector(".serviceName"+[i]);
-       serviceName.classList.toggle("vouchers");
+        let serviceName = document.querySelector(".serviceName"+[i]);
+        serviceName.classList.toggle("vouchers");
         if(i>=1){
             document.querySelector(".serviceName"+[i-1]).classList.remove("vouchers");
         }
@@ -68,6 +91,24 @@ for(let i = 0;i<moreItems.length ; i++){
     console.log(ordered.value);
 }
 });
+
+// message
+const message = document.querySelector(".message");
+const text = document.querySelector(".texts");
+message.addEventListener("click" , function(){
+text.classList.toggle("text");
+});
+
+// like
+const likes = document.querySelectorAll(".like");
+for(let i=0 ; i<likes.length ; i++){
+    likes[i].addEventListener("click" , () =>{
+    likes[i].classList.toggle("likes");
+});
+        
+}
+
+
 
 
 

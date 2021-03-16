@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
-<body class="container-fluid">
+<body>
+        <div class="container-fluid">
+
 
 <% let eItems = [{itemid : "1",itemname : "FRAPPUCCINO" , itemimg : "img1" , itemprice:"$20"}, 
                 {itemid : "2",itemname : "C-MACHIATO" , itemimg : "img2" , itemprice:"$32.5"}, 
@@ -27,7 +29,12 @@
                 {itemid : "13",itemname : "PLAIN COFFEE" , itemimg : "img13" , itemprice:"$15"}, 
                 {itemid : "14",itemname : "ICED COFFEE" , itemimg : "img14" , itemprice:"$37.25"}, 
                 {itemid : "15",itemname : "CAFE AU LAIT" , itemimg : "img15" , itemprice:"$40.5"}]; %>
+<% let specialItems1 = ""; %>
+<% let specialItems2 = ""; %>
+<% let specialItems3 = ""; %>
+<% let specialItems4 = ""; %>
 
+                
 <% let headquarters = [{headname : "Gladoff" , headimage : "image1" ,
                         headbrief : "Gladoff, famous for the roasted coffees."},
                         {headname : "Coffete" , headimage : "image2" ,
@@ -54,9 +61,14 @@
                         <div class="slide text-color"><i class="fas fa-arrow-alt-circle-down down arrow-icon"></i>Touch</div>
                         <div class="coffee text-color"><i class="fas fa-coffee mug arrow-icon"></i>CapCoffee</div>
                         
-                        <form action="/logout" method="get">
-                                <button class="btn" name="logout" value="/logout" type="submit">Log-Out</button>
-                        </form>
+                        <div class="flex menuitems">
+                                <form action="/logout" method="get">
+                                        <button class="btn" name="logout" value="/logout" type="submit">Log-Out</button>
+                                </form>
+                                <form action="/cart" method="get">
+                                        <button class="btn" name="cart" value="/cart" type="submit">Cart</button>
+                                </form>
+                        </div>
 
                         <div class="basic">
                                 <div class="Coffee-image"></div>
@@ -108,6 +120,24 @@
                 
                 </div>
         </section>
+
+        <section id="specials">
+
+                <div class="flex specialitems"><div class="specialtexts">
+                </div>
+                        <div class="flex specials">
+                                <% for(let i = 1; i<=4 ; i++){ %>
+                                        <% let randomNumberi = Math.floor(Math.random()*eItems.length);  %>
+                                        <%  let specialItemsi = eItems[randomNumberi];   %>
+                                        <div class="dropmenu3"><%= specialItemsi.itemname %>
+                                                <div id="<%= specialItemsi.itemimg %>" class="image"></div>
+                                        </div>     
+                                <% } %>   
+                        </div>
+        
+                </div>
+
+        </section>
         <section id="menu">
                         <div class="Horizontal-menus">
                                 <div class="myTitle">CapCoffee</div>
@@ -124,7 +154,7 @@
                                         <a class="company decorate text-color" href="#img8">Trendings</a>
                                         <a class="menus decorate text-color" href="#img2">Offers</a>
                                         <a class="branches decorate text-color" href="#">Trips</a>
-                                        <a class="about decorate text-color" href="#">Photos</a>  
+                                        <a class="about decorate text-color" href="#specials">Specials</a>  
                                 </span>
                         </div>
                         <div class="Infrastructures">
@@ -152,16 +182,20 @@
                         <% eItems.map((item)=>{ %>
                                 <span class="dropmenu" ><%= item.itemname %>
                                         <div id="<%=item.itemimg %>" class="image"></div>
+
                                         <div class="moreItem">
-                                                <form action="/flavors" method="post">
-                                                        <button class="order1" name ="flavourInfo" value="<%=item.itemname %>" type="submit">MORE</button>
-                                                </form>
                                                 <p class="cost"><%=item.itemprice %></p>
                                                 <form action="/cart" method="post">
+                                                        <input type="hidden" name="Itemprice" value="<%= item.itemprice %>">
                                                         <input type="hidden" name="Itemid" value="<%= item.itemid %>">
                                                         <button type="submit" name="itemordered" value="<%=item.itemname %>" class="order">Purchase</button> 
                                                 </form>
-                
+                                                <% const randomRating = (Math.floor(Math.random()*5)+1); %>
+                                                <% const randomDecimal = (Math.floor(Math.random()*9)+1); %>
+                                                <div class="itemrating"><%= randomRating%>.<%= randomDecimal  %>
+                                                        <i class="fas fa-star staricon"></i>
+                                                </div>
+                                                <i class="fas fa-heart like"></i>
                                         </div>  
                                         <div class="arrow-down"></div>
                                 </span>   
@@ -176,16 +210,37 @@
                 <% cities.map((city) =>{ %>
                         <div class="Rotational-box<%=city.cityid %>"><%= city.cityname %><div class="Rotational-image <%=city.cityimage %>"></div><p class="head-branch"><%= city.citydescription %></p></div>
                 <%  }); %>
+                
         </section>
 
         <section id="footer" class="footer-section text-color">
+                <a href="#cafecoffee" role="button" class="redirect"><i class="fas fa-angle-up"></i></a>
+                <button class="message" type="submit"><i class="fas fa-envelope"></i></button>
+                <form action="/chat" method="post">
+                        <div class="flex texts">
+                        
+                                <div class="flex userChatting">
+                                        <div class="typing"><%= Message %></div>
+                                        <div class="typing"><%= Robot %></div>
+                                </div>
+                                
+                                <input class="usermessage" type="text" name="usermessage" id="">
+                                <button class="message1" type="submit"><i class="fas fa-angle-right"></i></button>
+                        </div>
+                </form>
                 <i class="fab fa-facebook media-icons fb"></i>
                 <i class="fab fa-instagram media-icons insta"></i>
                 <i class="fab fa-twitter media-icons twitter"></i>
                 <i class="fas fa-envelope media-icons envelop"></i>
                 <p class="copyright">Copyright&copy;CapCoffee 2021</p>
         </section>
-
+</div>
+<section class="flex">
+        <div class="flex loader">
+                <div class="loading-circle"></div>
+                Loading...
+        </div>
+</section>
         <script src="JAVASCRIPT/finalCoffeeproject.js" type="text/javascript"></script>
 </body>
 </html>

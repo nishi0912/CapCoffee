@@ -17,8 +17,10 @@ const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
 
 
+// body parser is deprecated , so we are using the express module in which body-parser
+app.use(express.urlencoded({extended:true}));
+//    was present
 
-app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
@@ -52,11 +54,12 @@ userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User" , userSchema);
 // -------------------------------------------------------
+
 // --------------------Cart-items-------------------------
 const cartSchema =new mongoose.Schema({
 orderId : String,
 itemname : String,
-price:Number
+price:String
 });
 
 const Cart = mongoose.model("Cart" , cartSchema);
@@ -79,8 +82,11 @@ let cartItem = "";
 let itemId = "";
 let cartItems = [{
 Item:"Empty",
-Id : "0"
+Id : "0",
+price:"0"
 }];
+
+let itemPrice="";
 
 let temperature = "";
 let tempInCelsius = "";
@@ -166,7 +172,16 @@ passport.authenticate("local")(req, res , function(){
 
 });
 
+app.get("/finalCoffeeproject",function(req , res){  
+        if(req.isAuthenticated()){
+            res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place});
+    }
+});
 
+app.post("/previouspage" , (req , res)=>{
+    let getmsg = req.body.home;
+    res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:"",Robot:""});
+});
 
 app.post("/finalCoffeeproject" , function(req , res){
     
@@ -200,7 +215,9 @@ app.post("/finalCoffeeproject" , function(req , res){
                 tempInCelsius = ((temperature) - 273.15).toFixed(0);
                 description = _.capitalize(weatherData.weather[0].description);
                 place = weatherData.name;
-                res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place});
+                setTimeout(() => {
+                res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:"",Robot:""});
+                }, 5000);
             });
     });   
             });
@@ -214,11 +231,6 @@ app.post("/finalCoffeeproject" , function(req , res){
 
 });
 
-app.get("/finalCoffeeproject",function(req , res){
-    if(req.isAuthenticated()){
-        res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place});
-    }
-});
 
 app.get("/Failure",function(req , res){
     res.render("login");
@@ -232,11 +244,34 @@ app.post("/Failure",function(req , res){
 });
 
 app.get("/logout",function(req , res){
-res.render("login");
+    setTimeout(() => {
+        res.render("login");
+    }, 10000);
+});
+
+
+app.get("/order",function(req ,res){
+    res.send("Your order is been processed");
+});
+
+app.post("/order",(req , res)=>{
+const noOfItems =  req.body.nItem;
+
+if(noOfItems === ""){
+    res.send("Please enter the quantity of items.");
+}else if(noOfItems > 10){
+res.send("The maximum number of orders for this item is 10.");
+}else{
+    res.send(noOfItems + " orders been placed for this item.");
+}
 });
 
 app.get("/cart",function(req ,res){
-res.render("cart",{yourcart : cartItems});
+    setTimeout(() => {
+    Cart.find({} , (err , foundcarts)=>{
+    res.render("cart",{yourcart : foundcarts});
+    }); 
+    },5000);
 });
 
 app.post("/cart",function(req ,res){
@@ -245,32 +280,59 @@ if(Name === "delete"){
 console.log("Go on and delete");
 
 const deletedItem = req.body.delete;
+Cart.find({} , (err , foundcarts)=>{
+    Cart.findByIdAndRemove(deletedItem ,{useFindAndModify:false} , function(err){
+        if(!err){
+            setTimeout(() => {
+                console.log("Deleting from database");
+                res.redirect("/cart");
+            }, 2000); 
+        }
+        });
 
-// console.log(Name);
-// console.log(deletedItem);
-
-let itemDeleted = _.remove(cartItems , (items)=>{
-return items.Item == deletedItem;
 });
-console.log(itemDeleted);
+
+// let itemDeleted = _.remove(cartItems , (items)=>{
+// return items.Item == deletedItem;
+// });
+
+// console.log(itemDeleted);
 console.log("Deleting....");
-setTimeout(() => {
-    res.redirect("/cart");
-}, 2000);
+
 
 }else{
     console.log("Go on an add");
     cartItem = req.body.itemordered;
     itemId = req.body.Itemid;
-    console.log("Adding....");
-    cartItems.push({Item : cartItem , Id : itemId});
-        res.render("cart" , { yourcart : cartItems}); 
+    itemPrice = req.body.Itemprice;
+
+    const carts =new Cart({
+        orderId : itemId,
+        itemname : cartItem,
+        price:itemPrice 
+        });
+
+    Cart.find({},function(err , foundCarts){
+        if(foundCarts.length === 0){
+            carts.save();
+            console.log(carts);
+            console.log("Adding....");
+            cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.price}); 
+            res.render("cart" , { yourcart : cartItems});
+        }else{
+            Cart.find({} , (err , foundcarts)=>{
+                carts.save();
+                cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.price}); 
+                res.redirect("/cart");
+            });
+        }
+    });
 }
 });
 
-app.post("/cart/remove" , (req , res)=>{
+// app.post("/cart/remove" , (req , res)=>{
 
-});
+// });
 
 app.get("/forgot",function(req , res){
 res.render("forgot");
@@ -280,6 +342,17 @@ app.get("/more",function(req , res){
     res.render("more");
     });
     
+app.post("/chat" , (req , res)=>{
+    let robot="";
+const message = req.body.usermessage;
+if(message ==="Hi" || message === "Hello"|| message==="Test"){
+    robot = "Welcome to our chat.";
+}else if(message === ""){
+    robot = "Empty";
+}
+res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:message,Robot:robot});
+console.log(message);
+});
 
 app.post("/flavors",function(req , res){
     const flavoursInfo = req.body.flavourInfo;

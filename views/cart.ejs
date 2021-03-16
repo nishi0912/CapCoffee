@@ -9,84 +9,87 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
+    
 
     <div class="container">
         <h1><i class="fas fa-cart-arrow-down"></i> CART-ITEMS
+            <form action="/previouspage" method="POST">
+                    <button name="home" value="goback" class="btn" type="submit">Home</button>
+            </form>
             <div class="message"></div>
         </h1>
         <div class="sub-container">
-            <% console.log(yourcart); %>
+
             <% for(var i=0;i<yourcart.length;i++){ %>
                 <div class="item">
         
-            <%  if( yourcart[i].Item === "FRAPPUCCINO" || yourcart[i].Item === "C-MACHIATO" || yourcart[i].Item === "CAFE MOCHA" || yourcart[i].Item === "AMERICANO" || yourcart[i].Item === "TURKISH COFFEE" || yourcart[i].Item === "CAFE CUBANO" ||
-                yourcart[i].Item === "CAFE LATTE" || yourcart[i].Item === "IRISH COFFEE" || yourcart[i].Item === "ESPRESSO" ||
-                yourcart[i].Item === "CORTADO" || yourcart[i].Item === "AFFOGATO" || yourcart[i].Item === "CAPPUCCINO" ||
-                yourcart[i].Item === "PLAIN COFFEE" || yourcart[i].Item === "ICED COFFEE" || yourcart[i].Item === "CAFE AU LAIT") { %>
+            <%  if( yourcart[i].itemname === "FRAPPUCCINO" || yourcart[i].itemname === "C-MACHIATO" || yourcart[i].itemname === "CAFE MOCHA" || yourcart[i].itemname === "AMERICANO" || yourcart[i].itemname === "TURKISH COFFEE" || yourcart[i].itemname === "CAFE CUBANO" ||
+                yourcart[i].itemname === "CAFE LATTE" || yourcart[i].itemname === "IRISH COFFEE" || yourcart[i].itemname === "ESPRESSO" ||
+                yourcart[i].itemname === "CORTADO" || yourcart[i].itemname === "AFFOGATO" || yourcart[i].itemname === "CAPPUCCINO" ||
+                yourcart[i].itemname === "PLAIN COFFEE" || yourcart[i].itemname === "ICED COFFEE" || yourcart[i].itemname === "CAFE AU LAIT") { %>
                     <span>
 
                         <form id="delete" action="/cart" method="post">
                             <input type="hidden" name="remove" value="delete">
-                            <button  name="delete" value="<%=yourcart[i].Item%>" class="removeItem" type="submit">Remove</button>
+                            <button  name="delete" value="<%=yourcart[i]._id%>" class="removeItem" type="submit">Remove</button>
                         </form>
 
-                        <h3><%= yourcart[i].Item %></h3>
-                        <h5>Order-Id-<%= yourcart[i].Id %></h5>
+                        <h3><%= yourcart[i].itemname %></h3>
+                        <h5>Order-Id-<%= yourcart[i].orderId %></h5>
                     </span>
-                            <%  if(yourcart[i].Item === "FRAPPUCCINO" ){ %>
+                            <%  if(yourcart[i].itemname === "FRAPPUCCINO" ){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
-                                    <p class="cost">$20</p>
-                                <% }else if(yourcart[i].Item === "C-MACHIATO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "C-MACHIATO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor2.jpg" alt="CARAMEL MACCHIATO">
-                                    <p class="cost">$32.5</p>
-                                <% }else if(yourcart[i].Item === "CAFE MOCHA"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CAFE MOCHA"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor3.jpg" alt="CAFÉMOCHA">
-                                    <p class="cost">$27</p>
-                                <% }else if(yourcart[i].Item === "AMERICANO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "AMERICANO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor4.jpg" alt="AMERICANO">
-                                    <p class="cost">$23.2</p>
-                                <% }else if(yourcart[i].Item === "TURKISH COFFEE"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "TURKISH COFFEE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor5.jpg" alt="TURKISH COFFEE">
-                                    <p class="cost">$24</p>
-                                <% }else if(yourcart[i].Item === "CAFE CUBANO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CAFE CUBANO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor6.jpg" alt="CAFECUBANO">
-                                    <p class="cost">$29</p>
-                                <% }else if(yourcart[i].Item === "CAFE LATTE"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CAFE LATTE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor7.jpg" alt="CAFELATTE">
-                                    <p class="cost">$35</p>
-                                <% }else if(yourcart[i].Item === "IRISH COFFEE"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "IRISH COFFEE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor8.jpg" alt="IRISH COFFEE">
-                                    <p class="cost">$40</p>
-                                <% }else if(yourcart[i].Item === "ESPRESSO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "ESPRESSO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor9.jpg" alt="ESPRESSO">
-                                    <p class="cost">$19</p>
-                                <% }else if(yourcart[i].Item === "CORTADO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CORTADO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor10.jpg" alt="CORTADO">
-                                    <p class="cost">$32</p>
-                                <% }else if(yourcart[i].Item === "AFFOGATO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "AFFOGATO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor11.jpg" alt="AFFOGATO">
-                                    <p class="cost">$34</p>
-                                <% }else if(yourcart[i].Item === "CAPPUCCINO"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CAPPUCCINO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor12.jpg" alt="CAPPUCCINO">
-                                    <p class="cost">$41</p>
-                                <% }else if(yourcart[i].Item === "PLAIN COFFEE"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "PLAIN COFFEE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor13.jpg" alt="PLAIN COFFEE">
-                                    <p class="cost">$15</p>
-                                <% }else if(yourcart[i].Item === "ICED COFFEE"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "ICED COFFEE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor14.jpg" alt="ICED COFFEE">
-                                    <p class="cost">$37.25</p>
-                                <% }else if(yourcart[i].Item === "CAFE AU LAIT"){ %>
+                                    <p class="cost"><%= yourcart[i].price %></p>
+                                <% }else if(yourcart[i].itemname === "CAFE AU LAIT"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor15.jpg" alt="CAFE AU LAIT">
-                                    <p class="cost">$40.5</p> 
+                                    <p class="cost"><%= yourcart[i].price %></p> 
                                 <% }else{ %>
                                     <P>No-Item</P>
                             <%  } %>
-                    <button class="btn" type="submit">Buy-Now</button>
-                    
+                    <form action="/flavors" method="post">       
+                        <button class="btn" name ="flavourInfo" value="<%=yourcart[i].itemname %>" type="submit">MORE</button>
+                    </form>  
                 <%  } else{ %>
-                    <h3><%= yourcart[i].Item %></h3> 
-                    <button class="btn" type="submit">Buy-Now</button>
-                
+                        <h3><%= yourcart[i].itemname %></h3>               
                 <%  } %>
             </div>
         <% } %>

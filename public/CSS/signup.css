@@ -6,10 +6,6 @@
     user-select: none;
 }
 
-body{
-background:linear-gradient(to top , black ,white) center/cover no-repeat;
-}
-
 .signuplogo,.outerbox,.imageInfo{
     font-size: 2rem;
 }
@@ -30,7 +26,9 @@ background:linear-gradient(to top , black ,white) center/cover no-repeat;
     background-color: black;
     /* clip-path: circle(50%); */
     position: relative;
+    z-index: 1;
 }
+
 
 .other,.others{
     display: none;
