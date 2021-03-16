@@ -6,6 +6,7 @@
 }
 
 h1{
+
     text-align: center;
     padding:10px 40px;
     background-color: white;
@@ -129,10 +130,14 @@ h1,.btn,.cost{
 
 @media (min-width:320px) and (max-width:768px){
     h1{
+        min-width:100vw;
         text-align: center;
         padding:10px 40px;
         font-size: 1rem;
         background-color: white;
+        position: absolute;
+        top:0;
+        left: 0;
     }
     .container{
         padding:3% 2%;
@@ -149,7 +154,7 @@ h1,.btn,.cost{
     .item{
         font-size: 0.8rem;
         width:45%;
-        height:40vh;
+        height:35vh;
     }
 
     .btn,.cost{
