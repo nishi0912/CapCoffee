@@ -1229,11 +1229,12 @@ height: 400px;
     }
 
     .text{
-        width: 300px;
-        height: 200px;
+        width: 250px;
+        height: 150px;
         border: 5px solid var(--primaryColor); 
         top:70px;
         left: 30px;
+        margin-bottom: 10px;
         overflow: hidden;
         }
 
@@ -1250,7 +1251,7 @@ height: 400px;
         }
 
         .usermessage{
-            left:50px;
+            left:10px;
         }
         
         .message1{
