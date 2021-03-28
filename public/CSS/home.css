@@ -494,9 +494,6 @@ animation-delay: 1s;
     border-radius: 100%;
     }
     
-    .container-1::after{
-        bottom: -100%;
-        }
     .container-2::after{
         bottom:-150%;
     }

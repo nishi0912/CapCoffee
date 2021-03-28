@@ -1069,7 +1069,7 @@ letter-spacing: 3px;
     }
     .dropmenu3{
         width:150px;
-        height:20vh;
+        height:17vh;
         margin: 5px auto;
     }
 /* ----------------------------- */
@@ -1104,15 +1104,15 @@ letter-spacing: 3px;
             .dropmenu{
                 margin:15px 5px;
                 width:120px;
-                height:17vh;
+                height:15vh;
                 letter-spacing:1px;
                 padding:10px;
                 font-size: 0.5rem;
             } 
 
 .dropmenu2{
-    width:120px;
-    height:27vh; 
+    width:140px;
+    height:25vh; 
 }
 
 
