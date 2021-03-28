@@ -155,10 +155,11 @@ flex-direction: column;
     flex-direction: column;
     padding: 10px;
     width: 30vw;
-    height: 70vh;
     transition: all 1s linear;
 }
-
+.more-container{
+    height: 70vh;  
+}
 
 .upper-container::after{
     content: "";
@@ -443,22 +444,41 @@ animation-delay: 1s;
     .homepage{
         width:100vw;
     }
-    .more-container,.upper-container-mobile{
+    .upper-container-mobile{
         width: 70vw;
         height: 70vh;
     }
+
      /* ------------ flavors --------------------- */
+    .more-container{
+        width: 70vw;
+        height: 60vh;
+}
     .more-similar-container{
         margin: 20px auto;
-        width: 100vw;
+        width: 80vw;
         height: 35vh;
         position:  relative;
         right: 0;
         text-align: center;
     }
-    
+
+    .more-similar-container::before{
+        content: "";
+        width: 1000vw;
+        height: 50px;
+        background-color: gray;
+        position: absolute;
+        top:10px;
+    }
+
     .similar_title{
         width: 100vw;
+        font-size: 0.8rem;
+        color: white;
+        background-color: unset;
+        z-index: 100;
+        padding: 10px;
     }
 
     .similar_items{ 
