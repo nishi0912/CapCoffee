@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Failure</title>
+<%- include("partials/header" , {title : 'CapCoffee|Failure'}); %>
+
     <link rel="stylesheet" href="CSS/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
@@ -12,21 +8,31 @@
             <div class="container">
                 <h1 class="incorrect">"Atleast 7 character."</h1>
                 <form action="/Failure" method="post">
-                    <button type="submit" name="result" value="reenter" class="btn">Try-again</button>
+                    <%- include("partials/button" , {idname:'',buttonname : 'Try-again' , className:'btn',Name:'result',valuename:'reenter'}); %>
                 </form>
             </div>
         <% }else if(Message === "Less"){ %>
             <div class="container">
                 <h1 class="incorrect">"Atmost 12 characters."</h1>
                 <form action="/Failure" method="post">
-                    <button type="submit" name="result" value="reenter" class="btn">Try-again</button>
+                    <%- include("partials/button" , {idname:'',buttonname : 'Try-again' , className:'btn',Name:'result',valuename:'reenter'}); %>
                 </form>
+            </div>
+        <% }else if(Message === "signedIn"){ %>
+            <div class="container">
+                <h1 class="incorrect">"Already Registered."</h1>
+                <form action="/login" method="POST">
+                    <input type="hidden" name="Already" value="<%= already %>">
+                    <input type="hidden" name="newLocation" value="<%= NewLocation %>">
+                    <%- include("partials/button" , {idname:'',buttonname : 'Log-in' , className:'btn',Name:'result',valuename:'reenter'}); %>
+                </form>
+                <a role="button" class="btn" href="/signup">Sign-up</a>
             </div>
         <% }else{ %>
             <form action="/Failure" method="get">
                 <div class="container">
                     <h1 class="incorrect">Incorrect Credentials.</h1>
-                    <button type="submit" name="result" value="login" class="btn">Try-again</button>
+                    <%- include("partials/button" , {idname:'',buttonname : 'Try-again' , className:'btn',Name:'result',valuename:'login'}); %>
                 </div>
             </form>
         <% } %>

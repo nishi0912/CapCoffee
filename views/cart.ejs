@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart-Item</title>
+<%- include("partials/header" , {title : 'CapCoffee|Cart'}); %>
+
     <link rel="stylesheet" href="CSS/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    
-
     <div class="container">
         <h1><i class="fas fa-cart-arrow-down"></i> CART-ITEMS
             <form action="/previouspage" method="POST">
-                    <button name="home" value="goback" class="btn" type="submit">Home</button>
+                <%- include("partials/button", {idname:'', buttonname:'Home' , className:'btn' , Name:'home' , valuename:'goback'}); %>
             </form>
         </h1>
         <div class="sub-container">
@@ -84,10 +78,12 @@
                                 <% }else{ %>
                                     <P>No-Item</P>
                             <%  } %>
-                    <form action="/flavors" method="post">       
+                    <form action="/flavors" method="post">   
                         <button class="btn" name ="flavourInfo" value="<%=yourcart[i].itemname %>" type="submit">MORE</button>
                     </form>  
-                <%  } else{ %>
+                <%  } else if(""){ %>
+                    <h3><%= yourcart[i].itemname %></h3>               
+                <%  }else { %>
                         <h3><%= yourcart[i].itemname %></h3>               
                 <%  } %>
             </div>

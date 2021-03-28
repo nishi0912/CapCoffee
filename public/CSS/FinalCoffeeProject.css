@@ -18,10 +18,14 @@ html{
     --TernaryColor:gray;
 }
 
-.flex,.flex1{
+.flex,.flex1,.flex-column{
 display: flex;
 justify-content: center;
 align-items: center;
+}
+
+.flex-column{
+    flex-direction: column;
 }
 
 .flex1{
@@ -44,7 +48,6 @@ body{
     z-index: -10;
     opacity: 0.1;
 }
-
 
 /* -------------------- loading animation --------------- */
 .loader{
@@ -95,6 +98,7 @@ body{
 .text-color{
 color:var(--TernaryColor);
 text-align: center;
+transition: all 0.2s linear;
 }
 
 .coffee,.slide,.arrow-icon,.transitions,.footer,.box,.Interhead,.head-color{
@@ -102,35 +106,133 @@ text-align: center;
     font-size: 2.5rem;
 }
 
+.arrow-icon{
+    background-color: unset;
+}
+
+.arrow-icon{
+    margin:0 5px;
+    font-size: 2rem;
+}
+.arrow-icon{
+    color:var(--secondaryColor);
+    transition: transform 1s linear;
+}
+
 .head-color,.receipe{
     font-size: 0.85rem;
 }
 
-.coffee{
+/* --------- Header ------------------------------ */
+
+.header_flex{
+    justify-content: space-around;
+}
+.coffee,.menuitems{
     display:inline;
     padding:30px;
-    position:absolute;
-    bottom:700px;
-    left: 500px;
-    z-index:-3;
-}
-
-.slide{
-    padding:30px;
-    font-size: 1.5rem;
-    position:absolute;
-    bottom:700px;
-    left:0px;
-    animation: slideTo 3s infinite forwards;
-    transition:transform 1s linear;
 }
 
 .menuitems{
-    position:absolute;
-    z-index: -3;
-    bottom:700px;
-    right:50px;
+    position: relative;
 }
+
+/* ---------------------- User profile -------------------- */
+
+.profile{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: all 0.2s linear;
+    color: white;
+    position: relative;
+    top:0;
+    }
+    
+    .profile_border{
+        border: 3px solid rgb(18, 247, 197);
+        background-color: white;
+        color: mediumspringgreen;
+    }
+    
+    .profile_icon{
+        font-size: 2rem; 
+    }
+    
+    
+    .profile_unhovered{
+        visibility: hidden;
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        top: 20px;
+        left:-270px;
+        z-index: 100;
+    }
+    
+    .profile_hovered{
+        visibility: visible;
+        background-color: white;
+        margin-top: 20px;
+        visibility: visible;
+        text-align: left;
+        font-size: 0.9rem;
+        transition: all 0.1s linear;
+        border: 5px solid var(--secondaryColor);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px var(--TernaryColor);
+    }
+    
+    .profile_hovered::before{
+    content: "";
+    position: absolute;
+    width:50px;
+    height: 50px;
+    border: 5px solid var(--primaryColor);
+    border-left: 5px solid var(--secondaryColor);;
+    border-radius: 10px;
+    top:0px;
+    right:-50px;
+    box-shadow: 0px 0px 10px var(--TernaryColor);
+    }
+    
+    
+    .profile_name{
+        color:var(--TernaryColor);
+        text-align: center;
+        padding:5px;
+        font-size: 1rem;
+    }
+
+    .profile_hovered p{
+        font-size: 0.7rem;
+    }
+    .profile_info,.profile_DarkMode,.profile_LightMode{
+        display: block;
+        outline: none;
+        background-color: var(--primaryColor);
+        border: none;
+        border-top: 2px solid var(--TernaryColor);
+        width: 100%;
+        padding: 10px;
+        text-decoration: none;
+        transition: all 0.2s linear;
+    }
+
+    .profile_LightMode{
+        color:var(--secondaryColor);
+    }
+    
+    .profile_info:hover,
+    .profile_DarkMode:hover,
+    .profile_LightMode:hover{
+        color: var(--primaryColor);
+        cursor: pointer;
+        background-color: var(--secondaryColor);
+    }
+
+/* -------------------------------------------------------- */
 
 .btn{
     margin: 0px 5px;
@@ -141,62 +243,26 @@ text-align: center;
     background-color: var(--primaryColor);
 }
 
-.slide:hover{
-    transform:scale(1.1);
-}
-.arrow-icon{
-    margin:0 5px;
-    font-size: 2rem;
-}
-.coffee .arrow-icon{
-    color:var(--secondaryColor);
-    transition: transform 1s linear;
-}
+
 .mug.arrow-icon:hover{
 transform:rotate(20deg);
 cursor: pointer;
-}
-@keyframes slideTo{
-0%{
-    transform:translate(0px);
-}
-1%{
-    transform:translateY(100px);
-}
 }
 
 .transitions{
     width:100%;
     height:600px;
-    margin: 200px 0 0;
+    margin: 50px 0 0;
     position:relative;
 }
-.transitions::before,
-.transitions::after{
-        content:"";
-        width:100%;
-        height:100%;
-        position: absolute;
-        transition: all 2s linear;
-}
-.transitions::before{
-    background-color: var(--primaryColor);
-    top:-100px;
-    bottom:-100px;
-    z-index:-2;
-}
-.transitions::after{
-    background-color: var(--secondaryColor);
-    top:-200px;
-    bottom:-200px;
-    z-index:-3;
+
+.cafecoffee-intro{
+    position: relative;
+    top:70px;
+    font-size: 1.2rem;
+    line-height: 2;
 }
 
-.transitions:hover::before,
-.transitions:hover::after{
-    top:0;
-    bottom:0;
-}
 .Coffee-image{
     background: url('./Images/flavor10.jpg') center/cover no-repeat;
     width:200px;
@@ -213,27 +279,21 @@ cursor: pointer;
 transform: scale(1.2);
 }
 
-.basic{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
+/* ----------------- Weather styling ------------------- */
 .weatherDetails{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width:300px;
-    height:150px;
+    height:170px;
     color:gray;
     background-color: var(--primaryColor);
-    box-shadow: 0px 0px 10px var(--TernaryColor),
-                0px 0px 20px var(--TernaryColor);
+    box-shadow: 0px 0px 5px var(--TernaryColor),
+                0px 0px 10px var(--TernaryColor);
     position: relative;
     font-size: 1.3rem;
     border-radius: 20px;
+}
+
+.weather_content{
+transform: translateY(-10px);
 }
 
 .description{
@@ -243,9 +303,19 @@ transform: scale(1.2);
 .nodescription{
 text-align: center;
 font-size: 0.7;
+border:2px solid var(--secondaryColor);
+padding: 10px;
+border-radius: 20px;
+}
+.weather_icon{
+    font-size: 0.5rem;
 }
 
 /*--------------------------- Serives section -------------------------------- */
+.basic{
+    justify-content: space-evenly;
+}
+
 .services{
 width:100%;
 height: 25vh;
@@ -280,7 +350,7 @@ background-color: var(--primaryColor);
     transform: scale(1.2);
 }
 
-.vouchers{
+.vouchers,.vouch{
     display: grid;
     place-items: center;
     visibility: visible;
@@ -302,6 +372,38 @@ background-color: var(--primaryColor);
 
 
 /* --------------------------------------------------------------------------- */
+
+
+/* ----------------------- Special Items -------------- */
+.specials{
+    flex-wrap: wrap;
+    flex-direction: row;
+    }    
+
+.specialitems{
+    flex-direction: column;
+    width:100%;
+    min-height: 40vh;
+    background-color: white;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.specialtext{
+    padding: 10px 50px;
+    color:white;
+    background-color:mediumspringgreen ;
+    transition: all 1s linear;
+}
+
+.dropmenu3{
+    margin: 0 5px;
+    padding:0;
+}
+/* ---------------------------------------------------- */
+
+/* -------------------- Menu -------------------------- */
 .Horizontal-menus{
     width:100%;
     height:100px;
@@ -361,49 +463,6 @@ transition: all 0.5s linear;
     text-decoration: none;
 }
 
-/* ----------------- */
-.cafecoffee-intro{
-    position: relative;
-    top:70px;
-    font-size: 1.2rem;
-    line-height: 2;
-    background-color:var(--primaryColor);
-    width:100%;
-    height:300px;
-    box-shadow:0px 10px 5px grey;
-}
-
-/* ----------------------- Special Items -------------- */
-.specialitems{
-    flex-direction: column;
-    width:100%;
-    min-height: 40vh;
-    background-color: white;
-    margin: 20px auto;
-    text-align: center;
-    padding: 20px;
-}
-
-.specialtext{
-    padding: 10px 50px;
-    color:white;
-    background-color:mediumspringgreen ;
-    transition: all 1s linear;
-}
-
-.specials{
-flex-wrap: wrap;
-flex-direction: row;
-}
-
-.dropmenu3{
-    margin: 0 5px;
-    padding:0;
-}
-
-
-/* ---------------------------------------------------- */
-/* --------------Infrastructure------------------------ */
 .Infrastructures{
     width:inherit;
     min-height: 20vh;
@@ -430,7 +489,6 @@ flex-direction: row;
 .domains{
     visibility: hidden;
     position: absolute;
-    /* display: none; */
 }
 
 .companyDomains{
@@ -520,7 +578,6 @@ text-align: center;
     margin:50px 20px;
     width:250px;
     height:40vh;
-    color:grey;
     letter-spacing:2px;
     font-family:'Poppins',sans-serif;
     padding:0px 20px 0px;
@@ -558,7 +615,7 @@ text-align: center;
     place-items: center;
     border: 7px solid gray;
     border-radius: 50%;
-    color: mediumspringgreen;
+    color: var(--secondaryColor);
 }
 
 .image{
@@ -671,7 +728,7 @@ em{
     outline:none;
 }
 
-/*------------------------- Branches */
+/*------------------------- Branches ---------------------------- */
     /* Rotational Animation */
 .Rotational-animation{
     background-color: var(--primaryColor);
@@ -681,7 +738,7 @@ em{
     position:relative;
 }
 
-.Rotational-box1,.Rotational-box2,.Rotational-box3{
+.Rotatational_Boxes{
     display: inline-block;
     background-color:white;
     font-size: 1.25rem;
@@ -732,8 +789,6 @@ em{
 }
 .head-branch{
     font-size: 0.85rem;
-    text-align: center;
-    color:var(--TernaryColor);
 }
 /* London box */
 @keyframes r-box1{
@@ -924,26 +979,28 @@ letter-spacing: 3px;
         min-height: 20vh;
     }
     /* -------- */
+    .coffee ,.menuitems{
+        position: relative;
+        top:50px;
+        right:0px;
+        z-index: 3;
+    }
     .coffee{
         padding:15px;
         font-size: 1.2rem;
-        bottom:700px;
-        left: 130px;
+        left: 0px;
     }
-    
-    .slide{
-        padding:15px;
-        font-size: 0.7rem;
-        bottom:700px;
-        left:0px;
+    /*------------------------- Profile ---------------------------- */
+    .profile_unhovered{
+        top: 100px;
+        left:-50%;
+        z-index: 100;
     }
-
-    .menuitems{
-        bottom:630px;
-        right:10px;
-        z-index: -3;
-    }
-
+    .profile_hovered::before{
+        display: none;
+        }
+        
+    /* ------------------------------------------------------------- */
     .btn{
         margin: 0px 5px;
         padding:5px 20px;
@@ -982,40 +1039,25 @@ letter-spacing: 3px;
             }
 
             .weatherDetails{
-                width:180px;
-                height:90px;
-                font-size: 1rem;
+                flex-direction: row;
+                width:190px;
+                height:100px;
+                font-size: 0.8rem;
             }
             
             .description{
-                font-size: 0.8rem;
+                font-size: 0.6rem;
             }
+
+            .weather_content,.weather_icon{
+                transform: translateY(0px);
+                }
     
         .transitions{
             width:100%;
             height:600px;
-            margin-top:200px;
+            margin-top:50px;
             position:relative;
-        }
-        .transitions::before,
-        .transitions::after{
-                content:"";
-                width:100%;
-                height:100%;
-        }
-        .transitions::before{
-            top:-100px;
-            bottom:-100px;
-        }
-        .transitions::after{
-            top:-200px;
-            bottom:-200px;
-        }
-        
-        .transitions:hover::before,
-        .transitions:hover::after{
-            top:0;
-            bottom:0;
         }
 /* --------------- specials ---- */
 .specials{
@@ -1054,21 +1096,21 @@ letter-spacing: 3px;
             justify-content: unset;
             align-items: unset;
             text-align: center;
-            padding: 0px 30px;
+            padding: 0px 20px;
             }
 
             .dropmenu{
-                margin:15px 3px;
+                margin:15px 5px;
                 width:120px;
-                height:15vh;
+                height:17vh;
                 letter-spacing:1px;
-                padding:5px 5px 0px;
+                padding:10px;
                 font-size: 0.5rem;
             } 
 
 .dropmenu2{
     width:120px;
-    height:25vh; 
+    height:27vh; 
 }
 
 
@@ -1404,6 +1446,28 @@ height: 400px;
         }
     }
 }
+
+/* -------------------- Screen Mode --------------------- */
+.new_text_color{
+    color:var(--primaryColor);
+}
+
+.body-screen{
+    background-color: var(--secondaryColor);
+}
+
+.coffee_mode,.profile_mode,.transition_mode,.service_mode,.sub_mode,
+.special_mode,.horizontal_mode,.infra_mode,.drop_mode,.drop_mode2,.rotational_mode
+,.rotationalbox_mode,.domain_mode{
+    background-color: black;
+    box-shadow: 0px 0px 10ps var(--primaryColor);
+    border: 2px solid var(--primaryColor);
+}
+
+.icon_mode{
+    color:white;
+}
+/* ------------------------------------------------------ */
 
 
 /* --------------------- */

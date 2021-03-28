@@ -15,6 +15,8 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20");
 const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
+const { Passport } = require("passport");
+const { runInNewContext } = require("vm");
 
 
 // body parser is deprecated , so we are using the express module in which body-parser
@@ -65,7 +67,19 @@ price:String
 const Cart = mongoose.model("Cart" , cartSchema);
 // -------------------------------------------------------
 
+// --------------Reset Schema ---------------
+const resetSchema = new mongoose.Schema({
+username:String,
+password:String
+});
+
+resetSchema.plugin(passportLocalMongoose);
+resetSchema.plugin(findOrCreate);
+
+const Reset = mongoose.model("Reset" , resetSchema);
+// ------------------------------------------
 passport.use(User.createStrategy());
+passport.use(Reset.createStrategy());
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -92,8 +106,9 @@ let temperature = "";
 let tempInCelsius = "";
 let description = "";
 let place = "";
+let icon="";
+let imageURL="";
 
-let resetEmail = "";
 
 passport.use(new GoogleStrategy({
     clientID : process.env.GOOGLE_CLIENT_ID,
@@ -130,16 +145,16 @@ res.sendFile(__dirname + "/signup.html");
 });
 
 app.get("/Login",function(req , res){
-    if(req.isAuthenticated()){
-        res.render("login");
-    }else{
-        res.redirect("/signup");
-    }
+    res.render("login" , {registeredPassword : "",isreg : "true",NewLocation : ""});
 });
 
 ejsLint("cart"); 
 
 app.post("/login" , function(req , res){
+
+let alreadyRegistered = req.body.Already;
+let Newone = req.body.newLocation;
+console.log("Already - "+alreadyRegistered);
 
 const user1 = new User({
 username : req.body.username,
@@ -147,93 +162,121 @@ email:req.body.email,
 location:req.body.city
 });
 
-
+if(alreadyRegistered){
+    res.render("login" , {registeredPassword : alreadyRegistered , isreg : "true",NewLocation : Newone});
+}else if(!alreadyRegistered){
 User.register({username : req.body.username,email : req.body.email , location:req.body.city},req.body.password,function(err){
-if(err){
+    if(err){
     console.log(err);
-    res.redirect("/signup");
+    setTimeout(() => {
+        res.render("Failure",{Message : "signedIn", already:req.body.password, NewLocation : req.body.city});
+    }, 2000);
 }else{
-passport.authenticate("local")(req, res , function(){
+    passport.authenticate("local",(err , user , info)=>{
     let password =  req.body.password;
     let passwordLength = password.length;
     if(passwordLength >= 6 && passwordLength <= 12){
         user1.save(function(err){
-            res.render("login");
+            res.render("login",{registeredPassword : req.body.password , isreg : "true",NewLocation : req.body.city});
         });
     }else if(passwordLength < 6){
         res.render("Failure",{Message : "More"});
     }else if(passwordLength  > 12)
         {
-        res.render("Failure",{Message : "Less"});
-    }
-});
-}
-});
-
-});
-
-app.get("/finalCoffeeproject",function(req , res){  
-        if(req.isAuthenticated()){
-            res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place});
+            res.render("Failure",{Message : "Less"});
+        }})(req , res);
+                }
+        });
     }
 });
 
 app.post("/previouspage" , (req , res)=>{
     let getmsg = req.body.home;
-    res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:"",Robot:""});
+    res.redirect("/finalCoffeeproject");
+});
+
+app.get("/finalCoffeeproject",function(req , res){  
+    setTimeout(() => {
+        res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:"",Robot:"",Logout:"false"});
+    }, 2000);
 });
 
 app.post("/finalCoffeeproject" , function(req , res){
-    
+    const RegisteredPassword = req.body.registeredpassword;
+    const Logout = req.body.logoutpass;
+    const NewLocation = req.body.NewLocation;
+    const Re_locate = req.body.reLocate;
+    if(Re_locate){
+        console.log(Re_locate);
+    }
+
+    console.log("Logged out - "+Logout);
+    console.log(RegisteredPassword);
+
     const newUser = new User({
         username:req.body.User,
         password:req.body.userPassword
     });
 
-    // console.log(newUser);
+    User.find({username : req.body.User} , function(err , foundUser){  
+        console.log(foundUser);
+        console.log(foundUser[0].username , req.body.registeredpassword);
+        console.log(foundUser[0].username ,req.body.logoutpass);
+        console.log(req.body.User , req.body.userPassword,NewLocation);
+
+    if((RegisteredPassword === req.body.userPassword && foundUser[0].username === req.body.User) ||(Logout === req.body.userPassword && foundUser[0].username === req.body.User)){
     req.logIn(newUser , function(err){
         if(err){
             console.log(err);
         }else{
-            console.log("req success");
-            // passport.authenticate("local")(req, res , function(){
-
-            // });
-
-            
-                User.findOne({username : req.body.User} , function(err , foundUser){
-                    console.log(foundUser.location);
-            const url ="https://api.openweathermap.org/data/2.5/weather?q="+foundUser.location+"&appid=86ec7a4a847d69237bdbbc7be5505c71" ;
+            passport.authenticate("local",(err , user , info)=>{
+            let current = "" ;
+            if(!Re_locate){
+                (NewLocation.length === 0)? current = foundUser[0].location : current = NewLocation
+            }else{
+                (Re_locate.length === 0)? current = foundUser[0].location: current = Re_locate 
+            }
+            const url ="https://api.openweathermap.org/data/2.5/weather?q="+current+"&appid=86ec7a4a847d69237bdbbc7be5505c71" ;
                     
-            https.get(url , function(response){
+            https.get(url , function(response , err){
+            if(!err){
             console.log(response.statusCode);
+                if(response.statusCode=== 200){
+                        response.on("data",function(data){
 
-            response.on("data",function(data){
+                            const weatherData = JSON.parse(data);
+                            icon = weatherData.weather[0].icon;
+                            imageURL = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+                            temperature = weatherData.main.temp;
+                            tempInCelsius = ((temperature) - 273.15).toFixed(0);
+                            description = _.capitalize(weatherData.weather[0].description);
+                            place = weatherData.name;
 
-                const weatherData = JSON.parse(data);
-                temperature = weatherData.main.temp;
-                tempInCelsius = ((temperature) - 273.15).toFixed(0);
-                description = _.capitalize(weatherData.weather[0].description);
-                place = weatherData.name;
-                setTimeout(() => {
-                res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:"",Robot:""});
-                }, 5000);
-            });
-    });   
-            });
-        }
-    });
-    
-    //     res.render("Failure",{Message : ""});
-    //     console.log("Incorrect credentials.");
-    //         }
-    // });
+                            if(req.isAuthenticated()){
+                            setTimeout(() => {
+                            res.render("finalCoffeeproject" , {Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:_.upperCase(req.user.username) ,Robot:"",Logout : RegisteredPassword});
+                            }, 5000);
+                            }
+                        });
+                }else{
+                    res.render("login" , {registeredPassword : req.body.userPassword,isreg : "Re-locate",NewLocation : ""});
+                }
+            }
+    });        
 
+})(req , res);
+}
+});
+    }else{
+        console.log("Not logged in");
+        res.render("login",{isreg:"false"});
+    }
+});
 });
 
 
 app.get("/Failure",function(req , res){
-    res.render("login");
+    res.render("login",{isreg :"false"});
 });
 
 app.post("/Failure",function(req , res){
@@ -243,26 +286,37 @@ app.post("/Failure",function(req , res){
     }
 });
 
-app.get("/logout",function(req , res){
-    setTimeout(() => {
-        res.render("login");
-    }, 10000);
-});
-
-
 app.get("/order",function(req ,res){
     res.send("Your order is been processed");
 });
 
 app.post("/order",(req , res)=>{
-const noOfItems =  req.body.nItem;
+let noOfItems =  req.body.nItem;
+const orders = req.body.orderplaced;
+console.log(orders);
 
 if(noOfItems === ""){
     res.send("Please enter the quantity of items.");
 }else if(noOfItems > 10){
-res.send("The maximum number of orders for this item is 10.");
+    res.send("The maximum number of orders for this item is 10.");
 }else{
-    res.send(noOfItems + " orders been placed for this item.");
+    
+    Cart.find({itemname : orders} , (err , foundorders)=>{
+        const neworder = new Cart({
+            orderId : foundorders[0].orderId,
+            itemname : foundorders[0].itemname,
+            price:foundorders[0].price
+        });
+        let i;
+        for(i=0 ; i<noOfItems ; i++){
+            console.log(neworder);
+                neworder.save();    
+        }
+        if(i == noOfItems){
+            console.log(i , noOfItems);
+            res.redirect("/cart");
+        }
+    });
 }
 });
 
@@ -286,7 +340,7 @@ Cart.find({} , (err , foundcarts)=>{
             setTimeout(() => {
                 console.log("Deleting from database");
                 res.redirect("/cart");
-            }, 2000); 
+            }, 1000); 
         }
         });
 
@@ -330,13 +384,60 @@ console.log("Deleting....");
 }
 });
 
-// app.post("/cart/remove" , (req , res)=>{
 
-// });
+app.get("/logout",function(req , res){
+    setTimeout(() => {
+        res.render("login",{isreg : "false"});
+    }, 10000);
+});
+
+app.post("/logout",function(req , res){
+const logoutPass = req.body.Logout;
+console.log("I am currently here - "+logoutPass);
+res.render("login" , {isreg : "logback", Logout : logoutPass,NewLocation:"" });
+});
 
 app.get("/forgot",function(req , res){
 res.render("forgot");
 });
+
+app.post("/re-enter", function(req , res){
+    let Reset = req.body.resetEmail;
+    console.log("Re-entered - "+Reset);
+    User.findOne({email : Reset} , (err , foundEmail)=>{
+        if(foundEmail){
+            checked=true;
+            res.render("re-enter",{usermail : Reset});
+        }else{    
+            checked = false;
+            res.redirect("/forgot");  
+            }
+    });
+    });
+
+app.post("/cafecoffeeintro" , function(req , res){
+    const first = req.body.firstpassword;
+    const second = req.body.secondpassword;
+    const UserMail = req.body.newmail;
+    if(first === second){
+        const reset1 = new Reset({
+            username:"",
+            password:second
+        });
+        Reset.register({username : UserMail},req.body.secondpassword, (err)=>{
+            if(err){
+                console.log(err);
+            }else{
+                    console.log("saved");
+                    User.updateOne({},{useFindAndModify:false},(err , foundResults)=>{
+                    console.log(foundResults);
+                    });
+            }
+        });
+    }
+    res.render("cafecoffeeintro");
+});
+    
 
 app.get("/more",function(req , res){
     res.render("more");
@@ -350,7 +451,8 @@ if(message ==="Hi" || message === "Hello"|| message==="Test"){
 }else if(message === ""){
     robot = "Empty";
 }
-res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description , Place : place,Message:message,Robot:robot});
+                const imageURL = "http://openweathermap.org/img/wn/"+icon+"@2x.png"
+res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:message,Robot:robot,Logout:"false"});
 console.log(message);
 });
 
@@ -359,17 +461,6 @@ app.post("/flavors",function(req , res){
     res.render("flavors" ,{ getInfo : flavoursInfo });
 });
 
-app.post("/re-enter", function(req , res){
-resetEmail = req.body.resetEmail;
-if(email === resetEmail){
-    res.render("re-enter");
-}
-});
-
-
-app.post("/cafecoffeeintro" , function(req , res){
-res.render("cafecoffeeintro");
-});
 
 app.get("/auth/google",passport.authenticate("google",{scope:['profile']}));
 

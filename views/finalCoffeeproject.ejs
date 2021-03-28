@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CafeCoffee</title>
+<%- include("partials/header" , {title : 'CapCoffee'}); %>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS\FinalCoffeeProject.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="Main">   
         <div class="container-fluid">
 
 
@@ -57,40 +53,66 @@
 
 
         <section id="cafecoffee">
-                <div class="transitions">
-                        <div class="slide text-color"><i class="fas fa-arrow-alt-circle-down down arrow-icon"></i>Touch</div>
+<!-- --------------------- Header start ------------------------ -->
+                <div class="flex header_flex">
                         <div class="coffee text-color"><i class="fas fa-coffee mug arrow-icon"></i>CapCoffee</div>
                         
                         <div class="flex menuitems">
-                                <form action="/logout" method="get">
-                                        <button class="btn" name="logout" value="/logout" type="submit">Log-Out</button>
-                                </form>
-                                <form action="/cart" method="get">
-                                        <button class="btn" name="cart" value="/cart" type="submit">Cart</button>
-                                </form>
-                        </div>
 
-                        <div class="basic">
+                                <div class="flex profile">
+                                        <i class="fas fa-user-tie profile_icon"></i>
+                                </div>
+                                <div class="profile_unhovered">
+                                        <div class="profile_name"><%= Message %>
+                                        <p>Developer@CapCoffee</p>
+                                        </div>
+                                        <%- include("partials/button", {idname:'', buttonname:'Profile' , className:'profile_info user_profile text-color ' , Name:'' , valuename:''}); %>
+                                        <%- include("partials/button", {idname:'', buttonname:'Liked' , className:'profile_info liked text-color ' , Name:'' , valuename:''}); %>
+                                        <%- include("partials/button", {idname:'', buttonname:'Profile-settings' , className:'profile_info profile_settings text-color ' , Name:'' , valuename:''}); %>
+                                        <%- include("partials/button", {idname:'', buttonname:'Dark-Mode' , className:'profile_DarkMode  Dark_mode text-color' , Name:'' , valuename:''}); %>
+                        
+                                        <form action="/cart" method="get">
+                                                <%- include("partials/button", {idname:'',buttonname:'Cart' , className:'profile_info text-color' , Name:'cart' , valuename:'/cart'}); %>
+                                        </form>
+                                        <form action="/logout" method="post">
+                                                <% if(Logout!=false){ %>
+                                                <% console.log("Logged? - "+Logout); %>
+                                                <input type="hidden" name="Logout" value="<%= Logout %>">
+                                                <% } %>
+                                                <%- include("partials/button", {idname:'', buttonname:'Log-Out' , className:'profile_info text-color' , Name:'logout' , valuename:'/logout'}); %>
+                                        </form>
+                                </div>        
+                        </div>
+</div>
+<!-- --------------------- Header ends ------------------------ -->
+                <div class="transitions">
+                        <div class="flex basic">
                                 <div class="Coffee-image"></div>
-                                <div class="weatherDetails">
-                                        <% if(Temperature ==""){ %>
+                                <div class="flex-column weatherDetails">
+                                        <% if(Temperature === ""){ %>
                                                 <div class="nodescription"></div>
                                         <% }else{ %>
-                                                <div><%= Temperature %> °c in <%= Place%></div>
-                                                <div class="description"><%= Description %></div>
+                                                <img class="weather_icon" src="<%= Image %>" alt="Weather-Image">
+                                                <div class="weather_content">
+                                                        <div class="text-color"><%= Temperature %> °c in <%= Place%></div>
+                                                        <div class="description text-color"><%= Description %></div>
+                                                </div>
+                        
                                         <% } %>
                                 </div>
                         </div>
                         <div class="cafecoffee-intro text-color"><em><strong>CapCoffee</strong></em>  was started as a small branch at the beginning and was well developed for buissness . In 2021 , We had good response
                                 from our customers....
-                        <form action="/more" method="get">
-                                <a href="/more">Read-more</a></div>
-                        </form>
+                                <form action="/more" method="get">
+                                        <a href="/more">Read-more</a>
+                                </form>
+                        </div>
                 </div>
                 <br>
         </section>
+
         <section id="services">
-                <div class="basic services">
+                <div class="flex basic services text-color">
 
                         <div class="sub-services">
                                 <i class="fab fa-sourcetree service-icon"></i>
@@ -123,8 +145,8 @@
 
         <section id="specials">
 
-                <div class="flex specialitems"><div class="specialtexts">
-                </div>
+                <div class="flex specialitems text-color">
+                        <div class="specialtexts"></div>
                         <div class="flex specials">
                                 <% for(let i = 1; i<=4 ; i++){ %>
                                         <% let randomNumberi = Math.floor(Math.random()*eItems.length);  %>
@@ -139,8 +161,8 @@
 
         </section>
         <section id="menu">
-                        <div class="Horizontal-menus">
-                                <div class="myTitle">CapCoffee</div>
+                        <div class="Horizontal-menus text-color">
+                                <div class="myTitle text-color">CapCoffee</div>
                                 <div class="hamburger">
                                         <div class="lines l1"></div>
                                         <div class="lines l2"></div>
@@ -167,20 +189,20 @@
                                                 <div class="domain">
                                                         <span class="brief head-color text-color"><%= head.headname %></span>
                                                         <div class="brief img <%= head.headimage %>"></div>
-                                                        <div class="brief briefing"><%= head.headbrief %></div>
+                                                        <div class="brief briefing text-color"><%= head.headbrief %></div>
                                                 </div>
                                         <% }); %>
 
                                 </div>
                         </div>
         </section>
-        <!-- Coffee menus section -->
+<!-- Coffee menus section -->
         <section id="menus">
 
                 <div class="coffeeItems">
 
                         <% eItems.map((item)=>{ %>
-                                <span class="dropmenu" ><%= item.itemname %>
+                                <span class="text-color dropmenu" ><%= item.itemname %>
                                         <div id="<%=item.itemimg %>" class="image"></div>
 
                                         <div class="moreItem">
@@ -188,7 +210,7 @@
                                                 <form action="/cart" method="post">
                                                         <input type="hidden" name="Itemprice" value="<%= item.itemprice %>">
                                                         <input type="hidden" name="Itemid" value="<%= item.itemid %>">
-                                                        <button type="submit" name="itemordered" value="<%=item.itemname %>" class="order">Purchase</button> 
+                                                        <button class="order" name="itemordered" value="<%= item.itemname %>" type="submit">Purchase</button>
                                                 </form>
                                                 <% const randomRating = (Math.floor(Math.random()*5)+1); %>
                                                 <% const randomDecimal = (Math.floor(Math.random()*9)+1); %>
@@ -199,16 +221,15 @@
                                         </div>  
                                         <div class="arrow-down"></div>
                                 </span>   
-                <%  }); %>
-
-
-                        
+                        <%  }); %>                   
                 </div>
         </section>
+
         <!-- Company branches section -->
+
         <section id="branches" class="Rotational-animation">
                 <% cities.map((city) =>{ %>
-                        <div class="Rotational-box<%=city.cityid %>"><%= city.cityname %><div class="Rotational-image <%=city.cityimage %>"></div><p class="head-branch"><%= city.citydescription %></p></div>
+                        <div class="Rotatational_Boxes Rotational-box<%=city.cityid %>"><%= city.cityname %><div class="Rotational-image <%=city.cityimage %>"></div><p class="text-color head-branch"><%= city.citydescription %></p></div>
                 <%  }); %>
                 
         </section>
@@ -235,12 +256,11 @@
                 <p class="copyright">Copyright&copy;CapCoffee 2021</p>
         </section>
 </div>
+
 <section class="flex">
-        <div class="flex loader">
-                <div class="loading-circle"></div>
-                Loading...
-        </div>
+        <%- include("partials/loading"); %>
 </section>
+
         <script src="JAVASCRIPT/finalCoffeeproject.js" type="text/javascript"></script>
 </body>
 </html>

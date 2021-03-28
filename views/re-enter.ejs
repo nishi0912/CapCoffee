@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot?</title>
-    <link rel="stylesheet" href="CSS/home.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<%- include("partials/header" , {title : 'CapCoffee|Re-enter'}); %>
+
+<link rel="stylesheet" href="CSS/home.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-        <form action="/cafecoffeeintro" method="post">
-                <div class="homepage">
+        <%- include("partials/form" , {routename:'/cafecoffeeintro' , methodname:'post'}); %>
+                <div class="flex homepage">
                         <div class="container-2">
                                 <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
-                                <input class="userdetails" type="text" name="" placeholder="Enter password" autofocus autocomplete="off">
-                                <input class="userdetails" type="text" name="" placeholder="Re-enter password" autocomplete="off">
-                                <button class="btn" type="submit">CHANGE</button>
-                                <%- include("footer") %>
+                                        <input type="hidden" name="newmail" value="<%= usermail %>">
+                                        <input class="userdetails" type="text" name="firstpassword" placeholder="Enter password" autofocus autocomplete="off">
+                                        <input class="userdetails" type="text" name="secondpassword" placeholder="Re-enter password" autocomplete="off">
+                                        <%- include("partials/button" , {idname:'',buttonname : 'Reset' , className:'btn',Name:'',valuename:''}); %>
+                        <%- include("partials/footer") %>
                         </div>
                 </div>
         </form>
