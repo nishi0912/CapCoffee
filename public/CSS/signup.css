@@ -314,8 +314,12 @@ color: white;
         border-radius: 5px;
         letter-spacing: 1px;
         border:2px solid gray;
-
+        color:gray;
     }
+    .Label_up::placeholder{
+        transform: translateY(-30px);
+        transition: all 0.5s linear;
+        }
 
     .userdetails::placeholder{
         color: gray;

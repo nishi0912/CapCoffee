@@ -165,7 +165,7 @@ transition: all 0.2s linear;
         visibility: hidden;
         position: absolute;
         width: 250px;
-        height: 250px;
+        min-height: 50vh;
         top: 20px;
         left:-270px;
         z-index: 100;
@@ -281,6 +281,7 @@ transform: scale(1.2);
 
 /* ----------------- Weather styling ------------------- */
 .weatherDetails{
+    flex-direction: column;
     width:300px;
     height:170px;
     color:gray;
@@ -1028,8 +1029,8 @@ letter-spacing: 3px;
         cursor: pointer;
         }
         .Coffee-image{
-            width:120px;
-            height:120px;
+            width:100px;
+            height:100px;
             top:10px;
             left:0;
         }
@@ -1040,9 +1041,10 @@ letter-spacing: 3px;
 
             .weatherDetails{
                 flex-direction: row;
-                width:190px;
+                width:170px;
                 height:100px;
                 font-size: 0.8rem;
+                margin-top: 10px;
             }
             
             .description{
@@ -1055,7 +1057,7 @@ letter-spacing: 3px;
     
         .transitions{
             width:100%;
-            height:600px;
+            height:300px;
             margin-top:50px;
             position:relative;
         }
@@ -1456,16 +1458,20 @@ height: 400px;
     background-color: var(--secondaryColor);
 }
 
-.coffee_mode,.profile_mode,.transition_mode,.service_mode,.sub_mode,
+.coffee_mode,.profile_mode,.profiletab_mode,.profiles_mode,.profile_LightMode,.transition_mode,.service_mode,.sub_mode,
 .special_mode,.horizontal_mode,.infra_mode,.drop_mode,.drop_mode2,.rotational_mode
 ,.rotationalbox_mode,.domain_mode{
     background-color: black;
-    box-shadow: 0px 0px 10ps var(--primaryColor);
+    box-shadow: 0px 0px 10px var(--primaryColor);
     border: 2px solid var(--primaryColor);
 }
 
 .icon_mode{
     color:white;
+}
+
+.image_mode{
+    box-shadow: 0px 0px 10px var(--primaryColor);
 }
 /* ------------------------------------------------------ */
 

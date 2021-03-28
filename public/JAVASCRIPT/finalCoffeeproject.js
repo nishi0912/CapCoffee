@@ -129,6 +129,8 @@ const CoffeeMode = document.querySelector(".coffee");
 const IconMode = document.querySelector(".arrow-icon");
 
 const ProfileMode = document.querySelector(".profile");
+const ProfileTabMode = document.querySelector(".profile_unhovered");
+
 const TransitionMode = document.querySelector(".transitions");
 const ServiceMode = document.querySelector(".services");
 const SubServiceMode = document.querySelectorAll(".serviceLists");
@@ -137,8 +139,10 @@ const HorizontalMode = document.querySelector(".Horizontal-menus");
 const InfraMode = document.querySelector(".Interhead");
 const DomainMode = document.querySelectorAll(".domain");
 
+
 const DropMode = document.querySelectorAll(".dropmenu");
 const DropMode2 = document.querySelectorAll(".dropmenu3");
+const ImageMode = document.querySelectorAll(".image");
 
 const RotationalMode = document.querySelector(".Rotational-animation");
 const RotationalBoxMode = document.querySelectorAll(".Rotatational_Boxes");
@@ -159,6 +163,10 @@ Mode.addEventListener("click" , ()=>{
     CoffeeMode.classList.toggle("coffee_mode");
     IconMode.classList.toggle("icon_mode");
     ProfileMode.classList.toggle("profile_mode");
+    ProfileTabMode.classList.toggle("profiletab_mode");
+    for(let i =0;i<profiles.length;i++){
+        profiles[i].classList.toggle("profiles_mode");
+    }
     TransitionMode.classList.toggle("transition_mode");
     ServiceMode.classList.toggle("service_mode");
     for(let i =0;i<SubServiceMode.length;i++){
@@ -175,6 +183,10 @@ Mode.addEventListener("click" , ()=>{
     }
     for(let i=0;i<DropMode2.length;i++){
         DropMode2[i].classList.toggle("drop_mode2");
+    }
+    for(let i=0;i<ImageMode.length;i++)
+    {
+        ImageMode[i].classList.toggle("image_mode");
     }
     RotationalMode.classList.toggle("rotational_mode");
     for(let i=0;i<RotationalBoxMode.length;i++){

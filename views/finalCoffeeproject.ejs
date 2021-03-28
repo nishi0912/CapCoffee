@@ -63,8 +63,8 @@
                                         <i class="fas fa-user-tie profile_icon"></i>
                                 </div>
                                 <div class="profile_unhovered">
-                                        <div class="profile_name"><%= Message %>
-                                        <p>Developer@CapCoffee</p>
+                                        <div class="profile_name text-color"><%= Message %>
+                                        <p class="text-color">Developer@CapCoffee</p>
                                         </div>
                                         <%- include("partials/button", {idname:'', buttonname:'Profile' , className:'profile_info user_profile text-color ' , Name:'' , valuename:''}); %>
                                         <%- include("partials/button", {idname:'', buttonname:'Liked' , className:'profile_info liked text-color ' , Name:'' , valuename:''}); %>
@@ -88,14 +88,14 @@
                 <div class="transitions">
                         <div class="flex basic">
                                 <div class="Coffee-image"></div>
-                                <div class="flex-column weatherDetails">
+                                <div class="flex weatherDetails">
                                         <% if(Temperature === ""){ %>
                                                 <div class="nodescription"></div>
                                         <% }else{ %>
                                                 <img class="weather_icon" src="<%= Image %>" alt="Weather-Image">
                                                 <div class="weather_content">
-                                                        <div class="text-color"><%= Temperature %> °c in <%= Place%></div>
-                                                        <div class="description text-color"><%= Description %></div>
+                                                        <div><%= Temperature %> °c in <%= Place%></div>
+                                                        <div class="description"><%= Description %></div>
                                                 </div>
                         
                                         <% } %>

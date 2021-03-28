@@ -408,11 +408,12 @@ animation-delay: 1s;
     border-radius: 10px;
 }
 
+/* ---------------- Failure ------------------- */
 .incorrect{
     color:gray;
     font-size: 3rem;
 }
-
+/* -------------------------------------------- */
 .remember{
     position: relative;
     left: 10px;
@@ -493,6 +494,9 @@ animation-delay: 1s;
     border-radius: 100%;
     }
     
+    .container-1::after{
+        bottom: -100%;
+        }
     .container-2::after{
         bottom:-150%;
     }
@@ -513,6 +517,13 @@ animation-delay: 1s;
         font-weight: 700;
         border-radius: 10px;
     }
+
+    /* ---------------- Failure ------------------- */
+.incorrect{
+    color:gray;
+    font-size: 1.5rem;
+}
+/* -------------------------------------------- */
 
     .userdetails,.loginDetails{
         font-size: 0.6rem;
