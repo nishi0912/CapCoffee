@@ -24,6 +24,35 @@
     <% let randomItem = similarArray[randomnumber]; %>
 
         <div class="flex-column flavor_page"> 
+            <button class="desktop_question mobile_hidden">Ask questions</button>
+            <div class="flex more-similar-container-1 desktop_question_container">
+                Ask your questions
+                <form action="/flavors" method="post">
+                    <input type="hidden" name="hidden_flavorsInfo" value="<%= getInfo %>">
+                    <textarea class="questions" name="questions" id="questions" cols="50" rows="5"></textarea>
+                    <button class="btn" type="submit">Ask</button>
+                </form>
+                <% if(questions.length === 0){ %>
+                        <p class="user_question">Post your question</p>
+                <% }else{ %>
+                    <% questions.map((each)=>{ %>
+                        <form action="/flavors" method="post">
+                            <% if(each.item.itemname === getInfo){ %>
+                                <% console.log(each.item.itemname); %>
+                                <div class="flex user_question"><%= each.item.question %>
+                                    <input type="hidden" name="hidden_questionid" value="<%= each._id %>">
+                                    <button class="delete_icon" name="delete_question" value="delete_question" type="submit"><i class="fas fa-trash"></i></button>
+                                    <button class="edit_icon" name="edit_question" value="edit_question" type="submit"><i class="fas fa-edit"></i></button>
+                                    <div class="flex">
+                                        <input class="question_hidden" type="text" name="question_posted" id="">
+                                        <button class="post_hidden" name="" value="" type="submit">Post</button>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </form>
+                    <% }); %>
+                <% } %>
+            </div>
 
             <div class="main-title"><i class="fas fa-coffee mug arrow-icon"></i>
                 CAFE-COFFEE
@@ -32,8 +61,10 @@
             <div class="more-container">
                 <%- include("partials/button" , {idname:'',buttonname : '+' , className:'flex more',Name:'' , valuename:''}); %>
                 <div class="hover">Hoverme</div>
+                <div class="flex-column ingredient">Ingredients:
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dolores sed distinctio assumenda atque, unde maiores culpa veritatis rem, blanditiis magni. Alias quibusdam non doloribus ratione adipisci molestiae temporibus veritatis!</p>
+                </div>
                 <% let slicename = getInfo.substring(0,1); %>
-                <% console.log("Truncuated content- " +slicename); %>
                             <% if(getInfo == "FRAPPUCCINO"){ %>
                                 <img class="coffeeMainImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
                                 <p class="receipe"> 
@@ -117,11 +148,12 @@
                 <form action="/order" method="POST">
                     
                     <div class="userPurchase">
-                        <label class="userLabel" for="userInput">Quantity : </label>
+                        <label class="userLabel" for="userInput">Quantity</label>
                         <input type="hidden" name="orderplaced" value="<%= getInfo %>">
-                        <input name="nItem" id="userInput" type="text" class="userInput" placeholder="">
+                        <input name="nItem" id="userInput" type="text" class="userInput" placeholder="Enter-quantity">
                         <%- include("partials/button" , {idname:'',buttonname : 'Order' , className:'btn1',Name:'',valuename:''}); %>
                     </div>
+                    <p class="order_result"></p>
 
                 </form>
 
@@ -131,14 +163,13 @@
                 <div class="flex similar_items">
 
                     <% let similar = randomItem.name.substring(0,1); %>
-                    <% console.log("Truncuated similar content- " +similar); %>
                     <% if(slicename === similar){ %>
-                    <div class="flex-column similar_info">
-                            <img  class="coffeeImages" src="<%= randomItem.image %>" alt="<%= randomItem.name %>">
-                            <p><%= randomItem.name %></p> 
-                    </div>
+                        <div class="flex-column similar_info">
+                                <img  class="coffeeImages" src="<%= randomItem.image %>" alt="<%= randomItem.name %>">
+                                <p><%= randomItem.name %></p> 
+                        </div>
                     <% }else{ %>
-                    <p>No  Similar items</p> %>
+                        <p class="no_similar">No  Similar items</p> %>
                     <% } %>
 
                     <% similarArray.map((item)=>{ %>  
@@ -147,10 +178,8 @@
                             <p><%= item.name %></p>
                         </div>
                     <% }); %> 
-
                 </div>
             </div>
-
         </div>
         <script src="JAVASCRIPT/flavors.js"></script>
 </body>

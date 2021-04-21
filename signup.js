@@ -61,7 +61,9 @@ const User = mongoose.model("User" , userSchema);
 const cartSchema =new mongoose.Schema({
 orderId : String,
 itemname : String,
-price:String
+price:String,
+updatedprice : String,
+quantity:String
 });
 
 const Cart = mongoose.model("Cart" , cartSchema);
@@ -77,6 +79,17 @@ resetSchema.plugin(passportLocalMongoose);
 resetSchema.plugin(findOrCreate);
 
 const Reset = mongoose.model("Reset" , resetSchema);
+// ------------------------------------------
+const currentSchema = new mongoose.Schema({
+    username:String
+});
+const Current = mongoose.model("Current" , currentSchema);
+// ------------------------------------------
+const questionSchema = new mongoose.Schema({
+    item : {itemname : String , question : String}
+});
+
+const Question = mongoose.model("Questions" , questionSchema);
 // ------------------------------------------
 passport.use(User.createStrategy());
 passport.use(Reset.createStrategy());
@@ -135,6 +148,8 @@ passport.use(new FacebookStrategy({
     }
 ));
 
+let currentuser="";
+
 
 app.get("/",function(req , res){
 res.sendFile(__dirname+"/Home.html");
@@ -154,7 +169,6 @@ app.post("/login" , function(req , res){
 
 let alreadyRegistered = req.body.Already;
 let Newone = req.body.newLocation;
-console.log("Already - "+alreadyRegistered);
 
 const user1 = new User({
 username : req.body.username,
@@ -195,11 +209,31 @@ app.post("/previouspage" , (req , res)=>{
     res.redirect("/finalCoffeeproject");
 });
 
-app.get("/finalCoffeeproject",function(req , res){  
+Current.find({} , (err , foundCurrent)=>{
+    if(foundCurrent.length === 0){
+        console.log("No current user")
+    }else{
+        currentuser = foundCurrent[0].username;
+        console.log("Current User - "+currentuser);
+    }
+});
+
+let already_added ={itemname:String , isAdded : String};
+app.get("/finalCoffeeproject",function(req , res){
     setTimeout(() => {
-        res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:"",Robot:"",Logout:"false"});
+        Cart.find({} , (err , foundCarts)=>{
+            res.render("finalCoffeeproject" , {Temperature : tempInCelsius ,
+                    Description : description ,
+                    Image:imageURL, 
+                    Place : place,Message:_.capitalize(currentuser) ,
+                    Robot:"",Logout:"false" , 
+                    cartnumber : foundCarts.length,
+                    Already_added : already_added});
+        });
     }, 2000);
 });
+
+
 
 app.post("/finalCoffeeproject" , function(req , res){
     const RegisteredPassword = req.body.registeredpassword;
@@ -210,21 +244,16 @@ app.post("/finalCoffeeproject" , function(req , res){
         console.log(Re_locate);
     }
 
-    console.log("Logged out - "+Logout);
-    console.log(RegisteredPassword);
-
     const newUser = new User({
         username:req.body.User,
         password:req.body.userPassword
     });
 
-    User.find({username : req.body.User} , function(err , foundUser){  
-        console.log(foundUser);
-        console.log(foundUser[0].username , req.body.registeredpassword);
-        console.log(foundUser[0].username ,req.body.logoutpass);
-        console.log(req.body.User , req.body.userPassword,NewLocation);
+    User.find({username : req.body.User } , function(err , foundUser){  
 
-    if((RegisteredPassword === req.body.userPassword && foundUser[0].username === req.body.User) ||(Logout === req.body.userPassword && foundUser[0].username === req.body.User)){
+    if((RegisteredPassword === req.body.userPassword && foundUser[0].username === req.body.User) 
+    ||(Logout === req.body.userPassword && foundUser[0].username === req.body.User)
+    ||(foundUser[0].username === req.body.User)){
     req.logIn(newUser , function(err){
         if(err){
             console.log(err);
@@ -240,7 +269,6 @@ app.post("/finalCoffeeproject" , function(req , res){
                     
             https.get(url , function(response , err){
             if(!err){
-            console.log(response.statusCode);
                 if(response.statusCode=== 200){
                         response.on("data",function(data){
 
@@ -253,8 +281,30 @@ app.post("/finalCoffeeproject" , function(req , res){
                             place = weatherData.name;
 
                             if(req.isAuthenticated()){
+                            Current.find({} , (err , foundCurrent)=>{
+                                if(!err){
+                                    if(foundCurrent.length === 0){
+                                        const new_current = new Current({
+                                            username : req.user.username
+                                        });
+                                        new_current.save();
+                                        currentuser = req.user.username;
+                                    }
+                                }
+                            });
                             setTimeout(() => {
-                            res.render("finalCoffeeproject" , {Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:_.upperCase(req.user.username) ,Robot:"",Logout : RegisteredPassword});
+                                Cart.find({} , (err , foundCarts)=>{
+                                        res.render("finalCoffeeproject" , {Temperature : tempInCelsius , 
+                                            Description : description ,
+                                            Image:imageURL, 
+                                            Place : place,
+                                            Message:_.upperCase(currentuser), 
+                                            Robot:"",
+                                            Logout : RegisteredPassword , 
+                                            cartnumber:foundCarts.length,
+                                            Already_added:already_added
+                                        });
+                                });    
                             }, 5000);
                             }
                         });
@@ -268,7 +318,6 @@ app.post("/finalCoffeeproject" , function(req , res){
 }
 });
     }else{
-        console.log("Not logged in");
         res.render("login",{isreg:"false"});
     }
 });
@@ -286,36 +335,92 @@ app.post("/Failure",function(req , res){
     }
 });
 
+let flavoursInfo = "";
+
+app.get("/flavors",(req , res)=>{
+    setTimeout(() => {
+        Question.find({} , (err , foundQuestions)=>{
+            if(foundQuestions.length === 0){
+                res.render("flavors",{getInfo : flavoursInfo , questions : foundQuestions});
+            }else{
+                res.render("flavors",{getInfo : flavoursInfo , questions : foundQuestions});
+            }
+        });
+    }, 2000);
+});
+
+app.post("/flavors",function(req , res){
+    if(req.body.hidden_flavorsInfo){
+        flavoursInfo = req.body.hidden_flavorsInfo;
+        const newquestion = new Question({
+            item : {itemname : flavoursInfo , question : req.body.questions}
+        });
+        Question.find({} , (err , foundQuestions)=>{
+            if(foundQuestions.length === 0){
+                newquestion.save((err) =>{
+                    if(!err){
+                        res.redirect("/flavors");
+                    }
+                }); 
+            }else{
+                    newquestion.save((err) =>{
+                        if(!err){
+                            res.redirect("/flavors");
+                        }
+                    });  
+                }
+        });
+    }else if(req.body.flavourInfo){
+        flavoursInfo = req.body.flavourInfo;
+        res.redirect("/flavors");
+    }else if(req.body.delete_question === "delete_question"){
+        const hidden_id = req.body.hidden_questionid;
+        Question.find({_id : hidden_id} , (err ,foundId)=>{
+            if(!err){
+                Question.deleteOne({_id : hidden_id} ,(err)=>{
+                    if(!err){
+                        res.redirect("/flavors");
+                    }
+                });
+            }
+        })
+    }else{
+        console.log("Edit your question");
+    }
+
+});
+
 app.get("/order",function(req ,res){
     res.send("Your order is been processed");
 });
 
+let moreorders = "";
+let ordered_item ="";
+
 app.post("/order",(req , res)=>{
 let noOfItems =  req.body.nItem;
+moreorders = noOfItems;
 const orders = req.body.orderplaced;
-console.log(orders);
 
 if(noOfItems === ""){
-    res.send("Please enter the quantity of items.");
+    res.redirect("/flavors")
 }else if(noOfItems > 10){
-    res.send("The maximum number of orders for this item is 10.");
+    res.redirect("/flavors")
 }else{
     
     Cart.find({itemname : orders} , (err , foundorders)=>{
-        const neworder = new Cart({
-            orderId : foundorders[0].orderId,
-            itemname : foundorders[0].itemname,
-            price:foundorders[0].price
+            Cart.updateOne({} , (err)=>{
+                foundorders[0].quantity = noOfItems
+                foundorders[0].updatedprice = "$"+(foundorders[0].price.replace("$" , "") * noOfItems)
+            });
+        ordered_item = foundorders[0].itemname;
+        foundorders[0].save((err)=>{
+            if(!err){
+                console.log("New order -");
+                console.log(foundorders);
+            }
         });
-        let i;
-        for(i=0 ; i<noOfItems ; i++){
-            console.log(neworder);
-                neworder.save();    
-        }
-        if(i == noOfItems){
-            console.log(i , noOfItems);
-            res.redirect("/cart");
-        }
+        res.redirect("/cart");
     });
 }
 });
@@ -323,9 +428,9 @@ if(noOfItems === ""){
 app.get("/cart",function(req ,res){
     setTimeout(() => {
     Cart.find({} , (err , foundcarts)=>{
-    res.render("cart",{yourcart : foundcarts});
+        res.render("cart",{yourcart : foundcarts , More : foundcarts  , Ordered : ordered_item });
     }); 
-    },5000);
+    },3000);
 });
 
 app.post("/cart",function(req ,res){
@@ -346,11 +451,6 @@ Cart.find({} , (err , foundcarts)=>{
 
 });
 
-// let itemDeleted = _.remove(cartItems , (items)=>{
-// return items.Item == deletedItem;
-// });
-
-// console.log(itemDeleted);
 console.log("Deleting....");
 
 
@@ -363,21 +463,42 @@ console.log("Deleting....");
     const carts =new Cart({
         orderId : itemId,
         itemname : cartItem,
-        price:itemPrice 
+        price : itemPrice,
+        updatedprice:itemPrice 
         });
 
     Cart.find({},function(err , foundCarts){
         if(foundCarts.length === 0){
             carts.save();
-            console.log(carts);
-            console.log("Adding....");
-            cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.price}); 
+            cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.updatedprice}); 
             res.render("cart" , { yourcart : cartItems});
         }else{
             Cart.find({} , (err , foundcarts)=>{
-                carts.save();
-                cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.price}); 
-                res.redirect("/cart");
+                let isPresent = false;
+                let presentItem = "";
+                for(let i=0;i<foundcarts.length;i++){
+                    console.log("Two items - ",cartItem,foundcarts[i].itemname);
+                    if(cartItem === foundcarts[i].itemname){
+                        isPresent = true;
+                        presentItem = foundcarts[i].itemname;
+                        break;
+                    }else{
+                        isPresent = false;
+                    }
+                }
+                if(isPresent === true){
+                    already_added = {
+                        itemname : presentItem,
+                        isAdded : true
+                    }
+                    console.log("Already added to cart");
+                    res.redirect("/finalCoffeeproject");
+                }else{
+                    console.log("Not added to cart");
+                    carts.save();
+                    cartItems.push({Item : carts.itemname, Id :carts.orderId, Price:carts.updatedprice}); 
+                    res.redirect("/cart");
+                }
             });
         }
     });
@@ -393,7 +514,11 @@ app.get("/logout",function(req , res){
 
 app.post("/logout",function(req , res){
 const logoutPass = req.body.Logout;
-console.log("I am currently here - "+logoutPass);
+Current.find({} , (err , foundCurrent)=>{
+    Current.deleteMany({} , (err)=>{
+        console.log("Deleted current user");
+    })
+});
 res.render("login" , {isreg : "logback", Logout : logoutPass,NewLocation:"" });
 });
 
@@ -428,9 +553,8 @@ app.post("/cafecoffeeintro" , function(req , res){
             if(err){
                 console.log(err);
             }else{
-                    console.log("saved");
-                    User.updateOne({},{useFindAndModify:false},(err , foundResults)=>{
-                    console.log(foundResults);
+                    User.updateOne({password : req.body.secondpassword},{useFindAndModify:false},(err , foundResults)=>{
+                        console.log(foundResults[0]);
                     });
             }
         });
@@ -454,11 +578,6 @@ if(message ==="Hi" || message === "Hello"|| message==="Test"){
                 const imageURL = "http://openweathermap.org/img/wn/"+icon+"@2x.png"
 res.render("finalCoffeeproject",{Temperature : tempInCelsius , Description : description ,Image:imageURL, Place : place,Message:message,Robot:robot,Logout:"false"});
 console.log(message);
-});
-
-app.post("/flavors",function(req , res){
-    const flavoursInfo = req.body.flavourInfo;
-    res.render("flavors" ,{ getInfo : flavoursInfo });
 });
 
 

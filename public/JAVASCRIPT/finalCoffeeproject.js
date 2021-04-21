@@ -84,13 +84,20 @@ console.log(yourItem.length , moreItems.length);
 const arrow = document.querySelector(".arrow-down");
 const ordered = document.querySelector(".order");
 arrow.textContent = "⬇";
+let arrowRotate = 1;
 arrow.addEventListener("click" , function(){
-for(let i = 0;i<moreItems.length ; i++){
-    moreItems[i].classList.toggle("moreItems");
-    yourItem[i].classList.toggle("dropmenu2");
-    arrow.textContent = "⬆";
-    console.log(ordered.value);
-}
+    arrowRotate++;
+    for(let i = 0;i<moreItems.length ; i++){
+        if(arrowRotate % 2 === 0){
+        moreItems[i].classList.add("moreItems");
+        yourItem[i].classList.add("dropmenu2");
+        arrow.textContent = "⬆";
+    }else{
+        moreItems[i].classList.remove("moreItems");
+        yourItem[i].classList.remove("dropmenu2");
+        arrow.textContent = "⬇";
+    }
+    }
 });
 
 // message
@@ -193,6 +200,14 @@ Mode.addEventListener("click" , ()=>{
         RotationalBoxMode[i].classList.toggle("rotationalbox_mode");
     }
 });
+
+// ------------------------------------------
+const already_added = document.querySelector(".already_added");
+already_added.textContent = "Item already added to cart";
+setTimeout(() => {
+    already_added.textContent="";
+}, 10000);
+
 
 
 

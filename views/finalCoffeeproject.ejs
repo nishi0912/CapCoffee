@@ -72,7 +72,12 @@
                                         <%- include("partials/button", {idname:'', buttonname:'Dark-Mode' , className:'profile_DarkMode  Dark_mode text-color' , Name:'' , valuename:''}); %>
                         
                                         <form action="/cart" method="get">
-                                                <%- include("partials/button", {idname:'',buttonname:'Cart' , className:'profile_info text-color' , Name:'cart' , valuename:'/cart'}); %>
+                                                <div class="flex cartlength">
+                                                        <%- include("partials/button", {idname:'',buttonname:'Cart' , className:'profile_info text-color profile_cart' , Name:'cart' , valuename:'/cart'}); %>
+                                                        <% if(cartnumber){ %>
+                                                                <p class="cart_number"><%= cartnumber %></p>
+                                                        <% } %>
+                                                </div>
                                         </form>
                                         <form action="/logout" method="post">
                                                 <% if(Logout!=false){ %>
@@ -210,8 +215,14 @@
                                                 <form action="/cart" method="post">
                                                         <input type="hidden" name="Itemprice" value="<%= item.itemprice %>">
                                                         <input type="hidden" name="Itemid" value="<%= item.itemid %>">
-                                                        <button class="order" name="itemordered" value="<%= item.itemname %>" type="submit">Purchase</button>
+                                                        <button class="order" name="itemordered" value="<%= item.itemname %>" type="submit">Add to Cart</button>
                                                 </form>
+                                                <% if(Already_added!=""){ %>
+                                                        <% if(Already_added.itemname === item.itemname && Already_added.isAdded === true){ %> 
+                                                                <p class="already_added"></p>
+                                                        <% } %>
+                                                <% } %>
+
                                                 <% const randomRating = (Math.floor(Math.random()*5)+1); %>
                                                 <% const randomDecimal = (Math.floor(Math.random()*9)+1); %>
                                                 <div class="itemrating"><%= randomRating%>.<%= randomDecimal  %>

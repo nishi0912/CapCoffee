@@ -50,6 +50,12 @@ h1,.btn,.cost{
     background-color:white ;
     border:2px solid gray;
     border-radius: 10px;
+    position: relative;
+}
+.more_ordered{
+    position: absolute;
+    top:5px;
+    right: 5px;
 }
 
 .btn,.cost{

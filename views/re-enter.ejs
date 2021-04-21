@@ -9,8 +9,8 @@
                         <div class="container-2">
                                 <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
                                         <input type="hidden" name="newmail" value="<%= usermail %>">
-                                        <input class="userdetails" type="text" name="firstpassword" placeholder="Enter password" autofocus autocomplete="off">
-                                        <input class="userdetails" type="text" name="secondpassword" placeholder="Re-enter password" autocomplete="off">
+                                        <input class="userdetails" type="password" name="firstpassword" placeholder="Enter password" autofocus autocomplete="off">
+                                        <input class="userdetails" type="password" name="secondpassword" placeholder="Re-enter password" autocomplete="off">
                                         <%- include("partials/button" , {idname:'',buttonname : 'Reset' , className:'btn',Name:'',valuename:''}); %>
                         <%- include("partials/footer") %>
                         </div>
