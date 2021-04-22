@@ -5,21 +5,22 @@
     font-family: 'Poppins',sans-serif;
 }
 
-h1{
-
+.cart-header{
     text-align: center;
     padding:10px 40px;
     background-color: white;
+    position: relative;
 }
 
 h1,.btn,.cost{
     color:gray;
 }
 
-.container,.item,.sub-container{
+.flex{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .container{
@@ -29,8 +30,8 @@ h1,.btn,.cost{
     justify-content: unset;
     flex-direction: column;
     background-color: mediumspringgreen;
-    position: relative;
 }
+
 .sub-container{
     padding:3% 5%;
     flex-direction: row;
@@ -39,7 +40,10 @@ h1,.btn,.cost{
 }
 
 .item{
-    margin:1%;
+    margin:10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: unset;
     flex-direction: column;
     text-align: center;
     font-size: 0.8rem;
@@ -48,14 +52,29 @@ h1,.btn,.cost{
     color: gray;
     height:60vh;
     background-color:white ;
-    border:2px solid gray;
+    border:2px solid lightgreen;
+    box-shadow: 0px 0px 10px gray;
     border-radius: 10px;
-    position: relative;
 }
 .more_ordered{
     position: absolute;
     top:5px;
-    right: 5px;
+    right: 10px;
+}
+
+.buy,.homebtn{
+    color: gray;
+    font-weight: 700;
+    padding: 10px 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px gray; 
+    position: relative;
+    background-color: white;
+}
+.buy{
+    margin-top: 30px;
 }
 
 .btn,.cost{
@@ -63,15 +82,22 @@ h1,.btn,.cost{
     background-color: white;
     font-size: 0.8rem;
     box-shadow:0px 5px 5px grey;
+    position: absolute;
+    bottom: 30px;
+    width: 40%;
+    padding: 10px 0px;
+    border-radius: 10px;
 }
 
 .btn{
         font-weight: 700;
-        padding:10px 40px;
-        margin:10px auto;
         border: none;
-        border-radius: 10px;
         outline: none;
+        right: 10px;
+}
+
+.cost{
+    left: 10px;
 }
 
 .removeItem{
@@ -105,11 +131,6 @@ h1,.btn,.cost{
     transition: all 3s linear;
 }
 
-.cost{
-    padding:7px 0px;
-    width:50%;
-}
-
 .coffeeImages{
     width:180px;
     height:120px;
@@ -125,7 +146,7 @@ h1,.btn,.cost{
     .item{
         font-size: 1.1rem;
         width:30%;
-        height:40vh;
+        height:50vh;
     }
     .coffeeImages{
         width:150px;
@@ -158,19 +179,25 @@ h1,.btn,.cost{
     }
 
     .item{
+        margin:10px 5px;
         font-size: 0.8rem;
         width:45%;
-        height:35vh;
+        height:40vh;
     }
-
+    .more_ordered{
+        right: 4px;
+    }
+    
+    .buy{
+        padding: 6px 40px;
+    }
+    
     .btn,.cost{
         font-size: 0.5rem;
+        padding:10px 30px;
     }
 .btn{
-    padding:7px 30px;
-}
-.cost{
-    padding:5px 0px;
+    padding:10px 30px;
 }
 
 .coffeeImages{

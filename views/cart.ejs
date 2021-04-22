@@ -5,38 +5,33 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    <div class="container">
-        <h1><i class="fas fa-cart-arrow-down"></i> CART-ITEMS
+    <div class="flex container">
+        <h1 class="cart-header"><i class="fas fa-cart-arrow-down"></i> CART-ITEMS
             <form action="/previouspage" method="POST">
-                <%- include("partials/button", {idname:'', buttonname:'Home' , className:'btn' , Name:'home' , valuename:'goback'}); %>
+                <%- include("partials/button", {idname:'', buttonname:'Home' , className:'homebtn' , Name:'home' , valuename:'goback'}); %>
             </form>
         </h1>
-        <div class="sub-container">
+        <div class="flex sub-container">
 
             <% for(var i=0;i<yourcart.length;i++){ %>
-                <div class="item">
-        
+                <div class="flex item">
+                    <% if(yourcart[i].quantity){ %>
+                        <p class="more_ordered">X <%= yourcart[i].quantity %></p>
+                    <% } %>
+
             <%  if( yourcart[i].itemname === "FRAPPUCCINO" || yourcart[i].itemname === "C-MACHIATO" || yourcart[i].itemname === "CAFE MOCHA" || yourcart[i].itemname === "AMERICANO" || yourcart[i].itemname === "TURKISH COFFEE" || yourcart[i].itemname === "CAFE CUBANO" ||
                 yourcart[i].itemname === "CAFE LATTE" || yourcart[i].itemname === "IRISH COFFEE" || yourcart[i].itemname === "ESPRESSO" ||
                 yourcart[i].itemname === "CORTADO" || yourcart[i].itemname === "AFFOGATO" || yourcart[i].itemname === "CAPPUCCINO" ||
                 yourcart[i].itemname === "PLAIN COFFEE" || yourcart[i].itemname === "ICED COFFEE" || yourcart[i].itemname === "CAFE AU LAIT") { %>
                     <span>
-                        <% if(More){ %>
-                                <% if(Ordered === yourcart[i].itemname){ %>
-                                    <p class="more_ordered">X <%=More[i].quantity %></p>
-                                <% } %> 
-                        <% } %>
+                        
                         <form id="delete" action="/cart" method="post">
                             <input type="hidden" name="remove" value="delete">
                             <button  name="delete" value="<%=yourcart[i]._id%>" class="removeItem" type="submit">Remove</button>
                         </form>
 
                         <h3><%= yourcart[i].itemname %></h3>
-                        <h5>Order-Id-<%= yourcart[i].orderId %>
-                            <% if(yourcart[i].quantity){ %>
-                                <p>X <%= yourcart[i].quantity %></p>
-                            <% } %>
-                        </h5>
+                        <h5>Order-Id-<%= yourcart[i].orderId %></h5>
                     </span>
                             <%  if(yourcart[i].itemname === "FRAPPUCCINO" ){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
@@ -86,8 +81,11 @@
                                 <% }else{ %>
                                     <P>No-Item</P>
                             <%  } %>
+                    <form action="/buy" method="post">
+                        <button class="buy" name ="Buyitem" value="<%=yourcart[i].itemname %>" type="submit">BUY</button>
+                    </form>
                     <form action="/flavors" method="post">   
-                        <button class="btn" name ="flavourInfo" value="<%=yourcart[i].itemname %>" type="submit">MORE</button>
+                        <button class="flex btn" name ="flavourInfo" value="<%=yourcart[i].itemname %>" type="submit">MORE</button>
                     </form>  
                 <%  } else if(""){ %>
                     <h3><%= yourcart[i].itemname %></h3>               

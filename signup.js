@@ -395,7 +395,6 @@ app.get("/order",function(req ,res){
 });
 
 let moreorders = "";
-let ordered_item ="";
 
 app.post("/order",(req , res)=>{
 let noOfItems =  req.body.nItem;
@@ -413,7 +412,6 @@ if(noOfItems === ""){
                 foundorders[0].quantity = noOfItems
                 foundorders[0].updatedprice = "$"+(foundorders[0].price.replace("$" , "") * noOfItems)
             });
-        ordered_item = foundorders[0].itemname;
         foundorders[0].save((err)=>{
             if(!err){
                 console.log("New order -");
@@ -428,8 +426,8 @@ if(noOfItems === ""){
 app.get("/cart",function(req ,res){
     setTimeout(() => {
     Cart.find({} , (err , foundcarts)=>{
-        res.render("cart",{yourcart : foundcarts , More : foundcarts  , Ordered : ordered_item });
-    }); 
+        res.render("cart",{yourcart : foundcarts});
+    }).sort({itemname : 1}); 
     },3000);
 });
 
