@@ -136,6 +136,14 @@ h1,.btn,.cost{
     height:120px;
 }
 
+.like {
+    color : whitesmoke;
+}
+
+.likes {
+    color : mediumspringgreen;
+}
+
 @media (min-width:768px) and (max-width:1024px){
     .sub-container{
         padding:3% 1%;

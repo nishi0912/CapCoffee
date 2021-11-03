@@ -11,4 +11,12 @@ for(let i = 0;i<remove.length ; i++){
         });
 }
 
+const likes = document.querySelectorAll(".like");
+for(let i = 0;i<likes.length;i++){
+    likes[i].addEventListener("click",() =>{
+        likes[i].classList.toggle("likes");
+    })
+}
+
+
 

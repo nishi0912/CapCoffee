@@ -36,21 +36,30 @@
                             <%  if(yourcart[i].itemname === "FRAPPUCCINO" ){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor1.jpg" alt="FRAPPUCCINO">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                    <form action="/cart" method="post">
+                                        <input type="hidden" name="remove" value="liked">
+                                        <i class="fas fa-heart like"></i>
+                                    </form>
                                 <% }else if(yourcart[i].itemname === "C-MACHIATO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor2.jpg" alt="CARAMEL MACCHIATO">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                     <i class="fas fa-heart like"></i>
                                 <% }else if(yourcart[i].itemname === "CAFE MOCHA"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor3.jpg" alt="CAFÉMOCHA">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                     <i class="fas fa-heart like"></i>
                                 <% }else if(yourcart[i].itemname === "AMERICANO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor4.jpg" alt="AMERICANO">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                     <i class="fas fa-heart like"></i>
                                 <% }else if(yourcart[i].itemname === "TURKISH COFFEE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor5.jpg" alt="TURKISH COFFEE">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                     <i class="fas fa-heart like"></i>
                                 <% }else if(yourcart[i].itemname === "CAFE CUBANO"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor6.jpg" alt="CAFECUBANO">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
+                                     <i class="fas fa-heart like"></i>
                                 <% }else if(yourcart[i].itemname === "CAFE LATTE"){ %>
                                     <img class="coffeeImages" src="CSS/Images/flavor7.jpg" alt="CAFELATTE">
                                     <p class="cost"><%= yourcart[i].updatedprice %></p>
