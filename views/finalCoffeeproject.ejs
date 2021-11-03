@@ -10,21 +10,66 @@
         <div class="container-fluid">
 
 
-<% let eItems = [{itemid : "1",itemname : "FRAPPUCCINO" , itemimg : "img1" , itemprice:"$20"}, 
-                {itemid : "2",itemname : "C-MACHIATO" , itemimg : "img2" , itemprice:"$32.5"}, 
-                {itemid : "3",itemname : "CAFE MOCHA" , itemimg : "img3" , itemprice:"$27"}, 
-                {itemid : "4",itemname : "AMERICANO" , itemimg : "img4" , itemprice:"$23.2"}, 
-                {itemid : "5",itemname : "TURKISH COFFEE" , itemimg : "img5" , itemprice:"$24"}, 
-                {itemid : "6",itemname : "CAFE CUBANO" , itemimg : "img6" , itemprice:"$29"}, 
-                {itemid : "7",itemname : "CAFE LATTE" , itemimg : "img7" , itemprice:"$35"}, 
-                {itemid : "8",itemname : "IRISH COFFEE" , itemimg : "img8" , itemprice:"$40"}, 
-                {itemid : "9",itemname : "ESPRESSO" , itemimg : "img9" , itemprice:"$19"}, 
-                {itemid : "10",itemname : "CORTADO" , itemimg : "img10" , itemprice:"$32"}, 
-                {itemid : "11",itemname : "AFFOGATO" , itemimg : "img11" , itemprice:"$34"}, 
-                {itemid : "12",itemname : "CAPPUCCINO" , itemimg : "img12" , itemprice:"$41"}, 
-                {itemid : "13",itemname : "PLAIN COFFEE" , itemimg : "img13" , itemprice:"$15"}, 
-                {itemid : "14",itemname : "ICED COFFEE" , itemimg : "img14" , itemprice:"$37.25"}, 
-                {itemid : "15",itemname : "CAFE AU LAIT" , itemimg : "img15" , itemprice:"$40.5"}]; %>
+<% let eItems = [
+        {itemid : "1",itemname : "FRAPPUCCINO" , itemimg : "img1" , itemprice:"$20", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "2",itemname : "C-MACHIATO" , itemimg : "img2" , itemprice:"$32.5", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "3",itemname : "CAFE MOCHA" , itemimg : "img3" , itemprice:"$27", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "4",itemname : "AMERICANO" , itemimg : "img4" , itemprice:"$23.2", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "5",itemname : "TURKISH COFFEE" , itemimg : "img5" , itemprice:"$24", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "6",itemname : "CAFE CUBANO" , itemimg : "img6" , itemprice:"$29", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "7",itemname : "CAFE LATTE" , itemimg : "img7" , itemprice:"$35", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "8",itemname : "IRISH COFFEE" , itemimg : "img8" , itemprice:"$40", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "9",itemname : "ESPRESSO" , itemimg : "img9" , itemprice:"$19", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "10",itemname : "CORTADO" , itemimg : "img10" , itemprice:"$32", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "11",itemname : "AFFOGATO" , itemimg : "img11" , itemprice:"$34", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "12",itemname : "CAPPUCCINO" , itemimg : "img12" , itemprice:"$41", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "13",itemname : "PLAIN COFFEE" , itemimg : "img13" , itemprice:"$15", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "14",itemname : "ICED COFFEE" , itemimg : "img14" , itemprice:"$37.25", 
+                desc:"This is description of the item"
+        }, 
+                {
+                        itemid : "15",itemname : "CAFE AU LAIT" , itemimg : "img15" , itemprice:"$40.5", 
+                desc:"This is description of the item"
+        }]; %>
 <% let specialItems1 = ""; %>
 <% let specialItems2 = ""; %>
 <% let specialItems3 = ""; %>
@@ -91,7 +136,7 @@
 </div>
 <!-- --------------------- Header ends ------------------------ -->
                 <div class="transitions">
-                        <div class="flex basic">
+                        <div class=" basic">
                                 <div class="Coffee-image"></div>
                                 <div class="flex weatherDetails">
                                         <% if(Temperature === ""){ %>
@@ -112,12 +157,15 @@
                                         <a href="/more">Read-more</a>
                                 </form>
                         </div>
+                        <div>
+                        <%- include("partials/Accordion"); %>
+                        </div>
                 </div>
                 <br>
         </section>
 
         <section id="services">
-                <div class="flex basic services text-color">
+                <div class="flex basic2 services text-color">
 
                         <div class="sub-services">
                                 <i class="fab fa-sourcetree service-icon"></i>
@@ -229,6 +277,8 @@
                                                         <i class="fas fa-star staricon"></i>
                                                 </div>
                                                 <i class="fas fa-heart like"></i>
+                                                <div class="itemDesc">
+                                                        <%=item.desc.length > 10 ? item.desc.substring(0 , 15)+'...' : item.desc %></div>
                                         </div>  
                                         <div class="arrow-down"></div>
                                 </span>   
