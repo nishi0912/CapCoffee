@@ -245,14 +245,14 @@ app.post("/previouspage", (req, res) => {
   res.redirect("/finalCoffeeproject");
 });
 
-Current.find({}, (err, foundCurrent) => {
-  if (foundCurrent.length === 0) {
-    console.log("No current user");
-  } else {
-    currentuser = foundCurrent[0].username;
-    console.log("Current User - " + currentuser);
-  }
-});
+// Current.find({}, (err, foundCurrent) => {
+//   if (foundCurrent.length === 0) {
+//     console.log("No current user");
+//   } else {
+//     currentuser = foundCurrent[0].username;
+//     console.log("Current User - " + currentuser);
+//   }
+// });
 
 let already_added = { itemname: String, isAdded: String };
 app.get("/finalCoffeeproject", function (req, res) {
@@ -288,92 +288,91 @@ app.post("/finalCoffeeproject", function (req, res) {
   });
 
   User.find({ username: req.body.User }, function (err, foundUser) {
-    if (
-      (RegisteredPassword === req.body.userPassword &&
-        foundUser[0].username === req.body.User) ||
-      (Logout === req.body.userPassword &&
-        foundUser[0].username === req.body.User) ||
-      foundUser[0].username === req.body.User
-    ) {
-      req.logIn(newUser, function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          passport.authenticate("local", (err, user, info) => {
-            let current = "";
-            if (!Re_locate) {
-              NewLocation.length === 0
-                ? (current = foundUser[0].location)
-                : (current = NewLocation);
-            } else {
-              Re_locate.length === 0
-                ? (current = foundUser[0].location)
-                : (current = Re_locate);
-            }
-            const url =
-              "https://api.openweathermap.org/data/2.5/weather?q=" +
-              current +
-              "&appid=86ec7a4a847d69237bdbbc7be5505c71";
-
-            https.get(url, function (response, err) {
-              if (!err) {
-                if (response.statusCode === 200) {
-                  response.on("data", function (data) {
-                    const weatherData = JSON.parse(data);
-                    icon = weatherData.weather[0].icon;
-                    imageURL =
-                      "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-                    temperature = weatherData.main.temp;
-                    tempInCelsius = (temperature - 273.15).toFixed(0);
-                    description = _.capitalize(
-                      weatherData.weather[0].description
-                    );
-                    place = weatherData.name;
-
-                    if (req.isAuthenticated()) {
-                      Current.find({}, (err, foundCurrent) => {
-                        if (!err) {
-                          if (foundCurrent.length === 0) {
-                            const new_current = new Current({
-                              username: req.user.username,
-                            });
-                            new_current.save();
-                            currentuser = req.user.username;
-                          }
-                        }
-                      });
-                      setTimeout(() => {
-                        Cart.find({}, (err, foundCarts) => {
-                          res.render("finalCoffeeproject", {
-                            Temperature: tempInCelsius,
-                            Description: description,
-                            Image: imageURL,
-                            Place: place,
-                            Message: _.upperCase(currentuser),
-                            Robot: "",
-                            Logout: RegisteredPassword,
-                            cartnumber: foundCarts.length,
-                            Already_added: already_added,
-                          });
-                        });
-                      }, 5000);
-                    }
-                  });
-                } else {
-                  res.render("login", {
-                    registeredPassword: req.body.userPassword,
-                    isreg: "Re-locate",
-                    NewLocation: "",
-                  });
-                }
+    console
+    foundUser === ""
+      ? res.render("login", { isreg: "false" })
+      : (RegisteredPassword === req.body.userPassword &&
+          foundUser[0].username === req.body.User) ||
+        (Logout === req.body.userPassword &&
+          foundUser[0].username === req.body.User) ||
+        foundUser[0].username === req.body.User
+      ? req.logIn(newUser, function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            passport.authenticate("local", (err, user, info) => {
+              let current = "";
+              if (!Re_locate) {
+                NewLocation.length === 0
+                  ? (current = foundUser[0].location)
+                  : (current = NewLocation);
+              } else {
+                Re_locate.length === 0
+                  ? (current = foundUser[0].location)
+                  : (current = Re_locate);
               }
-            });
-          })(req, res);
-        }
-      });
-    } else {
-      res.render("login", { isreg: "false" });
-    }
+              const url =
+                "https://api.openweathermap.org/data/2.5/weather?q=" +
+                current +
+                "&appid=86ec7a4a847d69237bdbbc7be5505c71";
+
+              https.get(url, function (response, err) {
+                if (!err) {
+                  if (response.statusCode === 200) {
+                    response.on("data", function (data) {
+                      const weatherData = JSON.parse(data);
+                      icon = weatherData.weather[0].icon;
+                      imageURL =
+                        "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+                      temperature = weatherData.main.temp;
+                      tempInCelsius = (temperature - 273.15).toFixed(0);
+                      description = _.capitalize(
+                        weatherData.weather[0].description
+                      );
+                      place = weatherData.name;
+
+                      if (req.isAuthenticated()) {
+                        Current.find({}, (err, foundCurrent) => {
+                          if (!err) {
+                            if (foundCurrent.length === 0) {
+                              const new_current = new Current({
+                                username: req.user.username,
+                              });
+                              new_current.save();
+                              currentuser = req.user.username;
+                            }
+                          }
+                        });
+                        setTimeout(() => {
+                          Cart.find({}, (err, foundCarts) => {
+                            res.render("finalCoffeeproject", {
+                              Temperature: tempInCelsius,
+                              Description: description,
+                              Image: imageURL,
+                              Place: place,
+                              Message: _.upperCase(currentuser),
+                              Robot: "",
+                              Logout: RegisteredPassword,
+                              cartnumber: foundCarts.length,
+                              Already_added: already_added,
+                            });
+                          });
+                        }, 5000);
+                      }
+                    });
+                  } else {
+                    res.render("login", {
+                      registeredPassword: req.body.userPassword,
+                      isreg: "Re-locate",
+                      NewLocation: "",
+                    });
+                  }
+                }
+              });
+            })(req, res);
+          }
+        })
+      : res.render("login", { isreg: "false" });
   });
 });
 

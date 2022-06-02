@@ -8,18 +8,14 @@
     <form action="/finalCoffeeproject" method="post"> 
 <div class="loader-page">
     <div class="flex homepage">
-
-        <div class="container-2">
-                <div class="title"><i class="fas fa-coffee mug arrow-icon"></i>CAFE-COFFEE</div>
+        <div>
+                <div class="title"><i class="fas fa-coffee mug arrow-icon"></i> CAFE-COFFEE</div>
                         <input class="loginDetails" type="text" id="user" name="User" placeholder="Username or Email" required autofocus autocomplete="off">
                         <input class="loginDetails" type="password" id="pass" name="userPassword" placeholder="Password" required autocomplete="off">
                         <% if(isreg === "true"){ %>
-                        <% console.log("IsRegistered - "+isreg); %>
-                        <% console.log("New - Location - "+NewLocation); %>
                         <input type="hidden" name="registeredpassword" value="<%= registeredPassword %>">
                         <input type="hidden" name="NewLocation" value="<%= NewLocation %>">
-                            <% }else if(isreg === "logback") {%>
-                            <% console.log("I am currently in second - "+Logout); %>
+                            <% }else if(isreg === "logback") { %>
                             <input type="hidden" name="NewLocation" value="<%= NewLocation %>">
                             <input type="hidden" name="logoutpass" value="<%= Logout %>">
                         <% }else if(isreg === "Re-locate"){ %>
@@ -27,17 +23,17 @@
                             <input type="hidden" name="registeredpassword" value="<%= registeredPassword %>">
                         <% } %>
                 
-                    <div class="buttons">
-                    <%- include("partials/button" , {idname:'bq',buttonname : 'Log-in' , className:'btn',Name:'',valuename:''}); %>
+                <div class="buttons">
+                        <%- include("partials/button" , {idname:'bq',buttonname : 'Log-in' , className:'btn',Name:'',valuename:''}); %>
                         </form>
-                        <form action="/forgot" method="get">
-                            <%- include("partials/button" , {idname:'',buttonname : 'Forgot?' , className:'btn',Name:'',valuename:''}); %>
-                        </form>
+                    <form action="/forgot" method="get">
+                        <%- include("partials/button" , {idname:'',buttonname : 'Forgot?' , className:'btn',Name:'',valuename:''}); %>
+                    </form>
                 </div>
                 <div  class="remember">
                     <input class="checkBox" type="checkbox"> Remember me
                 </div>
-                <%- include("partials/footer") %>
+                <%- include("partials/footer"); %>
         </div>
     </div>
 
